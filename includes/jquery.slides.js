@@ -21,8 +21,8 @@
       play: {
         active: false,
         effect: "slide",
-        interval: 5000,
-        auto: false,
+        interval: 2000,
+        auto: true,
         swap: true,
         pauseOnHover: false,
         restartDelay: 2500

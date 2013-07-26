@@ -30,10 +30,10 @@
     <img class="slidesjs-next slidesjs-navigation" id="right_arrow" src="images/right-arrow.fw.png" />
     </div>-->
 		<div id="slides"> 
-      <div class="arrows">
+     <!-- <div class="arrows">
         <img class="slidesjs-previous slidesjs-navigation" id="left_arrow" src="images/left-arrow.fw.png" /> 
         <img class="slidesjs-next slidesjs-navigation" id="right_arrow" src="images/right-arrow.fw.png" />
-      </div>
+      </div> -->
       <img src="images/recycle_its_easy.jpg" width="800"  alt="Recycling"  /> 
       <img src="images/recycle_its_easy.jpg" width="800"  alt="Recycling"  />
       <img src="images/recycle_its_easy.jpg" width="800"  alt="Recycling"  /> 	

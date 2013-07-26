@@ -10,7 +10,10 @@ echo '<h1 style="text-align:center">Data</h1>';
 require_once ('mysqli_connect.php'); // Connect to the db.
 		
 // Make the query:
-$q = "SELECT * from constituents, products,prod_const where products.upccode = prod_const.upccode and prod_const.cname=constituents.cname; ";		
+$q = "SELECT * from constituents, products, prod_const, regions_recyclability 
+				where products.upccode = prod_const.upccode 
+							and prod_const.cname=constituents.cname 
+							and constituents.cname = regions_recyclability.cname ";		
 $r = @mysqli_query ($dbc, $q); // Run the query.
 
 // Count the number of returned rows:
@@ -32,6 +35,7 @@ if ($num > 0) { // If it ran OK, display the records.
 				<th>parent_company</th>
 				<th>constituent name</th>
 				<th>constituent weight</th>
+				<th>C percentage</th><br/ >
 				<th>type</th>
 				<th>region</th>
 				<th>recycability</th>
@@ -48,9 +52,10 @@ if ($num > 0) { // If it ran OK, display the records.
 				<td>' . $row['parent_company']. '</td>
 				<td>' . $row['cname']. '</td>
 				<td>' . $row['part_weight']. '</td>
-				<td>' . $row['Type']. '</td>
+				<td>' . $row['part_weight']/$row['weight']. '</td>
+				<td>' . $row['type']. '</td>
 				<td>' . $row['region_name']. '</td>
-				<td>' . $row['recycability']. '</td>
+				<td>' . $row['recyclable']. '</td>
 			  </tr>';
 	}
 	  echo '</table></p>';
