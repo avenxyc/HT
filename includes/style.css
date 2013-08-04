@@ -138,32 +138,23 @@ a {
 
 .tile {
 	width: 800px;
-	padding: 0px 0px;
+	padding: 0px 1px;
+	float: left;
 }
 
 
-/*#b-tile {
+#b-tile, #o-tile {
 	display:inline-block;
-	margin:1px 0px 0px;
+	margin:0px 0px 0px;
 	padding: 4px 0px;
-	width:263px;
+	width:33%;
 	height: 150px;
 	background-color:#3366ff;	
 	text-align:center;	
 	position: relative;
 }
 
-#o-tile {
-	display:inline-block;
-	margin:1px 0px 0px;
-	padding: 4px 0px;
-	width:263px;
-	height: 150px;
-	background-color:#ff9900;	
-	text-align:center;	
-	position: relative;
-}
-*/
+
 
 .focus{
 	border: 1px solid #FF0000;
