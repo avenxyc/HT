@@ -11,7 +11,7 @@
 	
 	$title_name = 'Test site';  //Title name of this page
 	include("/includes/header.html"); // include the header file
-	 
+	echo"<script src='includes/index-jQuery.js' type='text/javascript'></script>" ;
 ?>
 <!-- This is the header, the following content is for the body -->
 

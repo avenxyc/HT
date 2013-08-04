@@ -138,11 +138,11 @@ a {
 
 .tile {
 	width: 800px;
-	padding: 0px 1px;
+	padding: 0px 0px;
 }
 
 
-#b-tile {
+/*#b-tile {
 	display:inline-block;
 	margin:1px 0px 0px;
 	padding: 4px 0px;
@@ -163,7 +163,7 @@ a {
 	text-align:center;	
 	position: relative;
 }
-
+*/
 
 .focus{
 	border: 1px solid #FF0000;
