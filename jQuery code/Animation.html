@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style>
+img {width:80px; height:auto}
+li {display: inline-block; margin: 30px;}
+.v_content {height: 300px; width: 800px; border: 1px solid black; overflow: hidden;}
+.v_content_list { float: left;}
+</style>
+
+<script>
+		var page = 1;
+		var i = 4;
+	
+  $(document).ready(function(){
+		$("span.next").click(function(){
+			var $parent = $(this).parents("div.v_show");  //Acquire all parents elements
+			var $v_show = $parent.find("div.v_content_list"); // Find the v_content_list
+			var $v_content = $parent.find("div.v_content");  // Find the v_content
+			
+			var $v_width = $v_content.width();  
+			var len = $v_show.find("li").length; // Get the number of images
+			var page_count = Math.ceil( len / i);  
+			
+			if( page == page_count){
+				// If this the last page, we have to go back to the first one
+				$v_show.animate({ left : '0px'}, "slow");
+				
+				page = 1; 
+			}else{
+				$v_show.animate({left: '-='+v_width}, "slow"); //Move to next page
+				
+				page++;
+			}
+			
+			$parent.find("span").eq((page-1)).addClass("current").siblings().removeClass("current"); // Change the style of 
+			
+		});
+	});
+</script>
+<title>Untitled Document</title>
+</head>
+	<div class="v_show">
+		<div class="v_caption">
+			<h2 class="cartoon" title="Cartoon">Cartoon</h2>
+			<div class="highlight_tip">
+        <span class="current">1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+      </div>
+			<div class="change_btn">
+				<span class="prev">Previous</span>
+				<span class="next">Next</span>
+				<em><a href="#">More>></a></em>
+			</div>
+			<div class="v_content">
+				<div class="v_content_list">
+					<ul>
+						<li><a href="#">
+            			<img src="../images/Komal-Jha-Hot-Photo-Shoot-Photos-1952.jpg" alt="hot girl" />
+								</a>
+                <h4><a href="#">Hot Girl</a></h4>
+                <span>Play:<em>2,000</em></span>
+            </li>
+						<li><a href="#">
+            			<img src="../images/Komal-Jha-Hot-Photo-Shoot-Photos-1952.jpg" alt="hot girl" />
+								</a>
+                <h4><a href="#">Hot Girl</a></h4>
+                <span>Play:<em>2,000</em></span>
+            </li>
+						<li><a href="#">
+            			<img src="../images/Komal-Jha-Hot-Photo-Shoot-Photos-1952.jpg" alt="hot girl" />
+								</a>
+                <h4><a href="#">Hot Girl</a></h4>
+                <span>Play:<em>2,000</em></span>
+            </li>
+						<li><a href="#">
+            			<img src="../images/Komal-Jha-Hot-Photo-Shoot-Photos-1952.jpg" alt="hot girl" />
+								</a>
+                <h4><a href="#">Hot Girl</a></h4>
+                <span>Play:<em>2,000</em></span>
+            <li><a href="#">
+            			<img src="../images/Komal-Jha-Hot-Photo-Shoot-Photos-1952.jpg" alt="hot girl" />
+								</a>
+                <h4><a href="#">Hot Girl</a></h4>
+                <span>Play:<em>2,000</em></span>
+            </li>
+            <li><a href="#">
+            			<img src="../images/Komal-Jha-Hot-Photo-Shoot-Photos-1952.jpg" alt="hot girl" />
+								</a>
+                <h4><a href="#">Hot Girl</a></h4>
+                <span>Play:<em>2,000</em></span>
+            </li>
+            <li><a href="#">
+            			<img src="../images/Komal-Jha-Hot-Photo-Shoot-Photos-1952.jpg" alt="hot girl" />
+								</a>
+                <h4><a href="#">Hot Girl</a></h4>
+                <span>Play:<em>2,000</em></span>
+            </li>
+            <li><a href="#">
+            			<img src="../images/Komal-Jha-Hot-Photo-Shoot-Photos-1952.jpg" alt="hot girl" />
+								</a>
+                <h4><a href="#">Hot Girl</a></h4>
+                <span>Play:<em>2,000</em></span>
+            </li>
+            <li><a href="#">
+            			<img src="../images/Komal-Jha-Hot-Photo-Shoot-Photos-1952.jpg" alt="hot girl" />
+								</a>
+                <h4><a href="#">Hot Girl</a></h4>
+                <span>Play:<em>2,000</em></span>
+            </li>
+            <li><a href="#">
+            			<img src="../images/Komal-Jha-Hot-Photo-Shoot-Photos-1952.jpg" alt="hot girl" />
+								</a>
+                <h4><a href="#">Hot Girl</a></h4>
+                <span>Play:<em>2,000</em></span>
+            </li>
+            <li><a href="#">
+            			<img src="../images/Komal-Jha-Hot-Photo-Shoot-Photos-1952.jpg" alt="hot girl" />
+								</a>
+                <h4><a href="#">Hot Girl</a></h4>
+                <span>Play:<em>2,000</em></span>
+            </li>
+            <li><a href="#">
+            			<img src="../images/Komal-Jha-Hot-Photo-Shoot-Photos-1952.jpg" alt="hot girl" />
+								</a>
+                <h4><a href="#">Hot Girl</a></h4>
+                <span>Play:<em>2,000</em></span>
+            </li>
+            </li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+<body>
+</body>
+</html>

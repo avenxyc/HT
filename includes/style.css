@@ -2,18 +2,32 @@
 /* CSS Document */
 
 body {
-	background-image: url(../site%20elements/bg.jpg);
+	background-image: linear-gradient(bottom, rgb(255,255,255) 12%, rgb(220,235,144) 56%, rgb(180,214,44) 78%);
+	background-image: -o-linear-gradient(bottom, rgb(255,255,255) 12%, rgb(220,235,144) 56%, rgb(180,214,44) 78%);
+	background-image: -moz-linear-gradient(bottom, rgb(255,255,255) 12%, rgb(220,235,144) 56%, rgb(180,214,44) 78%);
+	background-image: -webkit-linear-gradient(bottom, rgb(255,255,255) 12%, rgb(220,235,144) 56%, rgb(180,214,44) 78%);
+	background-image: -ms-linear-gradient(bottom, rgb(255,255,255) 12%, rgb(220,235,144) 56%, rgb(180,214,44) 78%);
+	
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.12, rgb(255,255,255)),
+		color-stop(0.56, rgb(220,235,144)),
+		color-stop(0.78, rgb(180,214,44))
+	);
 	color:#FFFFFF;
 	font-family:Arial, Helvetica, sans-serif;
 
 }
 
 #content {
+	min-height: 800px;
 	color: #000000;
-	min-height:: 700px;
 	width: 800px;
 	margin: 0 auto;
 	list-style:none;
+	font-size: 16px;
 	
 }
 
@@ -53,29 +67,29 @@ a {
 	float: right;
 }
 
-
 #nav-bar ul {
-	height: 35px;
+	position: relative;
 	padding:0px;
   list-style: none;
 	margin:0px;
-	background-color: #cc00cc;
-	padding: 0px 51px;
 }
 
 
 #nav-bar li {
 	text-align: center;
+	background-color: #cc00cc;
   display: inline-block;
 	color: #f0f0f0;
   font-size: 20px;
 	margin: 0;
-  padding: 4px 40px;
+	width: 25%;
+	float: left;
+	padding: 5px 0px;
 }
 
-.divider {
-	border-left: 1px solid white; 
-  top:10px; 	
+#nav-bar li:hover {
+	box-shadow: 0px 0px 5px #CC00FF;
+	font-weight: bold;
 }
 
 #slider-wraper {
@@ -150,16 +164,21 @@ a {
 	position: relative;
 }
 
-.error {
-	font-weight: bold;
-	color: #CC0000;
+
+.focus{
+	border: 1px solid #FF0000;
+	background: #FFFFCC;
 }
+
 
 #footer {
 	text-align: center;
-	height: 40px;
 	color: #999;
 	padding: 7px;
+	position: absolute;
+	margin-bottom: 0px;
+	width: 100%;
+	
 }
 
 #footer li {

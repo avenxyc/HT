@@ -1,6 +1,7 @@
 <?php // This is the products page
 	$title_name = 'Products';
 	include("includes/header.html");
+	/*echo '<script src="/includes/add_jQuery.js"></script>';*/
 
 // Check if the form has been submitted:
 if (isset($_POST['submitted'])) {
@@ -75,7 +76,7 @@ if (isset($_POST['submitted'])) {
 
 	$region_name = mysqli_real_escape_string($dbc, trim($_POST['Regions']));
 
-	$recyclability = mysqli_real_escape_string($dbc, trim($_POST['recyclability']));	
+	$classification = mysqli_real_escape_string($dbc, trim($_POST['classification']));	
 	
 	// Select your database
 
@@ -106,7 +107,7 @@ if (isset($_POST['submitted'])) {
 		// Make the query:
 		$q1 = "INSERT IGNORE INTO products (upccode, class, company_name,parent_company, description, weight, image) VALUES ('$uc', '$c', '$cn', '$d', '$pc', '$w', '$content')";		
 		$q2 = "INSERT IGNORE INTO constituents (cname, type) VALUES ('$cname', '$type')";
-		$q3 = "INSERT IGNORE INTO regions_recyclability (region_name ,cname ,recyclable)VALUES ('$region_name',  '$cname',  '$recyclability')";
+		$q3 = "INSERT IGNORE INTO regions_recyclability (region_name ,cname , classification)VALUES ('$region_name',  '$cname',  '$classification')";
 		$q4 = "INSERT IGNORE INTO prod_const (upccode, cname, part_weight) VALUES ('$uc', '$cname', '$pweight')";	
 		$r1 = @mysqli_query ($dbc, $q1); // Run the first query.
 		$r2 = @mysqli_query ($dbc, $q2);  // Run the second query.
@@ -153,46 +154,49 @@ if (isset($_POST['submitted'])) {
 	mysqli_close($dbc); // Close the database connection.
 
 } // End of the main Submit conditional.
-?>
 
-<!-- Input info -->
-<h1>Register</h1>
-  <form action="add.php" method="post" enctype="multipart/form-data">
-    <p>upccode: <input type="text" name="upccode" size="15" maxlength="20" value="<?php if (isset($_POST['upccode'])) echo $_POST['upccode']; ?>" /></p>
-    <p>class: <input type="text" name="class" size="20" maxlength="80" value="<?php if (isset($_POST['class'])) echo $_POST['class']; ?>"  /> </p>
-    <p>company_name: <input type="text" name="company_name" size="20" maxlength="80" value="<?php if (isset($_POST['company_name'])) echo $_POST['company_name']; ?>"  /> </p>
-    <p>parent_company: <input type="text" name="parent_company" size="20" maxlength="80" value="<?php if (isset($_POST['parent_company'])) echo $_POST['parent_company']; ?>"  /> </p>
-    <p>weight: <input type="text" name="weight" size="20" maxlength="10" value="<?php if (isset($_POST['weight'])) echo $_POST['weight']; ?>"  /> </p>
-    <p>description: <input type="text" name="description" size="10" maxlength="200" value="<?php if (isset($_POST['description'])) echo $_POST['description']; ?>" /></p>
-    <p>Constituents Name: <input type="text" name="cname" size="15" maxlength="20" value="<?php if (isset($_POST['cname'])) echo $_POST['cname']; ?>" /></p>
-    <p>Constituent weight: <input type="text" name="pweight" size="15" maxlength="20" value="<?php if (isset($_POST['pweight'])) echo $_POST['pweight']; ?>" /></p>
-    <p>Type: <input type="text" name="Type" size="15" maxlength="20" value="<?php if (isset($_POST['Type'])) echo $_POST['Type']; ?>" /></p>
-    <p>Region: 
-    	<select name="Regions" >
-        <option value="Cape Breton">Cape Breton</option>
-        <option value="Eastern">Eastern</option>
-        <option value="HRM">HRM</option>
-        <option value="Northern">Northern</option>
-        <option value="South Shore">South Shore</option>
-        <option value="Valley">Valley</option>
-        <option value="Western">Western</option>
-    	</select>
-    </p>
-	<p>recyclability:
-    	<select name="recyclability">
-        <option value="Green">Green</option>
-        <option value="Blue(paper)">Blue(paper)</option>
-        <option value="Blue(container)">Blue(container)</option>
-        <option value="Clear">Clear</option>
-      </select>
-   </p>
-    <p>Upload an image: <input type="file" name="image" ></p>
-    
-    <p><input type="submit" name="submit" value="Submit" /></p>
-   
-    <input type="hidden" name="submitted" value="TRUE" />
-  </form>
 
-<?php
+//-- Input info --
+echo "<h1>Register</h1>
+  		<form action='add.php' method='post' enctype='multipart/form-data'>
+ 		 <div id='enterInfo'>
+				<p>upccode: <input type='text' name='upccode' size='15' maxlength='20' value='Product upccode' /></p>
+				<p>class: <input type='text' name='class' size='20' maxlength='80' value='Please enter its class'  /> </p>
+				<p>company_name: <input type='text' name='company_name' size='20' maxlength='80' value='Please enter'  /> </p>
+				<p>parent_company: <input type='text' name='parent_company' size='20' maxlength='80' value='Please enter'  /> </p>
+				<p>weight: <input type='text' name='weight' size='20' maxlength='10' value='Please enter'  /> </p>
+				<p>description: <br /><textarea  name='description' rows='4' cols='50' value='Please enter' ></textarea></p>     
+				<p>number of constituents:
+				<select name='cnumber' id='cnumber' >
+					<option value='0'>0</option>
+					<option value='1'>1</option>
+					<option value='2'>2</option>
+					<option value='3'>3</option>
+					<option value='4'>4</option>
+					<option value='5'>5</option>
+					<option value='6'>6</option>
+					<option value='7'>7</option>
+				</select></p>
+				 <p>Region: 
+						<select name='Regions' >
+							<option value='Cape Breton'>Cape Breton</option>
+							<option value='Eastern'>Eastern</option>
+							<option value='HRM'>HRM</option>
+							<option value='Northern'>Northern</option>
+							<option value='South Shore'>South Shore</option>
+							<option value='Valley'>Valley</option>
+							<option value='Western'>Western</option>
+						</select>
+					</p>
+				<p>Upload an image: <input type='file' name='image' ></p>
+				
+				<p><input type='submit' name='submit' value='Submit' /></p>
+			 </div>
+			 
+				<input type='hidden' name='submitted' value='TRUE' />
+			</form>";
+
+
+
 include ('includes/footer.html');
 ?>
