@@ -11,9 +11,8 @@ $(document).ready(function(){
 		
 	
 	// add divider to the nav-bar;
-	var new_width = $("#nav-bar li").width() - 1;
 	$("#nav-bar li:lt(3)").css({"border-right": "1px solid white",
-														  "width": new_width});
+														  "width": "199px"});
 	
 	
 	});

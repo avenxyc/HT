@@ -27,7 +27,7 @@ body {
 }
 
 #content {
-	min-height: 800px;
+	min-height: 700px;
 	color: #000000;
 	width: 800px;
 	margin: 0 auto;
@@ -148,16 +148,12 @@ a {
 .tiles > div{
 	float: left;
 	display:inline-block;
-	width:33.1%;
 	height: 150px;
 	background-color:#3366ff;
 	text-align:center;	
 	position: relative;
 }
 
-#tile_1, #tile_4{
-	margin: 0px 2px;
-}
 
 .focus{
 	border: 1px solid #FF0000;
@@ -181,7 +177,6 @@ h1 {
 #footer {
 	text-align: center;
 	color: #999;
-	padding: 7px;
 	position: absolute;
 	margin-bottom: 0px;
 	width: 100%;

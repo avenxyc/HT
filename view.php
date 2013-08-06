@@ -55,7 +55,7 @@ if ($num > 0) { // If it ran OK, display the records.
 				<td>' . $row['part_weight']/$row['weight']. '</td>
 				<td>' . $row['type']. '</td>
 				<td>' . $row['region_name']. '</td>
-				<td>' . $row['recyclable']. '</td>
+				<td>' . $row['recyclability']. '</td>
 			  </tr>';
 	}
 	  echo '</table></p>';

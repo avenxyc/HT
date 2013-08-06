@@ -1,6 +1,7 @@
 <?php // This is the products page
 	$title_name = 'Products';
 	include("includes/header.html");
+
 	/*echo '<script src="/includes/add_jQuery.js"></script>';*/
 // Check if the form has been submitted:
 if (isset($_POST['submitted'])) {
