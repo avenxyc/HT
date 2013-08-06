@@ -47,8 +47,16 @@ $(document).ready(function(){
 						 .animate({width:"60"}, 300);
 			});
 						 
-	
-						 
+		//submit all the form data and do a POST
+		$('#send').click(function(){
+			$.get('add.php', $('#form1').serialize(), 
+						 function(data, textStatus){
+							 $("#resText").html(data);
+						 });
+		});
+  
 });
+						 
+
 
 	

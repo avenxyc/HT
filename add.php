@@ -2,7 +2,7 @@
 	$title_name = 'Products';
 	include("includes/header.html");
 	/*echo '<script src="/includes/add_jQuery.js"></script>';*/
-
+/*
 // Check if the form has been submitted:
 if (isset($_POST['submitted'])) {
 
@@ -154,11 +154,11 @@ if (isset($_POST['submitted'])) {
 	mysqli_close($dbc); // Close the database connection.
 
 } // End of the main Submit conditional.
-
+*/
 
 //-- Input info --
 echo "<h1>Register</h1>
-  		<form action='add.php' method='post' enctype='multipart/form-data'>
+  		<form action='#' id='form1' method='post' enctype='multipart/form-data'>
  		 <div id='enterInfo'>
 				<p>upccode: <input type='text' name='upccode' size='15' maxlength='20' value='Product upccode' /></p>
 				<p>class: <input type='text' name='class' size='20' maxlength='80' value='Please enter its class'  /> </p>
@@ -189,12 +189,19 @@ echo "<h1>Register</h1>
 						</select>
 					</p>
 				<p>Upload an image: <input type='file' name='image' ></p>
-				
-				<p><input type='submit' name='submit' value='Submit' /></p>
-			 </div>
+				</div>
+				<p><input type='button' id='send' name='submit' value='Submit' /></p>
+			
 			 
 				<input type='hidden' name='submitted' value='TRUE' />
 			</form>";
+			echo "<script>$('#send').click(function(){
+			$.get('add.php', $('#form1').serialize(), 
+						 function(data, textStatus){
+							 $('#resText').html(data);
+						 });
+		});</script>";
+			echo "<div id='resText'></div>";
 
 
 

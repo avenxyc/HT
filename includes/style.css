@@ -95,17 +95,14 @@ a {
 #slider-wraper {
 	position: relative;
 }
+	
 
 #slides {
 	margin-top: 1px;
 	top: 0px;
-}
-	
-
-#slides {
 	z-index: -99;
-	width: 798px;
-	padding: 0px 1px;
+	width: 100%;
+	padding: 0px 0px;
 }
 
 .arrows {
@@ -136,25 +133,26 @@ a {
 	
 }
 
-.tile {
+.tiles {
+	overflow:hidden;
 	width: 800px;
-	padding: 0px 1px;
-	float: left;
+	width: 100%;
 }
 
 
-#b-tile, #o-tile {
+.tiles > div{
+	float: left;
 	display:inline-block;
-	margin:0px 0px 0px;
-	padding: 4px 0px;
-	width:33%;
+	width:33.1%;
 	height: 150px;
-	background-color:#3366ff;	
+	background-color:#3366ff;
 	text-align:center;	
 	position: relative;
 }
 
-
+#tile_1, #tile_4{
+	margin: 0px 2px;
+}
 
 .focus{
 	border: 1px solid #FF0000;

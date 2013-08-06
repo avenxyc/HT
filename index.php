@@ -41,24 +41,36 @@
 </div>
 
 
-<div class="tile">
-  <div id="b-tile">
-    <p>fdafds</p>
+<div class="tiles">
+  <div id="tile_0">
+  	<div class="inner-content">
+     <p>fdafds</p>
+    </div>
   </div>
-  <div id="o-tile">
-    <p>fdafds</p>
+  <div id="tile_1">
+  	<div class="inner-content">
+     <p>fdafds</p>
+    </div>
   </div>
-  <div id="b-tile">
-    <p>fdafds</p>
+  <div id="tile_2">
+  	<div class="inner-content">
+     <p>fdafds</p>
+    </div>
   </div>
-  <div id="o-tile">
-    <p>fdafds</p>
+  <div id="tile_3">
+  	<div class="inner-content">
+     <p>fdafds</p>
+    </div>
   </div>
-  <div id="b-tile">
-    <p>fdafds</p>
+  <div id="tile_4">
+  	<div class="inner-content">
+     <p>fdafds</p>
+    </div>
   </div>
-  <div id="o-tile">
-    <p>fdafds</p>
+  <div id="tile_5">
+  	<div class="inner-content">
+     <p>fdafds</p>
+    </div>
   </div>
 </div>
 
