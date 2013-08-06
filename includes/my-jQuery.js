@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	//Add focus effect when mouse clicks the input area.
 	$(":input[type=text]").css({"font":"12px", "color":"#CCCCCC"});
-	$(":input").focus(function(){
+	$(":input[type=text]").focus(function(){
 		$(this).addClass('focus');
 		$(this).css({"font":"12px", "color":"#000000"});
 	}).blur(function(){

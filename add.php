@@ -2,10 +2,9 @@
 	$title_name = 'Products';
 	include("includes/header.html");
 	/*echo '<script src="/includes/add_jQuery.js"></script>';*/
-/*
 // Check if the form has been submitted:
 if (isset($_POST['submitted'])) {
-
+		 		
 	require_once ('mysqli_connect.php'); // Connect to the db.
 		
 	$errors = array(); // Initialize an error array.
@@ -52,31 +51,44 @@ if (isset($_POST['submitted'])) {
 		$w = mysqli_real_escape_string($dbc, trim($_POST['weight']));
 	}
 	
-	// Check for a cname:
-	if (empty($_POST['cname'])) {
-		$errors[] = 'You forgot to enter Constituents name.';
-	} else {
-		$cname = mysqli_real_escape_string($dbc, trim($_POST['cname']));
-	}
+
+	 $cform_number = count($_POST['cform']['cname']); //Get the number of constituent form
+	 
+	 // Save cform data to arrays for query
+	 for ($i = 0; $i < $cform_number; $i++) {
+		  $_POST['cform']['cname'][$i];
+			// Check for a cname:
+			if (empty($_POST['cform']['cname'][$i])) {
+				$errors[] = 'You forgot to enter Constituents name.';
+			} else {
+				$cname[$i] = mysqli_real_escape_string($dbc, trim($_POST['cform']['cname'][$i]));
+				echo $cname[$i];
+			}
+			
+			
+			// Check for a pweight:
+			if (empty($_POST['cform']['pweight'][$i])) {
+				$errors[] = 'You forgot to enter Constituents name.';
+			} else {
+				$pweight[$i] = mysqli_real_escape_string($dbc, trim($_POST['cform']['pweight'][$i]));
+				echo $pweight[$i];
+			}	
+			
+			// Check for a type:
+			if (empty($_POST['cform']['Type'][$i])) {
+				$errors[] = 'You forgot to enter the type of Constituents.';
+			} else {
+				$type[$i] = mysqli_real_escape_string($dbc, trim($_POST['cform']['Type'][$i]));
+				echo $type[$i];
+			}
+			
+			$classification[$i] = mysqli_real_escape_string($dbc, trim($_POST['cform']['classification'][$i]));	
+	 }; 
 	
-	
-	// Check for a pweight:
-	if (empty($_POST['pweight'])) {
-		$errors[] = 'You forgot to enter Constituents name.';
-	} else {
-		$pweight = mysqli_real_escape_string($dbc, trim($_POST['pweight']));
-	}	
-	
-	// Check for a type:
-	if (empty($_POST['Type'])) {
-		$errors[] = 'You forgot to enter the type of Constituents.';
-	} else {
-		$type = mysqli_real_escape_string($dbc, trim($_POST['Type']));
-	}
 
 	$region_name = mysqli_real_escape_string($dbc, trim($_POST['Regions']));
 
-	$classification = mysqli_real_escape_string($dbc, trim($_POST['classification']));	
+
 	
 	// Select your database
 
@@ -104,17 +116,27 @@ if (isset($_POST['submitted'])) {
 	
 		// Put the info in the database...
 		
+			
 		// Make the query:
 		$q1 = "INSERT IGNORE INTO products (upccode, class, company_name,parent_company, description, weight, image) VALUES ('$uc', '$c', '$cn', '$d', '$pc', '$w', '$content')";		
-		$q2 = "INSERT IGNORE INTO constituents (cname, type) VALUES ('$cname', '$type')";
-		$q3 = "INSERT IGNORE INTO regions_recyclability (region_name ,cname , classification)VALUES ('$region_name',  '$cname',  '$classification')";
-		$q4 = "INSERT IGNORE INTO prod_const (upccode, cname, part_weight) VALUES ('$uc', '$cname', '$pweight')";	
+		//$q2 = "INSERT IGNORE INTO constituents (cname, type) VALUES ('$cname', '$type')";
+		//$q3 = "INSERT IGNORE INTO regions_recyclability (region_name ,cname , classification)VALUES ('$region_name',  '$cname',  '$classification')";
+		//$q4 = "INSERT IGNORE INTO prod_const (upccode, cname, part_weight) VALUES ('$uc', '$cname', '$pweight')";	
 		$r1 = @mysqli_query ($dbc, $q1); // Run the first query.
-		$r2 = @mysqli_query ($dbc, $q2);  // Run the second query.
-		$r3 = @mysqli_query ($dbc, $q3);  // Run the second query.
-		$r4 = @mysqli_query ($dbc, $q4);  // Run the second query.
+		//$r2 = @mysqli_query ($dbc, $q2);  // Run the second query.
+		//$r3 = @mysqli_query ($dbc, $q3);  // Run the second query.
+		//$r4 = @mysqli_query ($dbc, $q4);  // Run the second query.
+		
+		for($i = 0; $i < $cform_number; $i++){
+			$q2[$i] = "INSERT IGNORE INTO constituents (cname, type) VALUES ('$cname[$i]', '$type[$i]')";
+			$q3[$i] = "INSERT IGNORE INTO regions_recyclability (region_name ,cname , classification)VALUES ('$region_name',  '$cname[$i]',  '$classification[$i]')";
+			$q4[$i] = "INSERT IGNORE INTO prod_const (upccode, cname, part_weight) VALUES ('$uc', '$cname[$i]', '$pweight[$i]')";	
+			$r2[$i] = @mysqli_query ($dbc, $q2[$i]);  // Run the second query.
+			$r3[$i] = @mysqli_query ($dbc, $q3[$i]);  // Run the second query.
+			$r4[$i] = @mysqli_query ($dbc, $q4[$i]);  // Run the second query.
+		}
 
-		if ($r1 && $r2 && $r3 && $r4) { // If it ran OK.
+		if ($r1 && (sizeof($r2)==$cform_number) && (sizeof($r3)==$cform_number) && (sizeof($r4)==$cform_number)) { // If it ran OK.
 		
 			// Print a message:
 			echo '<h1>Done!</h1>
@@ -154,19 +176,19 @@ if (isset($_POST['submitted'])) {
 	mysqli_close($dbc); // Close the database connection.
 
 } // End of the main Submit conditional.
-*/
+
 
 //-- Input info --
 echo "<h1>Register</h1>
-  		<form action='#' id='form1' method='post' enctype='multipart/form-data'>
+  		<form action='add.php' id='form1' method='post' enctype='multipart/form-data'>
  		 <div id='enterInfo'>
-				<p>upccode: <input type='text' name='upccode' size='15' maxlength='20' value='Product upccode' /></p>
-				<p>class: <input type='text' name='class' size='20' maxlength='80' value='Please enter its class'  /> </p>
-				<p>company_name: <input type='text' name='company_name' size='20' maxlength='80' value='Please enter'  /> </p>
-				<p>parent_company: <input type='text' name='parent_company' size='20' maxlength='80' value='Please enter'  /> </p>
-				<p>weight: <input type='text' name='weight' size='20' maxlength='10' value='Please enter'  /> </p>
-				<p>description: <br /><textarea  name='description' rows='4' cols='50' value='Please enter' ></textarea></p>     
-				<p>number of constituents:
+				<p>Upccode: <input type='text' name='upccode' size='15' maxlength='20' value='Product upccode' /></p>
+				<p>Class: <input type='text' name='class' size='20' maxlength='80' value='Please enter its class'  /> </p>
+				<p>Company_name: <input type='text' name='company_name' size='20' maxlength='80' value='Please enter'  /> </p>
+				<p>Parent_company: <input type='text' name='parent_company' size='20' maxlength='80' value='Please enter'  /> </p>
+				<p>Weight: <input type='text' name='weight' size='20' maxlength='10' value='Please enter'  /> </p>
+				<p>Description: <br /><textarea  name='description' rows='4' cols='50' value='Please enter' ></textarea></p>     
+				<p>Number of constituents:
 				<select name='cnumber' id='cnumber' >
 					<option value='0'>0</option>
 					<option value='1'>1</option>
@@ -190,18 +212,12 @@ echo "<h1>Register</h1>
 					</p>
 				<p>Upload an image: <input type='file' name='image' ></p>
 				</div>
-				<p><input type='button' id='send' name='submit' value='Submit' /></p>
+				<p><input type='submit' id='send' name='submit' value='Submit' /></p>
 			
 			 
 				<input type='hidden' name='submitted' value='TRUE' />
 			</form>";
-			echo "<script>$('#send').click(function(){
-			$.get('add.php', $('#form1').serialize(), 
-						 function(data, textStatus){
-							 $('#resText').html(data);
-						 });
-		});</script>";
-			echo "<div id='resText'></div>";
+
 
 
 
