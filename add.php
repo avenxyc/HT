@@ -187,7 +187,7 @@ echo "<h1>Register</h1>
 				<p>Class: <input type='text' name='class' size='20' maxlength='80' value='Please enter its class'  /> </p>
 				<p>Company_name: <input type='text' name='company_name' size='20' maxlength='80' value='Please enter'  /> </p>
 				<p>Parent_company: <input type='text' name='parent_company' size='20' maxlength='80' value='Please enter'  /> </p>
-				<p>Weight: <input type='text' name='weight' size='20' maxlength='10' value='Please enter'  /> </p>
+				<p>Weight: <input type='text' name='weight' size='20' maxlength='10' value='Please enter'  /> g</p>
 				<p>Description: <br /><textarea  name='description' rows='4' cols='50' value='Please enter' ></textarea></p>     
 				<p>Number of constituents:
 				<select name='cnumber' id='cnumber' >

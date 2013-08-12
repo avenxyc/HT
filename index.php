@@ -15,6 +15,7 @@
 ?>
 <!-- This is the header, the following content is for the body -->
 
+<!--Script for the slider 
 <script>
     $(function(){
       $("#slides").slidesjs({
@@ -23,53 +24,66 @@
       });
     });
 </script>
+-->
 
 <div id="slider-wrapper">
 <!--    <div class="arrow"> 
     <img class="slidesjs-previous slidesjs-navigation" id="left_arrow" src="images/left-arrow.fw.png" /> 
     <img class="slidesjs-next slidesjs-navigation" id="right_arrow" src="images/right-arrow.fw.png" />
     </div>-->
+    <div class="arrows" id="left-arrow">
+    	<img src="images/left.png" />
+    </div>
+    <div class="arrows" id="right-arrow">
+    	<img src="images/right.png" />	
+    </div>
 		<div id="slides"> 
+    	<ul>
      <!-- <div class="arrows">
         <img class="slidesjs-previous slidesjs-navigation" id="left_arrow" src="images/left-arrow.fw.png" /> 
         <img class="slidesjs-next slidesjs-navigation" id="right_arrow" src="images/right-arrow.fw.png" />
       </div> -->
-      <img src="images/recycle_its_easy.jpg" width="800"  alt="Recycling"  /> 
-      <img src="images/recycle_its_easy.jpg" width="800"  alt="Recycling"  />
-      <img src="images/recycle_its_easy.jpg" width="800"  alt="Recycling"  /> 	
+        <li><img src="images/recycle_its_easy.jpg" alt="Recycling"  /></li><li><img src="images/recycle_its_easy.jpg" alt="Recycling"  /></li><li><img src="images/recycle_its_easy.jpg" alt="Recycling"  /></li>
+       </ul> 	
     </div>
 </div>
 
 
 <div class="tiles">
-  <div id="tile_0">
+  <div class="tile">
+ 	  <p>Title</p>
   	<div class="inner-content">
-     <p>fdafds</p>
+    	<p>Content</p>  
     </div>
   </div>
-  <div id="tile_1">
-  	<div class="inner-content">
-     <p>fdafds</p>
+  <div class="tile">
+  	<p>Title</p>
+    <div class="inner-content">
+      <p>Content</p>  
     </div>
   </div>
-  <div id="tile_2">
-  	<div class="inner-content">
-     <p>fdafds</p>
+  <div class="tile">
+  	<p>Title</p>
+    <div class="inner-content">
+      <p>Content</p>  
     </div>
   </div>
-  <div id="tile_3">
-  	<div class="inner-content">
-     <p>fdafds</p>
+  <div class="tile">
+  	<p>Title</p>
+    <div class="inner-content">
+      <p>Content</p>  
     </div>
   </div>
-  <div id="tile_4">
-  	<div class="inner-content">
-     <p>fdafds</p>
+  <div class="tile">
+  	<p>Title</p>
+    <div class="inner-content">
+      <p>Content</p>  
     </div>
   </div>
-  <div id="tile_5">
-  	<div class="inner-content">
-     <p>fdafds</p>
+  <div class="tile">
+  	<p>Title</p>
+    <div class="inner-content">
+      <p>Content</p>  
     </div>
   </div>
 </div>

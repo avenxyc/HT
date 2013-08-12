@@ -97,44 +97,65 @@ a {
 	font-weight: bold;
 }
 
-#slider-wraper {
+#slider-wrapper {
 	position: relative;
+	width: 800px;
+	height: 330px;
+	overflow: hidden;
+	margin: 0px;
+	padding: 0px;
 }
 	
 
 #slides {
-	margin-top: 1px;
-	top: 0px;
-	z-index: -99;
-	width: 100%;
-	padding: 0px 0px;
+	width: 2800px;
+	margin: 0px;
+	padding: 0px;
+	background-color:#999999;
 }
 
+#slides ul{
+	margin: 0px;
+	padding: 0px;
+}
+
+#slides li {
+	display: inline-block;
+	position: relative;
+	left: -650px;
+}
+
+#slides img {
+	display: block;
+	width: 700px;
+	height: 330px;
+	float:left;
+}
 .arrows {
 	z-index:50;
-	width: 61px;
-	height: 100px;
 	position: absolute;
-}
-
-#left_arrow {
-	width: 61px;
-	height: 100px;
-	background:#999999;
-	opacity:0.4;
-  filter:alpha(opacity=40); /* For IE8 and earlier */	
-  left:40%;
-  top:35%;
-}
-
-#right_arrow {
-	width: 61px;
-	height: 100px;
 	background:#999999;
 	opacity:0.4;
   filter:alpha(opacity=40); /* For IE8 and earlier */
-  left:50%;
-  top:35%;
+}
+
+.arrows :hover{
+	box-shadow: 0px 0px 10px #FFFFFF;
+	opacity: 1;
+}
+
+.arrows img {
+	width: 50px;
+	height: 330px;
+	margin: 0;
+}
+
+#left-arrow {
+  left:0px;
+}
+
+#right-arrow {
+  right:0px;
 	
 }
 
@@ -145,15 +166,17 @@ a {
 }
 
 
-.tiles > div{
+.tile {
 	float: left;
 	display:inline-block;
 	height: 150px;
-	background-color:#3366ff;
 	text-align:center;	
 	position: relative;
 }
 
+.inner-content {
+	display: none;
+}
 
 .focus{
 	border: 1px solid #FF0000;
