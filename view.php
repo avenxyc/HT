@@ -13,7 +13,7 @@ require_once ('mysqli_connect.php'); // Connect to the db.
 $q = "SELECT * from constituents, products, prod_const, regions_recyclability 
 				where products.upccode = prod_const.upccode 
 							and prod_const.cname=constituents.cname 
-							and constituents.cname = regions_recyclability.cname ";		
+							and constituents.cname = regions_recyclability.cname order by products.upccode";		
 $r = @mysqli_query ($dbc, $q); // Run the query.
 
 // Count the number of returned rows:
@@ -41,8 +41,7 @@ if ($num > 0) { // If it ran OK, display the records.
 				<th>recycability</th>
 				
 			  </tr>';
-	while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
-
+	while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)){
 		echo '<tr>
 			  	<td>' . $row['upccode'] . '</td>
 				<td>' . $row['class'].'</td>

@@ -34,39 +34,24 @@ $(document).ready(function(){
 				$(this).val("");
 			}
 		});
-		$("div[id='enterInfo'] :input").blur(function(){	
+		/*$("div[id='enterInfo'] :input").blur(function(){	
 			var txt_value = $(this).val();
 			if($(this).is(':not(:empty)')){
 				$(this).val("Please enter");
 			}
 		});	
-
+		*/
+		//Change the measurement of the item
+		function measurement(){
+			var wv = $('#wORv').val();
+			if( wv == 'Weight'){
+				$('#gORl').text('g');
+			}else{
+				$('#gORl').text('L');
+			}
+		}
+		$('#wORv').change(measurement); 
 		
-		$("#panel").hover(function(){
-			$(this).stop(true)
-						 .animate({height:"150"}, 600)
-						 .animate({width:"300"}, 300);
-			},function(){
-			$(this).stop(true)
-						 .animate({height:"32"}, 600)
-						 .animate({width:"60"}, 300);
-			});
-						 
-		//submit all the form data and do a POST
-
-		/*function showValues() {
-			var str = $('#form1').serialize();
-			$('#resText').text( str );
-			$('input, select, textarea').on( 'change', showValues );
-    }
-		showValues();*/
-		
-		/*$('#send').submit(function(event){
-			event.preventDefault();
-			var data = $('#form1').serialize()
-			$.post('add.php', data);
-		});*/
-
   
 });
 						 

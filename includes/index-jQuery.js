@@ -48,19 +48,15 @@ $(document).ready(function(){
 		function(){
 			var tile = $(this);
 			//$(this).find('inner-content').slidedown('slow');
-			tile.find('> p').fadeOut(function(){
-				if(!$(this).is(':animated')){
+			tile.find('> p').stop().fadeOut(function(){
 					tile.find('.inner-content').fadeIn('fast');
-				}
 			//$(this).find('inner-content').slideUp('slow');
 			})
 		},
 		function(){
 			var tile = $(this);
-			tile.find('.inner-content').fadeOut(function(){
-				if(!$(this).is(':animated')){
+			tile.find('.inner-content').stop().fadeOut(function(){
 					tile.find('> p').fadeIn('fast');
-				}
 			})
 		});
 			

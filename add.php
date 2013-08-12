@@ -1,6 +1,12 @@
 <?php // This is the products page
 	$title_name = 'Products';
 	include("includes/header.html");
+	
+	//Connect to database and get item class info
+	require_once ('mysqli_connect.php'); 
+	$class_query = "SELECT * from item_class order by class_name";
+	$classes = @mysql_query($dbc, $class_query);
+	print $classes;
 
 	/*echo '<script src="/includes/add_jQuery.js"></script>';*/
 // Check if the form has been submitted:
@@ -17,12 +23,13 @@ if (isset($_POST['submitted'])) {
 		$uc = mysqli_real_escape_string($dbc, trim($_POST['upccode']));
 	}
 	
-	// Check for a class:
+	/* Check for a class:
 	if (empty($_POST['class'])) {
 		$errors[] = 'You forgot to enter its class.';
 	} else {
 		$c = mysqli_real_escape_string($dbc, trim($_POST['class']));
-	}
+	}*/
+	$c = mysqli_real_escape_string($dbc, trim($_POST['class']));
 	
 	// Check for an company_name:
 	if (empty($_POST['company_name'])) {
@@ -184,10 +191,21 @@ echo "<h1>Register</h1>
   		<form action='add.php' id='form1' method='post' enctype='multipart/form-data'>
  		 <div id='enterInfo'>
 				<p>Upccode: <input type='text' name='upccode' size='15' maxlength='20' value='Product upccode' /></p>
-				<p>Class: <input type='text' name='class' size='20' maxlength='80' value='Please enter its class'  /> </p>
+				<p>Class:
+				<select name='class'>";
+				while($item_class = mysql_fetch_array($classes, MYSQLI_ASSOC))
+				  echo"<option value=\"" . $item_class['class_name']. "\">" . $item_class['class_name']. "</option>";
+echo    "</select></p>
 				<p>Company_name: <input type='text' name='company_name' size='20' maxlength='80' value='Please enter'  /> </p>
 				<p>Parent_company: <input type='text' name='parent_company' size='20' maxlength='80' value='Please enter'  /> </p>
-				<p>Weight: <input type='text' name='weight' size='20' maxlength='10' value='Please enter'  /> g</p>
+				<!-- choose weight or volumn-->
+				<p><div >
+							<select id='wORv'>
+							<option>Weight</option>
+							<option>Volumn</option>
+							</select>
+							: <input type='text' name='weight' size='20' maxlength='10' value='Please enter'  /><p id='gORl' style='display:inline'>g</p></p>
+						</div>
 				<p>Description: <br /><textarea  name='description' rows='4' cols='50' value='Please enter' ></textarea></p>     
 				<p>Number of constituents:
 				<select name='cnumber' id='cnumber' >
