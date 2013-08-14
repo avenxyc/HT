@@ -27,10 +27,7 @@
 -->
 
 <div id="slider-wrapper">
-<!--    <div class="arrow"> 
-    <img class="slidesjs-previous slidesjs-navigation" id="left_arrow" src="images/left-arrow.fw.png" /> 
-    <img class="slidesjs-next slidesjs-navigation" id="right_arrow" src="images/right-arrow.fw.png" />
-    </div>-->
+	 <!-- Arrows -->
     <div class="arrows" id="left-arrow">
     	<img src="images/left.png" />
     </div>
@@ -39,11 +36,12 @@
     </div>
 		<div id="slides"> 
     	<ul>
-     <!-- <div class="arrows">
-        <img class="slidesjs-previous slidesjs-navigation" id="left_arrow" src="images/left-arrow.fw.png" /> 
-        <img class="slidesjs-next slidesjs-navigation" id="right_arrow" src="images/right-arrow.fw.png" />
-      </div> -->
-        <li><img src="images/recycle_its_easy.jpg" alt="Recycling"  /></li><li><img src="images/recycle_its_easy.jpg" alt="Recycling"  /></li><li><img src="images/recycle_its_easy.jpg" alt="Recycling"  /></li>
+  	   <li><img src="images/recycle_its_easy.jpg" alt="Recycling"  /></li>
+       <li><img src="images/recycle_its_easy.jpg" alt="Recycling"  /></li>
+       <li><img src="images/recycle_its_easy.jpg" alt="Recycling"  /></li>
+       <li><img src="images/recycle_its_easy.jpg" alt="Recycling"  /></li>
+       <li><img src="images/recycle_its_easy.jpg" alt="Recycling"  /></li>
+       <li><img src="images/recycle_its_easy.jpg" alt="Recycling"  /></li>
        </ul> 	
     </div>
 </div>

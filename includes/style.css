@@ -2,7 +2,7 @@
 /* CSS Document */
 @font-face {
 font-family: MYRIADPRO-REGULAR;
-src: url("myriad-pro/MYRIADPRO-REGULAR.otf") format("opentype");
+src: url("includes/myriad-pro/MYRIADPRO-REGULAR.otf") format("opentype");
 }
 
 body {
@@ -61,7 +61,7 @@ body {
 	display: inline;
 }
 
-a {
+#nav-bar a {
 	color: #FFFFFF;
 	text-decoration:none;
 }
@@ -112,7 +112,6 @@ a {
 	
 
 #slides {
-	width: 2800px;
 	margin: 0px;
 	padding: 0px;
 	/* Fallback for web browsers that doesn't support RGBa */
@@ -127,13 +126,12 @@ a {
 }
 
 #slides li {
-	display: inline-block;
+	display: block;
 	position: relative;
 	left: -650px;
 }
 
 #slides img {
-	display: inline-block;
 	width: 700px;
 	height: 330px;
 	float:left;

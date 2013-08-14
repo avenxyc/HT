@@ -1,6 +1,11 @@
 // jQuery code for index.php
 
 $(document).ready(function(){
+	//Set width for slides. But must be at least 3 images.
+	var slider_width = $('#slides').width() * $('#slides li').length;
+	$('#slides').css("width", slider_width);
+			
+	
 	$('.tile:odd').css({'background-color':'#3366ff', 'text-align':'center',
 											 });
 	$('.tile:even').css({'background-color':'#ff9900', 'text-align':'center',
@@ -21,7 +26,8 @@ $(document).ready(function(){
 
 //The slider provide a alider effect;
 	$('#left-arrow').click(function(){
-			if(i <= 0){
+		var lg = $("#slides li").length;
+			if(i < lg - 2){
 				$('#slides li').animate({left:'-=700px'});
 				i++;
 			}else{
@@ -59,8 +65,7 @@ $(document).ready(function(){
 					tile.find('> p').fadeIn('fast');
 			})
 		});
-			
-
-											 
+		
+										 
 
 });

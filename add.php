@@ -3,8 +3,18 @@
 	include("includes/header.html");
 	
 	
+	require_once ('mysqli_connect.php');//connect to the database
+	
+// Make the query:
+	$cq = "SELECT *  from item_class order by class_name ASC";		
+	$cqrow = mysqli_query ($dbc, $cq); // Run the query.
 
-	/*echo '<script src="/includes/add_jQuery.js"></script>';*/
+	// Count the number of returned rows:
+	$crow = mysqli_fetch_array($cqrow, MYSQLI_ASSOC);
+
+
+
+
 // Check if the form has been submitted:
 if (isset($_POST['submitted'])) {
 		 		
@@ -188,46 +198,21 @@ echo "<h1>Register</h1>
  		 <div id='enterInfo'>
 				<p>Upccode: <input type='text' name='upccode' size='15' maxlength='20' value='Product upccode' /></p>
 				<p>Class:
-				<select name='class'>
-				  <option value='Cereal'>Cereal</option>
-					<option value='Hot cereal'>Hot cereal</option>
-					<option value='Dips'>Dips</option>
-					<option value='Canned fruit'>Canned fruit</option>
-					<option value='Granola bars'>Granola bars</option>
-					<option value='Ready to eat desserts'>Ready to eat desserts</option>
-					<option value='Jam'>Jam</option>
-					<option value='Coffee'>Coffee</option>
-					<option value='Baking needs'>Baking needs</option>
-					<option value='Pickles'>Pickles</option>
-					<option value='Flour'>Flour</option>
-					<option value='Salad dressing'>Salad dressing</option>
-					<option value='Condiments'>Condiments</option>
-					<option value='World foods'>World foods</option>
-					<option value='Oil'>Oil</option>
-					<option value='Canned meat'>Canned meat</option>
-					<option value='Rice'>Rice</option>
-					<option value='Canned vegetable'>Canned vegetable</option>
-					<option value='Soup'>Soup</option>
-					<option value='Gravy mix'>Gravy mix</option>
-					<option value='Crackers'>Crackers</option>
-					<option value='Pasta sauce'>Pasta sauce</option>
-					<option value='Pasta'>Pasta</option>
-					<option value='Confectionery'>Confectionery</option>
-					<option value='Cookies'>Cookies</option>
-					<option value='Rice cakes'>Rice cakes</option>
-					<option value='Drink boxes'>Drink boxes</option>
-					<option value='Juice and drinks'>Juice and drinks</option>
-				</select></p>
+				<select name='class'>";
+				  while ($crow = mysqli_fetch_array($cqrow, MYSQLI_ASSOC)){
+					echo "<option value='".$crow['class_name']."'>".$crow['class_name']."</option>";
+					};
+echo		 "</select></p>
 				<p>Company_name: <input type='text' name='company_name' size='20' maxlength='80' value='Please enter'  /> </p>
 				<p>Parent_company: <input type='text' name='parent_company' size='20' maxlength='80' value='Please enter'  /> </p>
 				<!-- choose weight or volumn-->
-				<p><div >
+				<p style='display:inline'>
 							<select id='wORv'>
 							<option>Weight</option>
 							<option>Volumn</option>
 							</select>
-							: <input type='text' name='weight' size='20' maxlength='10' value='Please enter'  /><p id='gORl' style='display:inline'>g</p></p>
-						</div>
+							: <input type='text' name='weight' size='20' maxlength='10' value='Please enter'  /><p id='gORl' style='display:inline'>g</p>
+						</p>
 				<p>Description: <br /><textarea  name='description' rows='4' cols='50' value='Please enter' ></textarea></p>     
 				<p>Number of constituents:
 				<select name='cnumber' id='cnumber' >
