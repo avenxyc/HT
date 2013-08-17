@@ -1,7 +1,7 @@
 <?php // This is the products page
 	$title_name = 'Products';
 	include("includes/header.html");
-	
+	echo "<script src=\"includes/add-jQuery.js\"></script>";
 	
 	require_once ('mysqli_connect.php');//connect to the database
 	

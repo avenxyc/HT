@@ -3,7 +3,7 @@
 
 $title_name= 'View';
 include ('includes/header.html');
-
+echo "<script src=\"includes/view-specific-jQuery.js\"></script>";
 // Page header:
 echo '<h1 style="text-align:center">Data</h1>';
 
@@ -15,9 +15,10 @@ require_once ('mysqli_connect.php'); // Connect to the db.
 $q = "SELECT * from constituents, products, prod_const, regions_recyclability 
 				where products.upccode = prod_const.upccode and prod_const.upccode= ".$upccode."
 							and prod_const.cname=constituents.cname 
-							and constituents.cname = regions_recyclability.cname order by regions_recyclability.region_name";		
-$r = @mysqli_query ($dbc, $q); // Run the query.
+							and constituents.cname = regions_recyclability.cname and order by regions_recyclability.region_name";		
+$r = mysqli_query($dbc, $q); // Run the query.
 
+echo "this is ".$r;
 // Count the number of returned rows:
 $num = mysqli_num_rows($r);
 

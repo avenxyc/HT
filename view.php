@@ -3,6 +3,7 @@
 
 $title_name= 'View';
 include ('includes/header.html');
+echo "<script src=\"includes/view-jQuery.js\"></script>";
 
 // Page header:
 echo '<h1 style="text-align:center">Data</h1>';
@@ -14,7 +15,7 @@ $q = "SELECT  DISTINCT  products.upccode, class, company_name, weight, descripti
 				where products.upccode = prod_const.upccode 
 							and prod_const.cname=constituents.cname 
 							and constituents.cname = regions_recyclability.cname order by products.upccode";		
-$r = mysqli_query ($dbc, $q); // Run the query.
+$r = mysqli_query($dbc, $q); // Run the query.
 
 // Count the number of returned rows:
 $num = mysqli_num_rows($r);
@@ -26,6 +27,16 @@ if ($num > 0) { // If it ran OK, display the records.
 	echo "<p>These are the data stored in the database.</p>\n";
 	
 	// Fetch and print all the records:
+		echo "<h5>Before click the product please choose your region</ht>";
+		echo "<select id=\"region\" name='Regions' >
+							<option value='Cape Breton'>Cape Breton</option>
+							<option value='Eastern'>Eastern</option>
+							<option value='HRM'>HRM</option>
+							<option value='Northern'>Northern</option>
+							<option value='South Shore'>South Shore</option>
+							<option value='Valley'>Valley</option>
+							<option value='Western'>Western</option>
+						</select>";
 	  echo '<p><table border="2">';
 		echo '<tr>
 				<th width="70" align="left">UPC code</th>
@@ -36,6 +47,8 @@ if ($num > 0) { // If it ran OK, display the records.
 				<th>parent_company</th>	
 				
 			  </tr>';
+				
+		
 	while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)){
 		echo '<tr>
 						<td><a href="view-specific.php?upccode=' . $row['upccode']. '">' . $row['upccode'] . '</a></td>
