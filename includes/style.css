@@ -224,3 +224,24 @@ h1 {
 #footer li {
 	list-style:none;
 }
+
+
+
+
+/*CSS script for search.css*/
+#filter {
+	background-image:url(../images/recycle_its_easy.jpg);
+	background-size: 800px auto;
+	height: 330px;
+	z-index: -50;
+}
+
+#filter select,input,p {
+	display: inline;
+}
+
+#search_wrapper{
+	position: relative;
+	left: 10px;
+	top: 400px;
+}

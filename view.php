@@ -8,6 +8,7 @@ echo "<script src=\"includes/view-jQuery.js\"></script>";
 // Page header:
 echo '<h1 style="text-align:center">Data</h1>';
 
+
 require_once ('mysqli_connect.php'); // Connect to the db.
 		
 // Make the query:
@@ -51,7 +52,7 @@ if ($num > 0) { // If it ran OK, display the records.
 		
 	while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)){
 		echo '<tr>
-						<td><a href="view-specific.php?upccode=' . $row['upccode']. '">' . $row['upccode'] . '</a></td>
+						<td><a id="details" href="view-specific.php?upccode=' . $row['upccode']. '">' . $row['upccode'] . '</a></td>
 						<td>' . $row['class'].'</td>
 						<td>' . $row['company_name'].'</td>
 						<td>' . $row['weight']. '</td>

@@ -9,23 +9,28 @@ echo '<h1 style="text-align:center">Data</h1>';
 
 $upccode = $_GET['upccode'];
 
+if(empty($_REQUEST['n_region'])){
+echo $_REQUEST['n_region']. "<br />";
+}else{
+	echo "It is empty";
+}
+
 require_once ('mysqli_connect.php'); // Connect to the db.
 		
 // Make the query:
 $q = "SELECT * from constituents, products, prod_const, regions_recyclability 
 				where products.upccode = prod_const.upccode and prod_const.upccode= ".$upccode."
 							and prod_const.cname=constituents.cname 
-							and constituents.cname = regions_recyclability.cname and order by regions_recyclability.region_name";		
+							and constituents.cname = regions_recyclability.cname order by regions_recyclability.region_name";		
 $r = mysqli_query($dbc, $q); // Run the query.
 
-echo "this is ".$r;
 // Count the number of returned rows:
 $num = mysqli_num_rows($r);
 
 if ($num > 0) { // If it ran OK, display the records.
 
 	// Print how many users there are:
-	echo "<p>This is the detail information for". $upccode."</p>\n";
+	echo "<p>This is the detail information for ". $upccode."</p>\n";
 	
 	// Fetch and print all the records:
 	  echo '<p><table border="2">';
@@ -37,8 +42,6 @@ if ($num > 0) { // If it ran OK, display the records.
 				<th>C percentage</th><br/ >
 				<th>type</th>
 				<th>region</th>
-				<th>recycability</th>
-				
 			  </tr>';
 	while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)){
 		echo '<tr>
@@ -49,7 +52,6 @@ if ($num > 0) { // If it ran OK, display the records.
 				<td>' . number_format($row['part_weight']/$row['weight'], 2). '</td>
 				<td>' . $row['type']. '</td>
 				<td>' . $row['region_name']. '</td>
-				<td>' . $row['recyclability']. '</td>
 			  </tr>';
 	}
 	  echo '</table></p>';

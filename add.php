@@ -5,14 +5,9 @@
 	
 	require_once ('mysqli_connect.php');//connect to the database
 	
-// Make the query:
+  // Make the query:
 	$cq = "SELECT *  from item_class order by class_name ASC";		
 	$cqrow = mysqli_query ($dbc, $cq); // Run the query.
-
-	// Count the number of returned rows:
-	$crow = mysqli_fetch_array($cqrow, MYSQLI_ASSOC);
-
-
 
 
 // Check if the form has been submitted:
