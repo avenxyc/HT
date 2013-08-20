@@ -1,9 +1,9 @@
 @charset "utf-8";
 /* CSS Document */
-@font-face {
+/*@font-face {
 font-family: MYRIADPRO-REGULAR;
 src: url("includes/myriad-pro/MYRIADPRO-REGULAR.otf") format("opentype");
-}
+}*/
 
 body {
 	background-image: linear-gradient(bottom, rgb(255,255,255) 12%, rgb(220,235,144) 56%, rgb(180,214,44) 78%);
@@ -21,7 +21,7 @@ body {
 		color-stop(0.78, rgb(180,214,44))
 	);
 	color:#FFFFFF;
-	font-family: MYRIADPRO-REGULAR;
+	font-family: Arial, Helvetica, sans-serif;
 	font-size:14px;
 
 }
@@ -99,6 +99,7 @@ body {
 #nav-bar li:hover {
 	box-shadow: 0px 0px 5px #CC00FF;
 	font-weight: bold;
+	z-index: 10;
 }
 
 #slider-wrapper {
@@ -228,20 +229,66 @@ h1 {
 
 
 
-/*CSS script for search.css*/
+/*CSS script for search.php*/
 #filter {
 	background-image:url(../images/recycle_its_easy.jpg);
 	background-size: 800px auto;
 	height: 330px;
-	z-index: -50;
 }
 
-#filter select,input,p {
+#search_wrapper p {
 	display: inline;
 }
 
 #search_wrapper{
+	z-index: 50;
+	left: 0px;
 	position: relative;
-	left: 10px;
-	top: 400px;
+	top: 60%;
+}
+
+/*add a product button*/
+#add_p{
+	position: relative;
+	right: 0px;
+	top: 170px;
+	float:right;
+}
+
+
+/*CSS script for view-specific.php*/
+#view-specific-detail {
+	display:block;
+	/*this top attr is to remove the gap between the nab-bar and the content due to the  floating problem*/
+	top: -4px;
+	position: relative;
+}
+#view-specific-image  {
+	float:left;
+	width: 400px;
+	height: 400px;
+	background-color:rgba(255,255,255,1)
+}
+
+#view-specific-info {
+	position:static;
+	float:right;
+	width: 398px;
+	height: 398px;
+	font-weight:bold;
+	border: 1px solid rgba(0,153,255,1);
+	background-color: rgba(255,255,255,1);
+}
+
+#view-specific-info >p[class='title']{
+	margin: 0;
+	padding: 1px;
+	height: 25px;
+	background-color: rgba(0,102,255,0.6);
+}
+
+#view-specific-info >p[class='info']{
+	margin: 0;
+	padding: 3px 15px;
+	background-color: rgba(255,255,255,1);
 }

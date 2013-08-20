@@ -4,23 +4,47 @@
 $title_name= 'View';
 include ('includes/header.html');
 echo "<script src=\"includes/view-specific-jQuery.js\"></script>";
-// Page header:
-echo '<h1 style="text-align:center">Data</h1>';
 
+// Get the upccode and region_val
 $upccode = $_GET['upccode'];
+$rv = $_GET['region'];
 
-if(empty($_REQUEST['n_region'])){
-echo $_REQUEST['n_region']. "<br />";
-}else{
-	echo "It is empty";
-}
 
 require_once ('mysqli_connect.php'); // Connect to the db.
+
+$q1 = "SELECT * from products where products.upccode= ".$upccode.";";
+$Pinfo = mysqli_query($dbc,$q1);
+$product = mysqli_fetch_assoc($Pinfo);
+
+
+//Web Page layout.
+echo '<br /><div id="view-specific-detail">';
+echo '<div id="view-specific-image"></div>';
+echo '<div id="view-specific-info">
+				<p class="title">Product Name: </p>
+				<p class="info">'.$product['description'].'</p>
+				<p class="title">UPC code: </p>
+				<p class="info">'.$product['upccode'].'</p>
+				<p class="title">Company Name: </p>
+				<p class="info">'.$product['company_name'].'</p>
+				<p class="title">Parent Company Name: </p>
+				<p class="info">'.$product['parent_company'].'</p>
+				<p class="title">Weight/Volumn: </p>
+				<p class="info">'.$product['weight'].'(g/L)</p>
+				
+			
+			</div>';
+echo '</div>';
+
+
+
+
+
 		
 // Make the query:
 $q = "SELECT * from constituents, products, prod_const, regions_recyclability 
 				where products.upccode = prod_const.upccode and prod_const.upccode= ".$upccode."
-							and prod_const.cname=constituents.cname 
+							and prod_const.cname=constituents.cname and regions_recyclability.region_name ='".$rv."'
 							and constituents.cname = regions_recyclability.cname order by regions_recyclability.region_name";		
 $r = mysqli_query($dbc, $q); // Run the query.
 
@@ -35,7 +59,7 @@ if ($num > 0) { // If it ran OK, display the records.
 	// Fetch and print all the records:
 	  echo '<p><table border="2">';
 		echo '<tr>
-				<th>description</th>
+				<th>Product Name</th>
 				<th>parent_company</th>
 				<th>constituent name</th>
 				<th>constituent weight</th>
