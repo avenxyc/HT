@@ -111,6 +111,11 @@ body {
 	padding: 0px;
 }
 	
+#slider-wrapper {
+	top: -3px;
+}
+
+
 
 #slides {
 	margin: 0px;
@@ -176,9 +181,11 @@ body {
 }
 
 .tiles {
+	position: relative;
 	overflow:hidden;
 	width: 800px;
 	width: 100%;
+	top: -3px;
 }
 
 
@@ -260,7 +267,7 @@ h1 {
 #view-specific-detail {
 	display:block;
 	/*this top attr is to remove the gap between the nab-bar and the content due to the  floating problem*/
-	top: -4px;
+	top: -3px;
 	position: relative;
 }
 #view-specific-image  {
@@ -291,4 +298,8 @@ h1 {
 	margin: 0;
 	padding: 3px 15px;
 	background-color: rgba(255,255,255,1);
+}
+
+#piechart_3d {
+	overflow: hidden;
 }

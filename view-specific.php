@@ -4,7 +4,9 @@
 $title_name= 'View';
 include ('includes/header.html');
 echo "<script src=\"includes/view-specific-jQuery.js\"></script>";
+echo "<script type=\"text/javascript\" src=\"https://www.google.com/jsapi\"></script>";
 
+				
 // Get the upccode and region_val
 $upccode = $_GET['upccode'];
 $rv = $_GET['region'];
@@ -12,10 +14,25 @@ $rv = $_GET['region'];
 
 require_once ('mysqli_connect.php'); // Connect to the db.
 
+// Get the product info
 $q1 = "SELECT * from products where products.upccode= ".$upccode.";";
 $Pinfo = mysqli_query($dbc,$q1);
 $product = mysqli_fetch_assoc($Pinfo);
 
+
+$q2 = "SELECT part_weight, weight from prod_const , products
+				where products.upccode = prod_const.upccode and prod_const.upccode= ".$upccode.";";		
+$r1 = mysqli_query($dbc, $q2); // Run the query.
+// Count the number of returned rows:
+$n = mysqli_num_rows($r1);
+$part_weight_total = 0;
+$total_weight = 0;
+while($row = mysqli_fetch_assoc($r1)){
+	$part_weight_total += $row['part_weight'];
+	$total_weight = $row['weight'];
+}
+
+echo $row['part_weight'];
 
 //Web Page layout.
 echo '<br /><div id="view-specific-detail">';
@@ -31,6 +48,8 @@ echo '<div id="view-specific-info">
 				<p class="info">'.$product['parent_company'].'</p>
 				<p class="title">Weight/Volumn: </p>
 				<p class="info">'.$product['weight'].'(g/L)</p>
+				<p class="title">Recyclability</p>
+				<p class="info">'.$part_weight_total / $total_weight.'</p>
 				
 			
 			</div>';
@@ -42,19 +61,18 @@ echo '</div>';
 
 		
 // Make the query:
-$q = "SELECT * from constituents, products, prod_const, regions_recyclability 
+$q3 = "SELECT * from constituents, products, prod_const, regions_recyclability 
 				where products.upccode = prod_const.upccode and prod_const.upccode= ".$upccode."
 							and prod_const.cname=constituents.cname and regions_recyclability.region_name ='".$rv."'
 							and constituents.cname = regions_recyclability.cname order by regions_recyclability.region_name";		
-$r = mysqli_query($dbc, $q); // Run the query.
+$r2 = mysqli_query($dbc, $q3); // Run the query.
 
 // Count the number of returned rows:
-$num = mysqli_num_rows($r);
+$num = mysqli_num_rows($r2);
 
+$rowset[] =array();
+$i = 0;
 if ($num > 0) { // If it ran OK, display the records.
-
-	// Print how many users there are:
-	echo "<p>This is the detail information for ". $upccode."</p>\n";
 	
 	// Fetch and print all the records:
 	  echo '<p><table border="2">';
@@ -67,7 +85,9 @@ if ($num > 0) { // If it ran OK, display the records.
 				<th>type</th>
 				<th>region</th>
 			  </tr>';
-	while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)){
+	while ($row = mysqli_fetch_array($r2, MYSQLI_ASSOC)){
+		$rowset[$i] = $row;
+		$i++;
 		echo '<tr>
 				<td>' . $row['description']. '</td>
 				<td>' . $row['parent_company']. '</td>
@@ -80,7 +100,7 @@ if ($num > 0) { // If it ran OK, display the records.
 	}
 	  echo '</table></p>';
 	
-	mysqli_free_result ($r); // Free up the resources.	
+	mysqli_free_result ($r2); // Free up the resources.	
 
 } else { // If no records were returned.
 
@@ -89,6 +109,33 @@ if ($num > 0) { // If it ran OK, display the records.
 }
 
 mysqli_close($dbc); // Close the database connection.
+
+echo "<script type=\"text/javascript\">
+      google.load(\"visualization\", \"1\", {packages:[\"corechart\"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Name', 'Weight'],
+					['Food',".$total_weight."],"
+          foreach( $rowset as $value){
+						foreach($value as $name => $weight){
+							echo '['.$va
+          ['Sleep',    7]
+        ]);
+
+        var options = {
+          title: 'Percetage of Consituents',
+          is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        chart.draw(data, options);
+      }
+    </script>";
+echo '	<div id="piechart_3d" style="width: 800px; height: 400px;"></div>';		
+
+
+var_dump($rowset);
 
 include ('includes/footer.html');
 ?>
