@@ -52,18 +52,16 @@ $(document).ready(function(){
 		
 	$('.tile').hover(
 		function(){
-			var tile = $(this);
-			//$(this).find('inner-content').slidedown('slow');
-			tile.find('> p').stop().fadeOut(function(){
+			var tile = $(this);			
+			//tile.find('> p').stop().fadeOut(function(){
 					tile.find('.inner-content').fadeIn('fast');
-			//$(this).find('inner-content').slideUp('slow');
-			})
+			//})
 		},
 		function(){
 			var tile = $(this);
-			tile.find('.inner-content').stop().fadeOut(function(){
-					tile.find('> p').fadeIn('fast');
-			})
+			tile.find('.inner-content').stop().fadeOut();//(function(){
+			//		tile.find('> p').fadeIn('fast');
+			///})
 		});
 		
 										 

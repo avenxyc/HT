@@ -9,6 +9,15 @@ $(document).ready(function(){
 #output {
 	width: 100%;
 	text-align:center;
+	border-collapse:collapse;
+}
+
+
+#output tr:odd {
+	background-color: rgba(255,255,255,1);
+}
+#output tr:even {
+	background-color: rgba(153,204,0,0.6);
 }
 
 

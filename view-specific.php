@@ -3,7 +3,7 @@
 
 $title_name= 'View';
 include ('includes/header.html');
-echo "<script src=\"includes/view-specific-jQuery.js\"></script>";
+echo "<script type=\"text/javascript\" src=\"includes/view-specific-jQuery.js\"></script>";
 echo "<script type=\"text/javascript\" src=\"https://www.google.com/jsapi\"></script>";
 
 				
@@ -20,16 +20,24 @@ $Pinfo = mysqli_query($dbc,$q1);
 $product = mysqli_fetch_assoc($Pinfo);
 
 
-$q2 = "SELECT part_weight, weight from prod_const , products
-				where products.upccode = prod_const.upccode and prod_const.upccode= ".$upccode.";";		
+$q2 = "SELECT part_weight, weight, classification, description from prod_const , products, regions_recyclability
+				where products.upccode = prod_const.upccode and prod_const.upccode= ".$upccode." 
+					and regions_recyclability.cname = prod_const.cname and regions_recyclability.region_name = '".$rv."';";	
+
 $r1 = mysqli_query($dbc, $q2); // Run the query.
 // Count the number of returned rows:
 $n = mysqli_num_rows($r1);
 $part_weight_total = 0;
 $total_weight = 0;
+$unrecyc_weight = 0;
+$recyc_weight = 0;
 while($row = mysqli_fetch_assoc($r1)){
-	$part_weight_total += $row['part_weight'];
-	$total_weight = $row['weight'];
+	if($row['classification'] == 'Clear Garbage Bag'){
+		$unrecyc_weight += $row['part_weight'];
+	}else{
+	  $recyc_weight += $row['part_weight'];
+	}
+		$total_weight = $row['weight'];
 }
 
 echo $row['part_weight'];
@@ -49,11 +57,16 @@ echo '<div id="view-specific-info">
 				<p class="title">Weight/Volumn: </p>
 				<p class="info">'.$product['weight'].'(g/L)</p>
 				<p class="title">Recyclability</p>
-				<p class="info">'.$part_weight_total / $total_weight.'</p>
+				<p class="info">'.number_format($recyc_weight / ($unrecyc_weight+$recyc_weight),2).'</p>
+			
 				
 			
 			</div>';
 echo '</div>';
+
+echo $recyc_weight;
+echo '<br />';
+echo $unrecyc_weight;
 
 
 
@@ -72,33 +85,30 @@ $num = mysqli_num_rows($r2);
 
 $rowset[] =array();
 $i = 0;
+
 if ($num > 0) { // If it ran OK, display the records.
 	
 	// Fetch and print all the records:
-	  echo '<p><table border="2">';
+	  echo '<table id="view-specific-table" border="1">';
 		echo '<tr>
-				<th>Product Name</th>
-				<th>parent_company</th>
-				<th>constituent name</th>
-				<th>constituent weight</th>
-				<th>C percentage</th><br/ >
-				<th>type</th>
-				<th>region</th>
-			  </tr>';
+						<th>constituent name</th>
+						<th>constituent weight</th>
+						<th>Percentage</th><br/ >
+						<th>type</th>
+						<th>region</th>
+					</tr>';
 	while ($row = mysqli_fetch_array($r2, MYSQLI_ASSOC)){
 		$rowset[$i] = $row;
 		$i++;
 		echo '<tr>
-				<td>' . $row['description']. '</td>
-				<td>' . $row['parent_company']. '</td>
-				<td>' . $row['cname']. '</td>
-				<td>' . $row['part_weight']. '</td>
-				<td>' . number_format($row['part_weight']/$row['weight'], 2). '</td>
-				<td>' . $row['type']. '</td>
-				<td>' . $row['region_name']. '</td>
-			  </tr>';
+						<td>' . $row['cname']. '</td>
+						<td>' . $row['part_weight']. '</td>
+						<td>' . number_format($row['part_weight']/$row['weight'], 2). '</td>
+						<td>' . $row['type']. '</td>
+						<td>' . $row['region_name']. '</td>
+			 	 </tr>';
 	}
-	  echo '</table></p>';
+	  echo '</table>';
 	
 	mysqli_free_result ($r2); // Free up the resources.	
 
@@ -108,20 +118,18 @@ if ($num > 0) { // If it ran OK, display the records.
 
 }
 
-mysqli_close($dbc); // Close the database connection.
+
 
 echo "<script type=\"text/javascript\">
       google.load(\"visualization\", \"1\", {packages:[\"corechart\"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Name', 'Weight'],
-					['Food',".$total_weight."],"
+          ['Name', 'Weight'],";
           foreach( $rowset as $value){
-						foreach($value as $name => $weight){
-							echo '['.$va
-          ['Sleep',    7]
-        ]);
+						echo "['".$value['cname']."',".$value['part_weight']."],";
+					}
+echo      "]);
 
         var options = {
           title: 'Percetage of Consituents',
@@ -135,7 +143,8 @@ echo "<script type=\"text/javascript\">
 echo '	<div id="piechart_3d" style="width: 800px; height: 400px;"></div>';		
 
 
-var_dump($rowset);
+
+mysqli_close($dbc); // Close the database connection.
 
 include ('includes/footer.html');
 ?>

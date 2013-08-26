@@ -102,6 +102,8 @@ body {
 	z-index: 10;
 }
 
+/*CSS script for index.php*/
+
 #slider-wrapper {
 	position: relative;
 	width: 800px;
@@ -197,6 +199,13 @@ body {
 	position: relative;
 }
 
+.tile > p{
+	margin: 5px;
+	font-weight: bold;
+	font-size: 20px;
+	text-align: left;
+}
+
 .inner-content {
 	display: none;
 }
@@ -211,6 +220,8 @@ h1 {
 	width:100%;
 }
 
+
+/*CSS script for add.php*/
 #form1 {
 	position:relative;
 	left: 5%;
@@ -237,29 +248,28 @@ h1 {
 
 
 /*CSS script for search.php*/
-#filter {
+#search_background_image {
 	background-image:url(../images/recycle_its_easy.jpg);
 	background-size: 800px auto;
 	height: 330px;
 }
 
-#search_wrapper p {
-	display: inline;
-}
-
 #search_wrapper{
-	z-index: 50;
 	left: 0px;
 	position: relative;
 	top: 60%;
 }
 
+#search_wrapper > div { 
+	display: inline;
+}
+
+
+
+
 /*add a product button*/
-#add_p{
-	position: relative;
-	right: 0px;
-	top: 170px;
-	float:right;
+#add_p {
+	float: right;
 }
 
 
@@ -300,6 +310,13 @@ h1 {
 	background-color: rgba(255,255,255,1);
 }
 
+#view-specific-table {
+	border-collapse:collapse;
+	text-align:center;
+	width: 100%;
+}
+
+/*Pie chart*/
 #piechart_3d {
 	overflow: hidden;
 }

@@ -60,6 +60,12 @@ if (isset($_POST['submitted'])) {
 		$w = mysqli_real_escape_string($dbc, trim($_POST['weight']));
 	}
 	
+	// Check for total weight
+	if (empty($_POST['t_weight'])) {
+		$errors[] = 'You forgot to enter the product weight.';
+	} else {
+		$t_w = mysqli_real_escape_string($dbc, trim($_POST['t_weight']));
+	}
 
 	 $cform_number = count($_POST['cform']['cname']); //Get the number of constituent form
 	 
@@ -71,7 +77,7 @@ if (isset($_POST['submitted'])) {
 				$errors[] = 'You forgot to enter Constituents name.';
 			} else {
 				$cname[$i] = mysqli_real_escape_string($dbc, trim($_POST['cform']['cname'][$i]));
-				echo $cname[$i];
+				//echo $cname[$i];
 			}
 			
 			
@@ -80,7 +86,7 @@ if (isset($_POST['submitted'])) {
 				$errors[] = 'You forgot to enter Constituents name.';
 			} else {
 				$pweight[$i] = mysqli_real_escape_string($dbc, trim($_POST['cform']['pweight'][$i]));
-				echo $pweight[$i];
+				//echo $pweight[$i];
 			}	
 			
 			// Check for a type:
@@ -88,7 +94,7 @@ if (isset($_POST['submitted'])) {
 				$errors[] = 'You forgot to enter the type of Constituents.';
 			} else {
 				$type[$i] = mysqli_real_escape_string($dbc, trim($_POST['cform']['Type'][$i]));
-				echo $type[$i];
+				//echo $type[$i];
 			}
 			
 			$classification[$i] = mysqli_real_escape_string($dbc, trim($_POST['cform']['classification'][$i]));	
@@ -127,7 +133,7 @@ if (isset($_POST['submitted'])) {
 		
 			
 		// Make the query:
-		$q1 = "INSERT IGNORE INTO products (upccode, class, company_name,parent_company, description, weight, image) VALUES ('$uc', '$c', '$cn', '$d', '$pc', '$w', '$content')";		
+		$q1 = "INSERT IGNORE INTO products (upccode, class, company_name,parent_company, description, weight, image, total_weight) VALUES ('$uc', '$c', '$cn', '$d', '$pc', '$w', '$content', '$t_w')";		
 		//$q2 = "INSERT IGNORE INTO constituents (cname, type) VALUES ('$cname', '$type')";
 		//$q3 = "INSERT IGNORE INTO regions_recyclability (region_name ,cname , classification)VALUES ('$region_name',  '$cname',  '$classification')";
 		//$q4 = "INSERT IGNORE INTO prod_const (upccode, cname, part_weight) VALUES ('$uc', '$cname', '$pweight')";	
@@ -208,6 +214,7 @@ echo		 "</select></p>
 							</select>
 							: <input type='text' name='weight' size='20' maxlength='10' value='Please enter'  /><p id='gORl' style='display:inline'>g</p>
 						</p>
+				<p style='display:inline'>Total Weight: <input type='text' name='t_weight' size='20' maxlength='10' value='Please enter'  />g</p>
 				<p>Description: <br /><textarea  name='description' rows='4' cols='50' value='Please enter' ></textarea></p>     
 				<p>Number of constituents:
 				<select name='cnumber' id='cnumber' >
