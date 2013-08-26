@@ -64,9 +64,6 @@ echo '<div id="view-specific-info">
 			</div>';
 echo '</div>';
 
-echo $recyc_weight;
-echo '<br />';
-echo $unrecyc_weight;
 
 
 

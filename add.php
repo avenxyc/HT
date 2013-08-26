@@ -133,7 +133,7 @@ if (isset($_POST['submitted'])) {
 		
 			
 		// Make the query:
-		$q1 = "INSERT IGNORE INTO products (upccode, class, company_name,parent_company, description, weight, image, total_weight) VALUES ('$uc', '$c', '$cn', '$d', '$pc', '$w', '$content', '$t_w')";		
+		$q1 = "INSERT IGNORE INTO products (upccode, class, company_name,parent_company, description, weight, image, total_weight) VALUES ('$uc', '$c', '$cn', '$pc', '$d', '$w', '$content', '$t_w')";		
 		//$q2 = "INSERT IGNORE INTO constituents (cname, type) VALUES ('$cname', '$type')";
 		//$q3 = "INSERT IGNORE INTO regions_recyclability (region_name ,cname , classification)VALUES ('$region_name',  '$cname',  '$classification')";
 		//$q4 = "INSERT IGNORE INTO prod_const (upccode, cname, part_weight) VALUES ('$uc', '$cname', '$pweight')";	
