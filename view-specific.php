@@ -20,7 +20,7 @@ $Pinfo = mysqli_query($dbc,$q1);
 $product = mysqli_fetch_assoc($Pinfo);
 
 
-$q2 = "SELECT part_weight, weight, classification, description from prod_const , products, regions_recyclability
+$q2 = "SELECT part_weight, weight, classification, product_name from prod_const , products, regions_recyclability
 				where products.upccode = prod_const.upccode and prod_const.upccode= ".$upccode." 
 					and regions_recyclability.cname = prod_const.cname and regions_recyclability.region_name = '".$rv."';";	
 
@@ -47,7 +47,7 @@ echo '<br /><div id="view-specific-detail">';
 echo '<div id="view-specific-image"></div>';
 echo '<div id="view-specific-info">
 				<p class="title">Product Name: </p>
-				<p class="info">'.$product['description'].'</p>
+				<p class="info">'.$product['product_name'].'</p>
 				<p class="title">UPC code: </p>
 				<p class="info">'.$product['upccode'].'</p>
 				<p class="title">Company Name: </p>

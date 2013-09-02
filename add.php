@@ -46,11 +46,11 @@ if (isset($_POST['submitted'])) {
 		$pc = mysqli_real_escape_string($dbc, trim($_POST['parent_company']));
 	}
 	
-	// Check for a description:
-	if (empty($_POST['description'])) {
-		$d = 'Not applicable';
+	// Check for a product_name:
+	if (empty($_POST['product_name'])) {
+		$pn = 'Not applicable';
 	} else {
-		$d = mysqli_real_escape_string($dbc, trim($_POST['description']));
+		$pn = mysqli_real_escape_string($dbc, trim($_POST['product_name']));
 	}
 
 	// Check for weight:
@@ -133,7 +133,7 @@ if (isset($_POST['submitted'])) {
 		
 			
 		// Make the query:
-		$q1 = "INSERT IGNORE INTO products (upccode, class, company_name,parent_company, description, weight, image, total_weight) VALUES ('$uc', '$c', '$cn', '$pc', '$d', '$w', '$content', '$t_w')";		
+		$q1 = "INSERT IGNORE INTO products (upccode, class, company_name,parent_company, product_name, weight, image, total_weight) VALUES ('$uc', '$c', '$cn', '$pc', '$pn', '$w', '$content', '$t_w')";		
 		//$q2 = "INSERT IGNORE INTO constituents (cname, type) VALUES ('$cname', '$type')";
 		//$q3 = "INSERT IGNORE INTO regions_recyclability (region_name ,cname , classification)VALUES ('$region_name',  '$cname',  '$classification')";
 		//$q4 = "INSERT IGNORE INTO prod_const (upccode, cname, part_weight) VALUES ('$uc', '$cname', '$pweight')";	
@@ -198,6 +198,7 @@ echo "<h1>Register</h1>
   		<form action='add.php' id='form1' method='post' enctype='multipart/form-data'>
  		 <div id='enterInfo'>
 				<p>Upccode: <input type='text' name='upccode' size='15' maxlength='20' value='Product upccode' /></p>
+				<p>Product Name: <input type='text'  name='product_name'  size='30' maxlength='20' value='Please enter' ></p>    
 				<p>Class:
 				<select name='class'>";
 				  while ($crow = mysqli_fetch_array($cqrow, MYSQLI_ASSOC)){
@@ -215,7 +216,7 @@ echo		 "</select></p>
 							: <input type='text' name='weight' size='20' maxlength='10' value='Please enter'  /><p id='gORl' style='display:inline'>g</p>
 						</p>
 				<p style='display:inline'>Total Weight: <input type='text' name='t_weight' size='20' maxlength='10' value='Please enter'  />g</p>
-				<p>Description: <br /><textarea  name='description' rows='4' cols='50' value='Please enter' ></textarea></p>     
+				 
 				<p>Number of constituents:
 				<select name='cnumber' id='cnumber' >
 					<option value='0'>0</option>
