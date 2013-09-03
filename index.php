@@ -25,7 +25,6 @@
     });
 </script>
 -->
-<br />
 <div id="slider-wrapper">
 	 <!-- Arrows -->
     <div class="arrows" id="left-arrow">
