@@ -8,8 +8,8 @@ $(document).ready(function(){
 	$('.tile:even').css({'background-color':'#FF9933', 'text-align':'center',
 											 });	
 	
-	$('.tile:eq(1), .tile:eq(4)').css({ "margin":"0px 2px"});
-	$('.tile:gt(2)').css("margin-top","1px");
+	//$('.tile:eq(1), .tile:eq(4)').css({ "margin":"0px 2px"});
+	//$('.tile:gt(2)').css("margin-top","1px");
 	
 	/*$('.tile').hover(function(){
 		var text_content = $(this).val();

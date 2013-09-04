@@ -190,7 +190,7 @@ a {
 
 #sign-in {
 	width: 30%;
-	height: 330px;
+	min-height: 
 	float:left;
 	background-color:rgba(153,204,51,0.6);
 }
@@ -404,9 +404,29 @@ h1 {
 
 
 	.tile {
-		width: 49%;
-		
+		width: 50%;
 	}
+	
+	.tile:nth-child(1) {
+		background-color: #CCCC00;
+	}
+	
+	.tile:nth-child(2) {
+		background-color: #FF9933;
+	}
+	.tile:nth-child(3) {
+		background-color: #FF9933;
+	}
+	.tile:nth-child(4) {
+		background-color: #CCCC00;
+	}
+	.tile:nth-child(5) {
+		background-color: #CCCC00;
+	}
+	.tile:nth-child(6) {
+		background-color: #FF9933;
+	}
+	
 	
 	#sign-in {
 		width: 100%;
@@ -472,6 +492,11 @@ h1 {
 	#sign-in {
 		width: 100%;
 		height: 70px;
+		float: right;
+	}
+	
+	.members-info {
+		width: 100%;
 	}
 	
 	#sign-in p, input {
@@ -500,6 +525,7 @@ h1 {
 	
 	.tile {
 		width: 100%;
+		min-height: 100px;
 	}
 	
 	.tile > p{

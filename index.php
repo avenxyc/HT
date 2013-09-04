@@ -49,10 +49,14 @@
   
   <div id="sign-in">
     <!-- finish the form later -->
-      <label>Username:</label>
-      <input type="text" name="username" />
-      <label>Password:</label>
-      <input type="text" name="password" />
+      <div class="members-info">
+      	<label>Username:</label>
+      	<input type="text" name="username" />
+      </div>
+      <div class="members-info">
+      	<label>Password:</label>
+      	<input type="text" name="password" />
+       </div>
       <button class="members-login" value="Sign in">Sign in</button>
       <button class="members-login"value="Sign up">Sign up</button>
   </div>
