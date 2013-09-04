@@ -10,7 +10,7 @@ require_once ('mysqli_connect.php');//connect to the database
 //The class option
 // Make the query:
 	echo '<div id="filter">
-					<div id="search_background_image"></div>
+					<img id="search_background_image" src="images/recycle_its_easy.jpg"></img>
 					<div id="search_wrapper">';
 					$cq = "SELECT *  from item_class order by class_name ASC";		
 					$cqrow = mysqli_query ($dbc, $cq); // Run the query.

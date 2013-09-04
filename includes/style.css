@@ -72,6 +72,7 @@ a {
 #mainHeader nav {
 	height: 40px;
 	background-color: #cc00cc;
+	margin-bottom: 1px;
 }
 
 #mainHeader ul {
@@ -113,23 +114,18 @@ a {
 
 
 
-
-
 /*CSS script for index.php*/
 
 #slider-wrapper {
 	width: 70%;
+	height: auto;
 	position: relative;
-	height: 330px;
 	overflow: hidden;
-	margin: 1px 0px;
+	margin-bottom: 1px;
 	padding: 0px;
+	float: left;
 }
 	
-
-
-
-
 #slides {
 	margin: 0px;
 	padding: 0px;
@@ -147,13 +143,11 @@ a {
 #slides li {
 	display: block;
 	position: relative;
-	left: -650px;
 }
 
 #slides img {
-	width: 700px;
-	height: 330px;
-	float:left;
+	max-height: 330px;
+	max-width: 100%;
 }
 
 #slides img:eq(0){
@@ -193,6 +187,24 @@ a {
 	
 }
 
+
+#sign-in {
+	width: 30%;
+	height: 330px;
+	float:left;
+	background-color:rgba(153,204,51,0.6);
+}
+	
+.members-login {
+	width: 90px;
+	background-color: rgba(255,255,255,0.6);
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	
+}
+
+
 .tiles {
 	position: relative;
 	overflow:hidden;
@@ -205,15 +217,17 @@ a {
 	height: auto;
 	float: left;
 	display:inline-block;
-	height: 150px;
+	min-height: 200px;
 	text-align:center;	
 	position: relative;
 }
+
 
 .tile > p{
 	margin: 5px;
 	font-weight: bold;
 	font-size: 20px;
+  color :rgba(255,255,255,1);
 	text-align: left;
 }
 
@@ -221,6 +235,7 @@ a {
 	display: none;
 }
 
+/* Add.php */
 .focus{
 	border: 1px solid #FF0000;
 	background: #FFFFCC;
@@ -251,8 +266,14 @@ h1 {
 	
 }
 
+#footer ul {
+	list-style:none;
+	padding-left: 0;
+}
+
 #footer li {
 	list-style:none;
+	padding-left: 0;
 }
 
 
@@ -260,9 +281,7 @@ h1 {
 
 /*CSS script for search.php*/
 #search_background_image {
-	background-image:url(../images/recycle_its_easy.jpg);
-	background-size: 800px auto;
-	height: 330px;
+	width: 100%;
 }
 
 #search_wrapper{
@@ -288,23 +307,21 @@ h1 {
 #view-specific-detail {
 	display:block;
 	/*this top attr is to remove the gap between the nab-bar and the content due to the  floating problem*/
-	top: -3px;
 	position: relative;
 }
 #view-specific-image  {
 	float:left;
-	width: 400px;
-	height: 400px;
+	width: 40%;
+	height: 350px;
 	background-color:rgba(255,255,255,1)
 }
 
 #view-specific-info {
 	position:static;
 	float:right;
-	width: 398px;
-	height: 398px;
+	width: 60%;
+	height: 350px;
 	font-weight:bold;
-	border: 1px solid rgba(0,153,255,1);
 	background-color: rgba(255,255,255,1);
 }
 
@@ -330,4 +347,183 @@ h1 {
 /*Pie chart*/
 #piechart_3d {
 	overflow: hidden;
+	width: 100%;
+	height: 330px;
+}
+
+@media screen and (min-width: 1161px) and (max-width: 1450px)
+{
+	body {
+		width: 85%;
+	}
+	
+	
+}
+
+@media screen and (min-width: 1050px) and (max-width: 1160px)
+{
+	body {
+		width: 95%;
+	}
+	
+		#sign-in {
+		width: 100%;
+		height: 70px;
+	}
+	
+	#sign-in p, input {
+		margin: 0;
+		padding: 0;
+	}
+	
+}
+
+@media screen and (min-width: 800px) and (max-width: 1049px)
+{
+	body {
+		width: 95%;
+	}
+	
+	#sign-in {
+		clear: both;
+		display: block;
+		width: 100%;
+	}
+	
+	#slider-wrapper {
+	 width: 100%;
+	
+	}
+	
+	
+	#slides li {
+		max-width: 100%;
+		max-height: 100%;
+	}
+	
+
+
+	.tile {
+		width: 49%;
+		
+	}
+	
+	#sign-in {
+		width: 100%;
+		height: 70px;
+	}
+	
+	#sign-in p, input {
+		margin: 0;
+		padding: 0;
+	}
+	
+	
+	
+}
+		
+	
+
+
+@media screen and (min-width: 150px) and (max-width: 799px)
+{
+	body{
+		width: 100%;
+	}
+	
+	#mainHeader nav {
+		height: 160px;
+	}
+
+	
+	#mainHeader nav ul li {
+		width: 100%;
+	}
+	
+	#mainHeader a {
+		display: block;
+		color: #FFFFFF;
+	}
+	
+	#mainHeader nav a:link, a:visited {
+		display: inline-block;
+	}
+	
+	#mainHeader nav li:hover, nav li:active {
+		color: rgba(153,204,255,1);
+		font-weight: 200;
+		
+	}
+	
+	.active {
+		background-color: rgba(204,102,204,1);
+	}
+	
+	#mainHeader nav li:hover, nav li:active,
+	#mainHeader .active li:link, li:visited{
+		background-color:rgba(204,102,204,1);
+	}
+
+	#slider-wrapper {
+		width: 100%;
+		height: auto;
+	}
+	
+	#sign-in {
+		width: 100%;
+		height: 70px;
+	}
+	
+	#sign-in p, input {
+		display: inline-block;
+		margin: 0;
+		padding: 0;
+	}
+	
+	#slides img {
+		clear: both;
+		width: 100%;
+	}
+	
+	.arrows img {
+		width: 25px;
+		max-height: 100%;
+		margin: 0;
+	}
+	
+	.tiles {
+		position: relative;
+		overflow:hidden;
+		width: 100%;
+	}
+	
+	
+	.tile {
+		width: 100%;
+	}
+	
+	.tile > p{
+		margin: 5px;
+		font-weight: bold;
+		font-size: 16px;;
+		text-align: center;
+	}
+	
+	.inner-content {
+		display: inline;
+	}
+	
+	
+	#view-specific-image  {
+		width: 100%;
+		height: auto;
+	}
+	
+	#view-specific-info {
+		width: 100%;
+		height: auto;
+	}
+
+			
+	
 }

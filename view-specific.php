@@ -43,7 +43,7 @@ while($row = mysqli_fetch_assoc($r1)){
 echo $row['part_weight'];
 
 //Web Page layout.
-echo '<br /><div id="view-specific-detail">';
+echo '<div id="view-specific-detail">';
 echo '<div id="view-specific-image"></div>';
 echo '<div id="view-specific-info">
 				<p class="title">Product Name: </p>
@@ -137,7 +137,7 @@ echo      "]);
         chart.draw(data, options);
       }
     </script>";
-echo '	<div id="piechart_3d" style="width: 800px; height: 400px;"></div>';		
+echo '	<div id="piechart_3d"></div>';		
 
 
 

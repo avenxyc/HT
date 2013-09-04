@@ -25,26 +25,38 @@
     });
 </script>
 -->
-<div id="slider-wrapper">
-	 <!-- Arrows -->
-    <div class="arrows" id="left-arrow">
-    	<img src="images/left.png" />
-    </div>
-    <div class="arrows" id="right-arrow">
-    	<img src="images/right.png" />	
-    </div>
-		<div id="slides"> 
-    	<ul>
-  	   <li><img src="images/recycle_its_easy.jpg" alt="Recycling"  /></li>
-       <li><img src="images/recycle_its_easy.jpg" alt="Recycling"  /></li>
-       <li><img src="images/recycle_its_easy.jpg" alt="Recycling"  /></li>
-       <li><img src="images/recycle_its_easy.jpg" alt="Recycling"  /></li>
-       <li><img src="images/recycle_its_easy.jpg" alt="Recycling"  /></li>
-       <li><img src="images/recycle_its_easy.jpg" alt="Recycling"  /></li>
-       </ul> 	
-    </div>
+<div id="mainContent">
+  <div id="slider-wrapper">
+     <!-- Arrows -->
+      <div class="arrows" id="left-arrow">
+        <img src="images/left.png" />
+      </div>
+      <div class="arrows" id="right-arrow">
+        <img src="images/right.png" />	
+      </div>
+      <div id="slides"> 
+      <img src="images/recycle_its_easy.jpg" alt="Recycling"  />
+       <!-- <ul>
+         <li><img src="images/recycle_its_easy.jpg" alt="Recycling"  /></li>
+         <li><img src="images/recycle_its_easy.jpg" alt="Recycling"  /></li>
+         <li><img src="images/recycle_its_easy.jpg" alt="Recycling"  /></li>
+         <li><img src="images/recycle_its_easy.jpg" alt="Recycling"  /></li>
+         <li><img src="images/recycle_its_easy.jpg" alt="Recycling"  /></li>
+         <li><img src="images/recycle_its_easy.jpg" alt="Recycling"  /></li>
+         </ul> 	-->
+      </div>
+  </div>
+  
+  <div id="sign-in">
+    <!-- finish the form later -->
+      <label>Username:</label>
+      <input type="text" name="username" />
+      <label>Password:</label>
+      <input type="text" name="password" />
+      <button class="members-login" value="Sign in">Sign in</button>
+      <button class="members-login"value="Sign up">Sign up</button>
+  </div>
 </div>
-
 
 <div class="tiles">
   <div class="tile">
