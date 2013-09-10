@@ -38,7 +38,8 @@ require_once ('mysqli_connect.php');//connect to the database
 	
 	echo '<div id="result"><p>Your result will be shown here</div>';
 	
-	
+//Above are the content of the site
+include("/includes/footer.html"); 
 		
 ?>
 

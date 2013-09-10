@@ -7,10 +7,11 @@ $(document).ready(function(){
 											 });
 	$('.tile:even').css({'background-color':'#FF9933', 'text-align':'center',
 											 });	
-	
-	//$('.tile:eq(1), .tile:eq(4)').css({ "margin":"0px 2px"});
-	//$('.tile:gt(2)').css("margin-top","1px");
-	
+
+	if($(window).width() > 1049){
+		$('.tile:eq(1), .tile:eq(4)').css({ "margin":"0px 1px"});
+		$('.tile:gt(2)').css("margin-top","1px");
+	};
 	/*$('.tile').hover(function(){
 		var text_content = $(this).val();
 		$(this).text('Test test').css("z-index","99")
@@ -71,4 +72,16 @@ $(document).ready(function(){
   
 	//$('#sign-in').css('width', content_width-wrapper_width -1);
 
+});
+
+
+
+$(window).resize(function(){
+	if($(window).width() > 1049){
+		$('.tile:eq(1), .tile:eq(4)').css({ "margin":"0px 1px"});
+		$('.tile:gt(2)').css("margin-top","1px");
+	}else {
+		$('.tile:eq(1), .tile:eq(4)').css({ "margin":"0px 0px"});
+		$('.tile:gt(2)').css("margin-top","0px");
+	}
 });

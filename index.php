@@ -1,12 +1,3 @@
-<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="includes/style.css" type="text/css" media="all" />
-<title>Test site</title>
-<script src="includes/jquery-1.10.2.js" type="text/javascript"></script>
-</head>-->
-
 <?php //This is the home page
 	
 	$title_name = 'Test site';  //Title name of this page
@@ -49,16 +40,18 @@
   
   <div id="sign-in">
     <!-- finish the form later -->
+    <div id="sign-in-text">
       <div class="members-info">
-      	<label>Username:</label>
+      	<label>Username: </label>
       	<input type="text" name="username" />
       </div>
       <div class="members-info">
-      	<label>Password:</label>
+      	<label>Password: </label>
       	<input type="text" name="password" />
        </div>
       <button class="members-login" value="Sign in">Sign in</button>
       <button class="members-login"value="Sign up">Sign up</button>
+     </div>
   </div>
 </div>
 

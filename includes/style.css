@@ -23,7 +23,7 @@ body {
 	color:#FFFFFF;
 	font-family: Arial, 'Lucida Sans Unicode';
 	font-size: 87.5%;
-	width:70%;
+	width: 1200px;
 	margin: 0 auto;
 	text-align: left;
 }
@@ -146,7 +146,7 @@ a {
 }
 
 #slides img {
-	max-height: 330px;
+	max-height: 100%;
 	max-width: 100%;
 }
 
@@ -174,25 +174,30 @@ a {
 
 .arrows img {
 	width: 50px;
-	height: 330px;
-	margin: 0;
+	
 }
 
 #left-arrow {
+	margin-top: 15%;
   left:0px;
 }
 
 #right-arrow {
+	margin-top: 15%;
   right:0px;
 	
 }
 
 
 #sign-in {
+	position: relative;
 	width: 30%;
-	min-height: 
+	color:#000000;
+	
 	float:left;
-	background-color:rgba(153,204,51,0.6);
+	background-image:url(../images/signin_bg.jpg);
+	background-size: cover;
+	min-height: 345px;
 }
 	
 .members-login {
@@ -201,9 +206,18 @@ a {
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
-	
 }
 
+#sign-in-text {
+	position: absolute;
+	bottom: 0px; 
+	right: 0px;
+}
+
+#sign-in input {
+	
+	left: 80px;
+}
 
 .tiles {
 	position: relative;
@@ -213,7 +227,7 @@ a {
 
 
 .tile {
-	width: 33%;
+	width: 33.25%;
 	height: auto;
 	float: left;
 	display:inline-block;
@@ -259,10 +273,10 @@ h1 {
 
 #footer {
 	text-align: center;
-	color: #999;
-	position: absolute;
-	margin-bottom: 0px;
+	color: #3366FF;
 	width: 100%;
+	background-color: #CCCCCC;
+
 	
 }
 
@@ -329,6 +343,7 @@ h1 {
 	margin: 0;
 	padding: 1px;
 	height: 25px;
+	color: #CCCCCC;
 	background-color: rgba(0,102,255,0.6);
 }
 
@@ -351,43 +366,87 @@ h1 {
 	height: 330px;
 }
 
-@media screen and (min-width: 1161px) and (max-width: 1450px)
-{
-	body {
-		width: 85%;
-	}
-	
-	
-}
 
-@media screen and (min-width: 1050px) and (max-width: 1160px)
-{
-	body {
-		width: 95%;
-	}
-	
-		#sign-in {
-		width: 100%;
-		height: 70px;
-	}
-	
-	#sign-in p, input {
-		margin: 0;
-		padding: 0;
-	}
-	
-}
 
 @media screen and (min-width: 800px) and (max-width: 1049px)
 {
 	body {
 		width: 95%;
 	}
-	
-	#sign-in {
-		clear: both;
-		display: block;
+	#slider-wrapper {
 		width: 100%;
+		max-height: 422px;;
+		float: none;
+	}
+		
+
+	#slides li {
+		display: block;
+		position: relative;
+	}
+	
+	#slides img {
+		width: 100%;
+		height: 100%;
+	}
+	
+	#slides img:eq(0){
+		box-shadow: -10px 0px 20px #FFFFFF;
+	}
+	
+	#slides img:eq(2){
+		box-shadow: 10px 0px 20px #FFFFFF;
+	}
+	
+	
+	.arrows {
+		z-index:50;
+		position: absolute;
+		background:#999999;
+		opacity:0.4;
+		filter:alpha(opacity=40); /* For IE8 and earlier */
+	}
+	
+	.arrows :hover{
+		box-shadow: 0px 0px 10px #FFFFFF;
+		opacity: 1;
+	}
+	
+	.arrows img {
+		width: 50px;
+		height: 500px;
+		height: 100%;
+		margin: 0;
+	}
+	
+	#left-arrow {
+		left:0px;
+	}
+	
+	#right-arrow {
+		right:0px;
+		
+	}
+	
+	
+		
+	.members-login {
+		width: 90px;
+		background-color: rgba(255,255,255,0.6);
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		
+	}
+
+	#sign-in {
+		width: 100%;
+		overflow: visible;
+		min-height: 30px;
+	}
+	
+	#sign-in-text {
+		position: static;
 	}
 	
 	#slider-wrapper {
@@ -395,6 +454,14 @@ h1 {
 	
 	}
 	
+	.members-info {
+		width: 32%;
+		display: inline;
+	}
+	
+	.members-login {
+		width: 18%;
+	}
 	
 	#slides li {
 		max-width: 100%;
@@ -428,15 +495,7 @@ h1 {
 	}
 	
 	
-	#sign-in {
-		width: 100%;
-		height: 70px;
-	}
-	
-	#sign-in p, input {
-		margin: 0;
-		padding: 0;
-	}
+
 	
 	
 	
@@ -452,12 +511,13 @@ h1 {
 	}
 	
 	#mainHeader nav {
-		height: 160px;
+		height: 80px;
 	}
 
 	
 	#mainHeader nav ul li {
-		width: 100%;
+		width: 50%;
+		display: inline-block;
 	}
 	
 	#mainHeader a {
@@ -491,12 +551,22 @@ h1 {
 	
 	#sign-in {
 		width: 100%;
-		height: 70px;
-		float: right;
+		overflow: visible;
+		min-height: 60px;
+		float: left;
+	}
+	
+	#sign-in-text {
+		position: static;
 	}
 	
 	.members-info {
-		width: 100%;
+		width: 50%;
+		float: left;
+	}
+	
+	.members-login{
+		float: right;
 	}
 	
 	#sign-in p, input {
@@ -550,6 +620,56 @@ h1 {
 		height: auto;
 	}
 
-			
+	/*Search.php */
+	#search_wrapper > div {
+		display:block;
+	}
+	
+	/*CSS script for view-specific.php*/
+	#view-specific-detail {
+		display:block;
+		/*this top attr is to remove the gap between the nab-bar and the content due to the  floating problem*/
+		position: relative;
+	}
+	#view-specific-image  {
+		height: 100%;
+		display: block;
+	}
+	
+	#view-specific-info {
+		position:static;
+		float:right;
+		width: 50%;
+		height: auto;
+		font-weight:bold;
+		background-color: rgba(255,255,255,1);
+	}
+	
+	#view-specific-info >p[class='title']{
+		margin: 0;
+		padding: 1px;
+		height: 25px;
+		color: #CCCCCC;
+		background-color: rgba(0,102,255,0.6);
+	}
+	
+	#view-specific-info >p[class='info']{
+		margin: 0;
+		padding: 3px 15px;
+		background-color: rgba(255,255,255,1);
+	}
+	
+	#view-specific-table {
+		border-collapse:collapse;
+		text-align:center;
+		width: 100%;
+	}
+	
+	#piechart_3d {
+		overflow: auto;
+		width: 100%;
+		
+	}
+
 	
 }

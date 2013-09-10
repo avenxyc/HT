@@ -105,8 +105,7 @@ if (isset($_POST['submitted'])) {
 
 
 	
-	// Select your database
-
+	// Check if the imege is valid
   if (isset($_FILES['image']) && $_FILES['image']['size'] > 0) { 
  	 
 		 $fileName = $_FILES['image']['name'];
@@ -194,7 +193,7 @@ if (isset($_POST['submitted'])) {
 
 
 //-- Input info --
-echo "<h1>Register</h1>
+echo "<h1>Add new product</h1>
   		<form action='add.php' id='form1' method='post' enctype='multipart/form-data'>
  		 <div id='enterInfo'>
 				<p>Upccode: <input type='text' name='upccode' size='15' maxlength='20' value='Product upccode' /></p>

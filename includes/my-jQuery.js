@@ -10,8 +10,16 @@ $(document).ready(function(){
 	});
 		
 	
-	// add divider to the nav-bar;
-  $("#mainHeader li:lt(3)").css({"border-right": "1px solid #999"});
-	
-	
+
 	});
+	
+	
+$(window).resize(function(){
+	// add divider to the nav-bar;
+	if($(window).width() > 799 ){
+		 $("#mainHeader li:lt(3)").css({"border-right": "1px solid #999"});
+	}else {
+		$("#mainHeader li:lt(3)").css({"border-right": "none"})
+	};
+})
+	

@@ -13,10 +13,10 @@ $(document).ready(function(){
 }
 
 
-#output tr:odd {
+#output tr:nth-child(odd) {
 	background-color: rgba(255,255,255,1);
 }
-#output tr:even {
+#output tr:nth-child(even) {
 	background-color: rgba(153,204,0,0.6);
 }
 
