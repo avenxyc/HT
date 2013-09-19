@@ -5,7 +5,7 @@ $(document).ready(function(){
 	
 	$('.tile:odd').css({'background-color':'#CCCC00', 'text-align':'center',
 											 });
-	$('.tile:even').css({'background-color':'#FF9933', 'text-align':'center',
+	$('.tile:even').css({'background-color':'#78BA00', 'text-align':'center',
 											 });	
 
 	if($(window).width() > 1049){

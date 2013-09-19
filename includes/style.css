@@ -199,6 +199,10 @@ a {
 	background-size: cover;
 	min-height: 345px;
 }
+
+.members-info {
+	text-align: right;
+}
 	
 .members-login {
 	width: 90px;
@@ -214,10 +218,7 @@ a {
 	right: 0px;
 }
 
-#sign-in input {
-	
-	left: 80px;
-}
+
 
 .tiles {
 	position: relative;
@@ -249,8 +250,11 @@ a {
 	display: none;
 }
 
-/* Add.php */
+/* for text area */
 .focus{
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	border: 1px solid #FF0000;
 	background: #FFFFCC;
 }
@@ -271,6 +275,8 @@ h1 {
 	font-weight:bold;
 }
 
+
+/*CSS script for footer.php*/
 #footer {
 	text-align: center;
 	color: #3366FF;
@@ -323,7 +329,7 @@ h1 {
 	/*this top attr is to remove the gap between the nab-bar and the content due to the  floating problem*/
 	position: relative;
 }
-#view-specific-image  {
+#view-specific-image img {
 	float:left;
 	width: 40%;
 	height: 350px;
@@ -368,7 +374,7 @@ h1 {
 
 
 
-@media screen and (min-width: 800px) and (max-width: 1049px)
+@media screen and (min-width: 751px) and (max-width: 1049px)
 {
 	body {
 		width: 95%;
@@ -429,7 +435,9 @@ h1 {
 	}
 	
 	
-		
+	.members-info {
+		text-align: left;
+	}	
 	.members-login {
 		width: 90px;
 		background-color: rgba(255,255,255,0.6);
@@ -504,7 +512,7 @@ h1 {
 	
 
 
-@media screen and (min-width: 150px) and (max-width: 799px)
+@media screen and (min-width: 150px) and (max-width: 750px)
 {
 	body{
 		width: 100%;
@@ -563,6 +571,7 @@ h1 {
 	.members-info {
 		width: 50%;
 		float: left;
+		text-align: left;
 	}
 	
 	.members-login{

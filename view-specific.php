@@ -20,7 +20,7 @@ $Pinfo = mysqli_query($dbc,$q1);
 $product = mysqli_fetch_assoc($Pinfo);
 
 
-$q2 = "SELECT part_weight, weight, classification, product_name from prod_const , products, regions_recyclability
+$q2 = "SELECT part_weight, weight, classification, product_name, img_path from prod_const , products, regions_recyclability
 				where products.upccode = prod_const.upccode and prod_const.upccode= ".$upccode." 
 					and regions_recyclability.cname = prod_const.cname and regions_recyclability.region_name = '".$rv."';";	
 
@@ -32,6 +32,7 @@ $total_weight = 0;
 $unrecyc_weight = 0;
 $recyc_weight = 0;
 while($row = mysqli_fetch_assoc($r1)){
+	$img_path = $row['img_path'];
 	if($row['classification'] == 'Clear Garbage Bag'){
 		$unrecyc_weight += $row['part_weight'];
 	}else{
@@ -40,11 +41,15 @@ while($row = mysqli_fetch_assoc($r1)){
 		$total_weight = $row['weight'];
 }
 
-echo $row['part_weight'];
 
 //Web Page layout.
 echo '<div id="view-specific-detail">';
-echo '<div id="view-specific-image"></div>';
+
+if(!empty($img_path)){
+	echo '<div id="view-specific-image">
+				<img src="' . $img_path . '"/>
+				</div>';
+}
 echo '<div id="view-specific-info">
 				<p class="title">Product Name: </p>
 				<p class="info">'.$product['product_name'].'</p>
@@ -57,7 +62,7 @@ echo '<div id="view-specific-info">
 				<p class="title">Weight/Volumn: </p>
 				<p class="info">'.$product['weight'].'(g/L)</p>
 				<p class="title">Recyclability</p>
-				<p class="info">'.number_format($recyc_weight / ($unrecyc_weight+$recyc_weight),2).'</p>
+				<p class="info">'. 100 * number_format($recyc_weight / ($unrecyc_weight+$recyc_weight),2).'%</p>
 			
 				
 			

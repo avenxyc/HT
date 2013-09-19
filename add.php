@@ -107,6 +107,28 @@ if (isset($_POST['submitted'])) {
 	
 	// Check if the imege is valid
   if (isset($_FILES['image']) && $_FILES['image']['size'] > 0) { 
+	
+		/*//This is the directory where images will be saved
+			$target = "pics/";
+			$target = $target . basename( $_FILES['image']['name']);
+			
+			//This gets all the other information from the form
+			$content = basename( $_FILES['image']['name']);
+			
+			
+			//Writes the Filename to the server
+			if(move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+					//Tells you if its all ok
+					echo "The file ". basename( $_FILES['image']['name']). " has been uploaded, and your information has been added to the directory";
+
+
+			} else {
+					//Gives and error if its not
+					echo "Sorry, there was a problem uploading your file.";
+			}
+
+			
+
  	 
 		 $fileName = $_FILES['image']['name'];
 		 $tmpName  = $_FILES['image']['tmp_name'];
@@ -121,9 +143,46 @@ if (isset($_POST['submitted'])) {
 			if(!get_magic_quotes_gpc())
 			{
 					$fileName = addslashes($fileName);
-			}
+			}*/
+			
+			$allowedExts = array("gif", "jpeg", "jpg", "png");
+			$temp = explode(".", $_FILES["image"]["name"]);
+			$extension = end($temp);
+			$path = "pics/" . $_FILES["image"]["name"];
+			if ((($_FILES["image"]["type"] == "image/gif")
+			|| ($_FILES["image"]["type"] == "image/jpeg")
+			|| ($_FILES["image"]["type"] == "image/jpg")
+			|| ($_FILES["image"]["type"] == "image/pjpeg")
+			|| ($_FILES["image"]["type"] == "image/x-png")
+			|| ($_FILES["image"]["type"] == "image/png"))
+			&& ($_FILES["image"]["size"] < 20000000)
+			&& in_array($extension, $allowedExts)) {
+				if ($_FILES["image"]["error"] > 0){
+					echo "Return Code: " . $_FILES["image"]["error"] . "<br>";
+					}
+				else
+					{
+						echo "Upload: " . $_FILES["image"]["name"] . "<br>";
+						echo "Type: " . $_FILES["image"]["type"] . "<br>";
+						echo "Size: " . ($_FILES["image"]["size"] / 1024) . " kB<br>";
+						echo "Temp file: " . $_FILES["image"]["tmp_name"] . "<br>";
+			
+						if (file_exists("pics/" . $_FILES["image"]["name"])) {
+							echo $_FILES["image"]["name"] . " already exists. ";
+						}
+						else {
+							move_uploaded_file($_FILES["image"]["tmp_name"], $path);
+							echo "Stored in: " . "pics/" . $_FILES["image"]["name"];
+						}
+					}
+				}
+			else {
+					echo "Invalid file";
+				}
 
 	}
+	
+
 				
 				
 	if (empty($errors)) { // If everything's OK.
@@ -132,7 +191,7 @@ if (isset($_POST['submitted'])) {
 		
 			
 		// Make the query:
-		$q1 = "INSERT IGNORE INTO products (upccode, class, company_name,parent_company, product_name, weight, image, total_weight) VALUES ('$uc', '$c', '$cn', '$pc', '$pn', '$w', '$content', '$t_w')";		
+		$q1 = "INSERT IGNORE INTO products (upccode, class, company_name,parent_company, product_name, weight, img_path, total_weight) VALUES ('$uc', '$c', '$cn', '$pc', '$pn', '$w', '$path', '$t_w')";		
 		//$q2 = "INSERT IGNORE INTO constituents (cname, type) VALUES ('$cname', '$type')";
 		//$q3 = "INSERT IGNORE INTO regions_recyclability (region_name ,cname , classification)VALUES ('$region_name',  '$cname',  '$classification')";
 		//$q4 = "INSERT IGNORE INTO prod_const (upccode, cname, part_weight) VALUES ('$uc', '$cname', '$pweight')";	
