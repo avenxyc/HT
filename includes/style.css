@@ -55,7 +55,10 @@ a {
 	float: right;
 }
 
-
+/*Speicfy the input font to make password box and text box the same width*/
+input {
+  font-family: sans-serif;                
+}
 
 #content {
 	min-height: 700px;
@@ -255,7 +258,6 @@ a {
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
-	border: 1px solid #FF0000;
 	background: #FFFFCC;
 }
 

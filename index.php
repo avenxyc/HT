@@ -40,20 +40,23 @@
   
   <div id="sign-in">
     <!-- finish the form later -->
-    <div id="sign-in-text">
-      <div class="members-info">
-      	<label>Username: </label>
-      	<input type="text" name="username" />
+    <form action="../authmain.php" method="post" id="index_sign_in">
+      <div id="sign-in-text">
+        <div class="members-info">
+          <label>Username: </label>
+          <input type="text" name="username" />
+        </div>
+        <div class="members-info">
+          <label>Password: </label>
+          <input type="password" name="password" />
+         </div>
+        <button class="members-login" value="Sign in">Sign in</button>
+        </div>
+      </form> 
+      <div id="sign-in-text" class="members-info">
+        <a href="../sign_up.php"> <button class="members-login"  value="Sign up">Sign up</button></a>
       </div>
-      <div class="members-info">
-      	<label>Password: </label>
-      	<input type="text" name="password" />
-       </div>
-      <button class="members-login" value="Sign in">Sign in</button>
-      <button class="members-login"value="Sign up">Sign up</button>
-     </div>
-  </div>
-</div>
+	</div>
 
 <div class="tiles">
   <div class="tile">
