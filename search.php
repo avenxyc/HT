@@ -2,6 +2,7 @@
 
 $title_name= 'Search';
 include ('includes/header.html');
+session_start();
 
 echo "<script src=\"includes/Search-Ajax.js\"></script>";
 
@@ -30,11 +31,13 @@ require_once ('mysqli_connect.php');//connect to the database
 					
 					echo '<div id="keyword_wrap">  Keyword:<input id="keyword"></input></div>';
 					echo '<button id="submit" value="submit">Search</button>';
+			if(isset($_SESSION['valid_user'])){
 				echo '<a href="add.php">
    						 <button id="add_p">Add new product</button>
-							</a></div>
+							</a>';
+			}
 					
-				</div>';
+			echo	'</div></div>';
 	
 	echo '<div id="result"><p>Your result will be shown here</div>';
 	

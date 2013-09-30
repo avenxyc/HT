@@ -5,6 +5,7 @@ $title_name= 'View';
 include ('includes/header.html');
 echo "<script type=\"text/javascript\" src=\"includes/view-specific-jQuery.js\"></script>";
 echo "<script type=\"text/javascript\" src=\"https://www.google.com/jsapi\"></script>";
+session_start();
 
 				
 // Get the upccode and region_val

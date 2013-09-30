@@ -1,9 +1,8 @@
 <?php //Register a new user
 	$title_name = "Processing";
 	
-	include("header.html");
-	echo '<link rel="stylesheet" href="style.css" type="text/css" media="all" />';
-	include("functions.php");
+	include("includes/header.html");
+	include("includes/functions.php");
 	
 	$username = $_POST['username'];
 	$passwd1 = $_POST['passwd1'];
@@ -43,12 +42,12 @@
 		echo 'Your registration was successful.';
 		// Return to a pagedo_html_url('
 
-		include("footer.html");
+		include("includes/footer.html");
 	}
 	catch(Exception $e) {
-		echo 'problem';
+		echo 'Problem: ';
 		echo $e->getMessage();
-		include("footer.html");
+		include("includes/footer.html");
 		exit;
 	}
 ?>

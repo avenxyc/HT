@@ -1,7 +1,8 @@
 <?php //This is the home page
-	
+	session_start();
 	$title_name = 'Test site';  //Title name of this page
 	include("/includes/header.html"); // include the header file
+	include("/includes/functions.php");
 	echo"<script src='includes/index-jQuery.js' type='text/javascript'></script>" ;
 ?>
 <!-- This is the header, the following content is for the body -->
@@ -39,23 +40,9 @@
   </div>
   
   <div id="sign-in">
-    <!-- finish the form later -->
-    <form action="../authmain.php" method="post" id="index_sign_in">
-      <div id="sign-in-text">
-        <div class="members-info">
-          <label>Username: </label>
-          <input type="text" name="username" />
-        </div>
-        <div class="members-info">
-          <label>Password: </label>
-          <input type="password" name="password" />
-         </div>
-        <button class="members-login" value="Sign in">Sign in</button>
-        </div>
-      </form> 
-      <div id="sign-in-text" class="members-info">
-        <a href="../sign_up.php"> <button class="members-login"  value="Sign up">Sign up</button></a>
-      </div>
+  	<?php
+			is_logged_in();
+			 ?>
 	</div>
 
 <div class="tiles">

@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	$title_name = "Authentication";
+	$title_name = "Logging in...";
 	include("includes/header.html");
 
 	if(isset($_POST['username']) && isset($_POST['password'])){
@@ -12,14 +12,17 @@
 		
 		
 		$query = 'select * from user_info '
-						 ."where username = '$username' "
-						 ."and password = sha1('$password');";
+						 ."where username = '".$username."'"
+						 ."and password = '".sha1($password)."';"; // Add bcript later
 		
 		$result = mysqli_query($dbc, $query);
+				
 		
 		// Check if there is a correct match in the result
 		if(mysqli_num_rows($result) > 0){
 			$_SESSION['valid_user'] = $username;
+			header('Refresh: 3;url=index.php');
+			echo '<h3>Welcome, '.$username.'. We are redirecting to the home page.';
 		}else {
 			echo 'Wrong username or password';
 		}
