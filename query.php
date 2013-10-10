@@ -48,8 +48,7 @@ if($num > 0){
 							<th>UPC code</th>
 							<th>Product Name</th>
 							<th>Weight/Volumn(g/L)</th>
-							<th>Company name</th>
-							<th>Parent Company</th>
+							<th>Action</th>
 						</tr>';
 
 		while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)){
@@ -57,8 +56,7 @@ if($num > 0){
 						<td><a id="details" href="view-specific.php?upccode=' . $row['upccode'].'&region='.$rv. '">' . $row['upccode'] . '</a></td>
 						<td>' . $row['product_name']. '</td>
 						<td>' . $row['weight']. '</td>
-						<td>' . $row['company_name'].'</td>
-						<td>' . $row['parent_company']. '</td>
+						<td><a href="#"><button type="button">Edit</button></a></td>
  			 	  </tr>';
 		}
 		echo '</table>';

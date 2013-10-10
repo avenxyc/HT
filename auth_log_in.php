@@ -24,7 +24,10 @@
 			header('Refresh: 3;url=index.php');
 			echo '<h3>Welcome, '.$username.'. We are redirecting to the home page.';
 		}else {
-			echo 'Wrong username or password';
+			echo '<div id="password_error">';
+			echo '<p > Wrong username or password</p>';
+			echo '<br /><a href="reset_pw.php">Forget password?</a>';
+			echo '</div>';
 		}
 		
 		mysqli_close($dbc); // Close the database connection.

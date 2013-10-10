@@ -20,6 +20,8 @@ if (isset($_POST['submitted'])) {
 	// Check for a upccode:
 	if (empty($_POST['upccode'])) {
 		$errors[] = 'You forgot to enter upccode.';
+	} else if(is_numeric($_POST['upccode'])) {
+		$errors[] = 'UPC code must be numbers.';
 	} else {
 		$uc = mysqli_real_escape_string($dbc, trim($_POST['upccode']));
 	}
@@ -182,7 +184,15 @@ if (isset($_POST['submitted'])) {
 
 	}
 	
-
+	//Validate the author
+	if (empty($_POST['author'])) {
+		$errors[] = 'You forgot to enter the author name.';
+	} else {
+		$author = mysqli_real_escape_string($dbc, trim($_POST['author']));
+	}
+	
+	//Date created
+	$date = date('Y/m/d', time());
 				
 				
 	if (empty($errors)) { // If everything's OK.
@@ -191,7 +201,9 @@ if (isset($_POST['submitted'])) {
 		
 			
 		// Make the query:
-		$q1 = "INSERT IGNORE INTO products (upccode, class, company_name,parent_company, product_name, weight, img_path, total_weight) VALUES ('$uc', '$c', '$cn', '$pc', '$pn', '$w', '$path', '$t_w')";		
+		$q1 = "INSERT IGNORE INTO 
+					 products (upccode, class, company_name,parent_company, product_name, weight, img_path, total_weight, author, last_update) 
+					 VALUES ('$uc', '$c', '$cn', '$pc', '$pn', '$w', '$path', '$t_w', '$author', '$date')";		
 		//$q2 = "INSERT IGNORE INTO constituents (cname, type) VALUES ('$cname', '$type')";
 		//$q3 = "INSERT IGNORE INTO regions_recyclability (region_name ,cname , classification)VALUES ('$region_name',  '$cname',  '$classification')";
 		//$q4 = "INSERT IGNORE INTO prod_const (upccode, cname, part_weight) VALUES ('$uc', '$cname', '$pweight')";	
@@ -298,6 +310,7 @@ echo		 "</select></p>
 						</select>
 					</p>
 				<p>Upload an image: <input type='file' name='image' ></p>
+				<p>Author: <input type='text' name='author' size='20' maxlength='80' value='Please enter'  /> </p>
 				</div>
 				<p><input type='submit' id='send' name='submit' value='Submit' /></p>
 			

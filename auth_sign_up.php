@@ -5,10 +5,12 @@
 	include("includes/functions.php");
 	
 	$username = $_POST['username'];
+	$email = $_POST['email'];
 	$passwd1 = $_POST['passwd1'];
 	$passwd2 = $_POST['passwd2'];
 	$fname = $_POST['first_name'];
 	$lname = $_POST['last_name'];
+
 	
 	session_start();
 	
@@ -32,21 +34,22 @@
 		
 		// Attempt to register
 		// The function can throw an exception 
-		register($username, $passwd1, $fname, $lname);
+		register($username, $email, $passwd1, $fname, $lname);
 		
 		//register seesion variable
 		$_SESSION['valid_user'] = $username;
 		
 		//Provide link to members page
 		//do_html_header('Registration successful');
-		echo 'Your registration was successful.';
+		do_html_header('Your registration was successful.');
+		redirect_home();
 		// Return to a pagedo_html_url('
 
 		include("includes/footer.html");
 	}
 	catch(Exception $e) {
-		echo 'Problem: ';
-		echo $e->getMessage();
+		do_html_header('Problem: ');
+		do_html_content($e->getMessage());
 		include("includes/footer.html");
 		exit;
 	}

@@ -109,12 +109,20 @@ input {
 	
 }
 
-#mainHeader nav a:hover, nav a:active,
-#mainHeader .active a:link, a:visited{
+#mainHeader nav a:hover, nav a:active {
 	background-color:rgba(204,102,204,1);
 }
 
 
+/* For content in the container */
+.content_header {
+	margin: 20px;
+	font-size: 16px;
+}
+
+.content_text {
+	margin: 20px;
+}
 
 
 /*CSS script for index.php*/
@@ -221,7 +229,13 @@ input {
 	right: 0px;
 }
 
-
+/*After user logged in */
+#signed-in-text {
+	position: absolute;
+	text-align: right;
+	bottom: 0px; 
+	right: 15px;
+}
 
 .tiles {
 	position: relative;
@@ -375,6 +389,16 @@ h1 {
 }
 
 
+/*------------------------------------Sign_up_form-------------------------------------*/
+#user_sign_up {
+	margin-left: 20px;
+}
+
+
+/*------------------------------------auth_log_in.php-------------------------------------*/
+#password_error {
+	text-align: center;
+}
 
 @media screen and (min-width: 751px) and (max-width: 1049px)
 {

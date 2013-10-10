@@ -19,7 +19,7 @@
 
 <?php 
 		} else {
-			echo "<div id='sign-in-text'> Welcome, ". $_SESSION['valid_user'] .". <br />
+			echo "<div id='signed-in-text'> Welcome, ". $_SESSION['valid_user'] .". <br />
 						<a href='log_out.php'><button type='button' value='Log out'>Log out</div>";
 		}
 	}
@@ -47,23 +47,68 @@
 		return true;
 	}
 	
-	function register($username, $password, $fname, $lname){
-		require_once ('./mysqli_connect.php');//connect to the database
+	function register($username, $email, $password, $fname, $lname){
+		require_once ('mysqli_connect.php');//connect to the database
+		
+		
+		if(!check_existence($dbc, 'username', $username)) {
+			redirect_home();
+			throw new Exception('Your user already exists, please try again.');
+		}
+		if(!check_existence($dbc, 'email', $email)) {
+			redirect_home();
+			throw new Exception('Your email already exists, please try again.');
+		}
 		// Add bcript later
-	  $query = 'INSERT INTO user_info (username, password, first_name, last_name)
-							VALUES ( "'.$username.'","'.sha1($password).'","'.$fname.'","'.$lname.'")';
+	  $query = 'INSERT INTO user_info (email, username, password, first_name, last_name)
+							VALUES ( "'.$email.'","'.$username.'","'.sha1($password).'","'.$fname.'","'.$lname.'")';
 		$result = mysqli_query($dbc,$query);
 		
-	
+		
+			
 		if(!$result) {
 			throw new Exception('Could not register you in database, please try again');
+			redirect_home();
 		}
 		
+		
+		
+		mysqli_close($dbc);
 		return true;
 	}
 	
 	
+	// Output content header in a proper way
+	function do_html_header($header) {
+		if(!empty($header)){
+			echo '<h3 class="content_header">'.$header.'</h3>';
+		}
+	}
 	
-
+	// Ouput content text in a proper way	
+	function do_html_content($content) {
+		if(!empty($content)){
+			echo '<p class="content_text">'.$content.'</p>';
+		}
+	}	
+		
+		//Check existance in Database	
+	function check_existence($dbc, $field, $name) {
+		$query = "select * from user_info where ".$field." = '". $name . "';";
+		$result = mysqli_query($dbc,$query);
+		
+		if(mysqli_num_rows($result) > 0){
+			return false;
+		}else{
+			return true;
+		}
+		
+	}
+	
+	// Redirect to home page
+	function redirect_home() {
+		do_html_content('Redirecting you back to home page...');
+		header('Refresh: 3;url=index.php');
+	}
 
 ?>
