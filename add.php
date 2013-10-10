@@ -20,8 +20,6 @@ if (isset($_POST['submitted'])) {
 	// Check for a upccode:
 	if (empty($_POST['upccode'])) {
 		$errors[] = 'You forgot to enter upccode.';
-	} else if(is_numeric($_POST['upccode'])) {
-		$errors[] = 'UPC code must be numbers.';
 	} else {
 		$uc = mysqli_real_escape_string($dbc, trim($_POST['upccode']));
 	}
@@ -184,15 +182,14 @@ if (isset($_POST['submitted'])) {
 
 	}
 	
-	//Validate the author
+	// Check for author name
 	if (empty($_POST['author'])) {
 		$errors[] = 'You forgot to enter the author name.';
 	} else {
 		$author = mysqli_real_escape_string($dbc, trim($_POST['author']));
 	}
 	
-	//Date created
-	$date = date('Y/m/d', time());
+	$date = date('Y-m-d', time());
 				
 				
 	if (empty($errors)) { // If everything's OK.
@@ -202,23 +199,19 @@ if (isset($_POST['submitted'])) {
 			
 		// Make the query:
 		$q1 = "INSERT IGNORE INTO 
-					 products (upccode, class, company_name,parent_company, product_name, weight, img_path, total_weight, author, last_update) 
-					 VALUES ('$uc', '$c', '$cn', '$pc', '$pn', '$w', '$path', '$t_w', '$author', '$date')";		
-		//$q2 = "INSERT IGNORE INTO constituents (cname, type) VALUES ('$cname', '$type')";
-		//$q3 = "INSERT IGNORE INTO regions_recyclability (region_name ,cname , classification)VALUES ('$region_name',  '$cname',  '$classification')";
-		//$q4 = "INSERT IGNORE INTO prod_const (upccode, cname, part_weight) VALUES ('$uc', '$cname', '$pweight')";	
+						products (upccode, class, company_name,parent_company, product_name, weight, img_path, total_weight, author, last_updated)
+					  VALUES ('$uc', '$c', '$cn', '$pc', '$pn', '$w', '$path', '$t_w', '$author', '$date')";		
+		
 		$r1 = @mysqli_query ($dbc, $q1); // Run the first query.
-		//$r2 = @mysqli_query ($dbc, $q2);  // Run the second query.
-		//$r3 = @mysqli_query ($dbc, $q3);  // Run the second query.
-		//$r4 = @mysqli_query ($dbc, $q4);  // Run the second query.
+
 		
 		for($i = 0; $i < $cform_number; $i++){
 			$q2[$i] = "INSERT IGNORE INTO constituents (cname, type) VALUES ('$cname[$i]', '$type[$i]')";
 			$q3[$i] = "INSERT IGNORE INTO regions_recyclability (region_name ,cname , classification)VALUES ('$region_name',  '$cname[$i]',  '$classification[$i]')";
 			$q4[$i] = "INSERT IGNORE INTO prod_const (upccode, cname, part_weight) VALUES ('$uc', '$cname[$i]', '$pweight[$i]')";	
 			$r2[$i] = @mysqli_query ($dbc, $q2[$i]);  // Run the second query.
-			$r3[$i] = @mysqli_query ($dbc, $q3[$i]);  // Run the second query.
-			$r4[$i] = @mysqli_query ($dbc, $q4[$i]);  // Run the second query.
+			$r3[$i] = @mysqli_query ($dbc, $q3[$i]);  // Run the third query.
+			$r4[$i] = @mysqli_query ($dbc, $q4[$i]);  // Run the forth query.
 		}
 
 		if ($r1 && (sizeof($r2)==$cform_number) && (sizeof($r3)==$cform_number) && (sizeof($r4)==$cform_number)) { // If it ran OK.

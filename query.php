@@ -56,7 +56,7 @@ if($num > 0){
 						<td><a id="details" href="view-specific.php?upccode=' . $row['upccode'].'&region='.$rv. '">' . $row['upccode'] . '</a></td>
 						<td>' . $row['product_name']. '</td>
 						<td>' . $row['weight']. '</td>
-						<td><a href="#"><button type="button">Edit</button></a></td>
+						<td><a href="edit.php?upccode='.$row["upccode"].'"><button type="button">Edit</button></a></td>
  			 	  </tr>';
 		}
 		echo '</table>';

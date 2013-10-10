@@ -4,9 +4,9 @@
 	include("includes/header.html");
 	include("includes/functions.php");
 	
-	$upccode = $_POST['upccode'];
+	$upccode = $_GET['upccode'];
 	
-		echo "<script src=\"includes/add-jQuery.js\"></script>";
+	echo "<script src=\"includes/add-jQuery.js\"></script>";
 	
 	require_once ('mysqli_connect.php');//connect to the database
 	
@@ -22,12 +22,7 @@
 			
 		$errors = array(); // Initialize an error array.
 		
-		// Check for a upccode:
-		if (empty($_POST['upccode'])) {
-			$errors[] = 'You forgot to enter upccode.';
-		} else {
-			$uc = mysqli_real_escape_string($dbc, trim($_POST['upccode']));
-		}
+		
 		
 		/* Check for a class:
 		if (empty($_POST['class'])) {
@@ -196,7 +191,7 @@
 			
 				
 			// Make the query:
-			$q1 = "INSERT IGNORE INTO products (upccode, class, company_name,parent_company, product_name, weight, img_path, total_weight) VALUES ('$uc', '$c', '$cn', '$pc', '$pn', '$w', '$path', '$t_w')";		
+			$q1 = "UPDATE product SET class='$c', company_name='$cn',parent_company='$pc', product_name='$pn', weight='$w', img_path=$path, total_weight='$t_w' WHERE upccode = ".$upccode.";";		
 			//$q2 = "INSERT IGNORE INTO constituents (cname, type) VALUES ('$cname', '$type')";
 			//$q3 = "INSERT IGNORE INTO regions_recyclability (region_name ,cname , classification)VALUES ('$region_name',  '$cname',  '$classification')";
 			//$q4 = "INSERT IGNORE INTO prod_const (upccode, cname, part_weight) VALUES ('$uc', '$cname', '$pweight')";	
@@ -257,10 +252,11 @@
 
 
 	//-- Input info --
-	echo "<h1>Edit</h1>
-				<form action='add.php' id='form1' method='post' enctype='multipart/form-data'>
+	do_html_header('Edit this product');
+	echo "
+				<form action='edit.php' id='form1' method='post' enctype='multipart/form-data'>
 			 <div id='enterInfo'>
-					<p>Upccode: <input type='text' name='upccode' size='15' maxlength='20' value='Product upccode' /></p>
+					<p>Upccode: $upccode</p>
 					<p>Product Name: <input type='text'  name='product_name'  size='30' maxlength='20' value='Please enter' ></p>    
 					<p>Class:
 					<select name='class'>";
