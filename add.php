@@ -1,6 +1,7 @@
 <?php // This is the products page
 	$title_name = 'Products';
 	include("includes/header.html");
+		include("includes/functions.php");
 	echo "<script src=\"includes/add-jQuery.js\"></script>";
 	
 	require_once ('mysqli_connect.php');//connect to the database
@@ -20,6 +21,8 @@ if (isset($_POST['submitted'])) {
 	// Check for a upccode:
 	if (empty($_POST['upccode'])) {
 		$errors[] = 'You forgot to enter upccode.';
+	} else if(!is_numeric($_POST['upccode'])) {
+		$errors[] = 'UPC code must be numbers';
 	} else {
 		$uc = mysqli_real_escape_string($dbc, trim($_POST['upccode']));
 	}
@@ -77,7 +80,7 @@ if (isset($_POST['submitted'])) {
 				$errors[] = 'You forgot to enter Constituents name.';
 			} else {
 				$cname[$i] = mysqli_real_escape_string($dbc, trim($_POST['cform']['cname'][$i]));
-				//echo $cname[$i];
+				echo $cname[$i];
 			}
 			
 			
@@ -86,7 +89,7 @@ if (isset($_POST['submitted'])) {
 				$errors[] = 'You forgot to enter Constituents name.';
 			} else {
 				$pweight[$i] = mysqli_real_escape_string($dbc, trim($_POST['cform']['pweight'][$i]));
-				//echo $pweight[$i];
+				echo $pweight[$i];
 			}	
 			
 			// Check for a type:
@@ -94,7 +97,7 @@ if (isset($_POST['submitted'])) {
 				$errors[] = 'You forgot to enter the type of Constituents.';
 			} else {
 				$type[$i] = mysqli_real_escape_string($dbc, trim($_POST['cform']['Type'][$i]));
-				//echo $type[$i];
+				echo $type[$i];
 			}
 			
 			$classification[$i] = mysqli_real_escape_string($dbc, trim($_POST['cform']['classification'][$i]));	
@@ -152,6 +155,7 @@ if (isset($_POST['submitted'])) {
 			if ((($_FILES["image"]["type"] == "image/gif")
 			|| ($_FILES["image"]["type"] == "image/jpeg")
 			|| ($_FILES["image"]["type"] == "image/jpg")
+			|| ($_FILES["image"]["type"] == "image/JPG")
 			|| ($_FILES["image"]["type"] == "image/pjpeg")
 			|| ($_FILES["image"]["type"] == "image/x-png")
 			|| ($_FILES["image"]["type"] == "image/png"))
@@ -177,6 +181,7 @@ if (isset($_POST['submitted'])) {
 					}
 				}
 			else {
+					$path = '';
 					echo "Invalid file";
 				}
 
@@ -212,6 +217,16 @@ if (isset($_POST['submitted'])) {
 			$r2[$i] = @mysqli_query ($dbc, $q2[$i]);  // Run the second query.
 			$r3[$i] = @mysqli_query ($dbc, $q3[$i]);  // Run the third query.
 			$r4[$i] = @mysqli_query ($dbc, $q4[$i]);  // Run the forth query.
+			 foreach ($_POST as $key => $value) {
+        echo "<tr>";
+        echo "<td>";
+        echo $key;
+        echo "</td>";
+        echo "<td>";
+        echo $value;
+        echo "</td>";
+        echo "</tr>";
+    }
 		}
 
 		if ($r1 && (sizeof($r2)==$cform_number) && (sizeof($r3)==$cform_number) && (sizeof($r4)==$cform_number)) { // If it ran OK.
@@ -242,12 +257,13 @@ if (isset($_POST['submitted'])) {
 		
 	} else { // Report the errors.
 	
-		echo '<h1>Error!</h1>
-		<p class="error">The following error(s) occurred:<br />';
+		do_html_header('Error');
+		do_html_content('The following error(s) occurred: ');
 		foreach ($errors as $msg) { // Print each error.
-			echo " - $msg<br />\n";
+			do_html_content(" - $msg \n");
 		}
-		echo '</p><p>Please try again.</p><p><br /></p>';
+		do_html_content('Please try again.');
+		echo '<br />';
 		
 	} // End of if (empty($errors)) IF.
 	
@@ -306,8 +322,6 @@ echo		 "</select></p>
 				<p>Author: <input type='text' name='author' size='20' maxlength='80' value='Please enter'  /> </p>
 				</div>
 				<p><input type='submit' id='send' name='submit' value='Submit' /></p>
-			
-			 
 				<input type='hidden' name='submitted' value='TRUE' />
 			</form>";
 

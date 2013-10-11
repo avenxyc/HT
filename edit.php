@@ -13,6 +13,9 @@
   // Make the query:
 	$cq = "SELECT *  from item_class order by class_name ASC";		
 	$cqrow = mysqli_query ($dbc, $cq); // Run the query.
+	
+	$date = date('Y-m-d',time());
+	echo $date;
 
 
 	// Check if the form has been submitted:
@@ -30,21 +33,7 @@
 		} else {
 			$c = mysqli_real_escape_string($dbc, trim($_POST['class']));
 		}*/
-		$c = mysqli_real_escape_string($dbc, trim($_POST['class']));
-		
-		// Check for an company_name:
-		if (empty($_POST['company_name'])) {
-			$errors[] = 'You forgot to enter your company_name.';
-		} else {
-			$cn = mysqli_real_escape_string($dbc, trim($_POST['company_name']));
-		}
-		
-		// Check for an parent_company:
-		if (empty($_POST['parent_company'])) {
-			$errors[] = 'You forgot to enter your parent_company name.';
-		} else {
-			$pc = mysqli_real_escape_string($dbc, trim($_POST['parent_company']));
-		}
+		//$c = mysqli_real_escape_string($dbc, trim($_POST['class']));
 		
 		// Check for a product_name:
 		if (empty($_POST['product_name'])) {
@@ -52,7 +41,8 @@
 		} else {
 			$pn = mysqli_real_escape_string($dbc, trim($_POST['product_name']));
 		}
-	
+		
+		
 		// Check for weight:
 		if (empty($_POST['weight'])) {
 			$errors[] = 'You forgot to enter the product weight.';
@@ -67,10 +57,10 @@
 			$t_w = mysqli_real_escape_string($dbc, trim($_POST['t_weight']));
 		}
 	
-		 $cform_number = count($_POST['cform']['cname']); //Get the number of constituent form
+		 //$cform_number = count($_POST['cform']['cname']); //Get the number of constituent form
 		 
 		 // Save cform data to arrays for query
-		 for ($i = 0; $i < $cform_number; $i++) {
+		/* for ($i = 0; $i < $cform_number; $i++) {
 				$_POST['cform']['cname'][$i];
 				// Check for a cname:
 				if (empty($_POST['cform']['cname'][$i])) {
@@ -88,7 +78,7 @@
 					$pweight[$i] = mysqli_real_escape_string($dbc, trim($_POST['cform']['pweight'][$i]));
 					//echo $pweight[$i];
 				}	
-				
+	/*			
 				// Check for a type:
 				if (empty($_POST['cform']['Type'][$i])) {
 					$errors[] = 'You forgot to enter the type of Constituents.';
@@ -98,10 +88,10 @@
 				}
 				
 				$classification[$i] = mysqli_real_escape_string($dbc, trim($_POST['cform']['classification'][$i]));	
-		 }; 
+		 }; */
 		
 	
-		$region_name = mysqli_real_escape_string($dbc, trim($_POST['Regions']));
+		//$region_name = mysqli_real_escape_string($dbc, trim($_POST['Regions']));
 	
 	
 		
@@ -180,9 +170,11 @@
 						echo "Invalid file";
 					}
 	
+		} else {
+			$path = '';
 		}
 		
-	
+		
 					
 					
 		if (empty($errors)) { // If everything's OK.
@@ -191,7 +183,7 @@
 			
 				
 			// Make the query:
-			$q1 = "UPDATE product SET class='$c', company_name='$cn',parent_company='$pc', product_name='$pn', weight='$w', img_path=$path, total_weight='$t_w' WHERE upccode = ".$upccode.";";		
+			$q1 = "UPDATE products SET  product_name='$pc', weight='$w', img_path='$path', total_weight='$t_w', last_updated = ".$date."  WHERE upccode = ".$upccode.";";		
 			//$q2 = "INSERT IGNORE INTO constituents (cname, type) VALUES ('$cname', '$type')";
 			//$q3 = "INSERT IGNORE INTO regions_recyclability (region_name ,cname , classification)VALUES ('$region_name',  '$cname',  '$classification')";
 			//$q4 = "INSERT IGNORE INTO prod_const (upccode, cname, part_weight) VALUES ('$uc', '$cname', '$pweight')";	
@@ -200,16 +192,16 @@
 			//$r3 = @mysqli_query ($dbc, $q3);  // Run the second query.
 			//$r4 = @mysqli_query ($dbc, $q4);  // Run the second query.
 			
-			for($i = 0; $i < $cform_number; $i++){
+		/*	for($i = 0; $i < $cform_number; $i++){
 				$q2[$i] = "INSERT IGNORE INTO constituents (cname, type) VALUES ('$cname[$i]', '$type[$i]')";
 				$q3[$i] = "INSERT IGNORE INTO regions_recyclability (region_name ,cname , classification)VALUES ('$region_name',  '$cname[$i]',  '$classification[$i]')";
 				$q4[$i] = "INSERT IGNORE INTO prod_const (upccode, cname, part_weight) VALUES ('$uc', '$cname[$i]', '$pweight[$i]')";	
 				$r2[$i] = @mysqli_query ($dbc, $q2[$i]);  // Run the second query.
 				$r3[$i] = @mysqli_query ($dbc, $q3[$i]);  // Run the second query.
 				$r4[$i] = @mysqli_query ($dbc, $q4[$i]);  // Run the second query.
-			}
+			}*/
 	
-			if ($r1 && (sizeof($r2)==$cform_number) && (sizeof($r3)==$cform_number) && (sizeof($r4)==$cform_number)) { // If it ran OK.
+			if ($r1 /*&& (sizeof($r2)==$cform_number) && (sizeof($r3)==$cform_number) && (sizeof($r4)==$cform_number)*/) { // If it ran OK.
 			
 				// Print a message:
 				echo '<h1>Done!</h1>
@@ -223,9 +215,9 @@
 				
 				// Debugging message:
 				echo '<p>' . mysqli_error($dbc) . '<br /><br />Query: ' . $q1 . '</p>';
-				echo '<p>' . mysqli_error($dbc) . '<br /><br />Query: ' . $q2 . '</p>';
-				echo '<p>' . mysqli_error($dbc) . '<br /><br />Query: ' . $q3 . '</p>';
-				echo '<p>' . mysqli_error($dbc) . '<br /><br />Query: ' . $q4 . '</p>';
+				//echo '<p>' . mysqli_error($dbc) . '<br /><br />Query: ' . $q2 . '</p>';
+				//echo '<p>' . mysqli_error($dbc) . '<br /><br />Query: ' . $q3 . '</p>';
+				//echo '<p>' . mysqli_error($dbc) . '<br /><br />Query: ' . $q4 . '</p>';
 							
 			} // End of if ($r) IF.
 			
@@ -254,18 +246,10 @@
 	//-- Input info --
 	do_html_header('Edit this product');
 	echo "
-				<form action='edit.php' id='form1' method='post' enctype='multipart/form-data'>
+				<form action='edit.php?upccode=".$upccode."' id='form1' method='post' enctype='multipart/form-data'>
 			 <div id='enterInfo'>
 					<p>Upccode: $upccode</p>
-					<p>Product Name: <input type='text'  name='product_name'  size='30' maxlength='20' value='Please enter' ></p>    
-					<p>Class:
-					<select name='class'>";
-						while ($crow = mysqli_fetch_array($cqrow, MYSQLI_ASSOC)){
-						echo "<option value='".$crow['class_name']."'>".$crow['class_name']."</option>";
-						};
-	echo		 "</select></p>
-					<p>Company_name: <input type='text' name='company_name' size='20' maxlength='80' value='Please enter'  /> </p>
-					<p>Parent_company: <input type='text' name='parent_company' size='20' maxlength='80' value='Please enter'  /> </p>
+					<p>Product Name: <input type='text'  name='product_name'  size='30' maxlength='20' value='Please enter' ></p> 
 					<!-- choose weight or volumn-->
 					<p style='display:inline'>
 								<select id='wORv'>
@@ -273,31 +257,10 @@
 								<option>Volumn</option>
 								</select>
 								: <input type='text' name='weight' size='20' maxlength='10' value='Please enter'  /><p id='gORl' style='display:inline'>g</p>
-							</p>
+					</p>
 					<p style='display:inline'>Total Weight: <input type='text' name='t_weight' size='20' maxlength='10' value='Please enter'  />g</p>
 					 
-					<p>Number of constituents:
-					<select name='cnumber' id='cnumber' >
-						<option value='0'>0</option>
-						<option value='1'>1</option>
-						<option value='2'>2</option>
-						<option value='3'>3</option>
-						<option value='4'>4</option>
-						<option value='5'>5</option>
-						<option value='6'>6</option>
-						<option value='7'>7</option>
-					</select></p>
-					 <p>Region: 
-							<select name='Regions' >
-								<option value='Cape Breton'>Cape Breton</option>
-								<option value='Eastern'>Eastern</option>
-								<option value='HRM'>HRM</option>
-								<option value='Northern'>Northern</option>
-								<option value='South Shore'>South Shore</option>
-								<option value='Valley'>Valley</option>
-								<option value='Western'>Western</option>
-							</select>
-						</p>
+					
 					<p>Upload an image: <input type='file' name='image' ></p>
 					</div>
 					<p><input type='submit' id='send' name='submit' value='Submit' /></p>
