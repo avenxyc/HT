@@ -1,7 +1,6 @@
 <?php // This is the products page
 	$title_name = 'Products';
 	include("includes/header.html");
-		include("includes/functions.php");
 	echo "<script src=\"includes/add-jQuery.js\"></script>";
 	
 	require_once ('mysqli_connect.php');//connect to the database
@@ -276,16 +275,16 @@ if (isset($_POST['submitted'])) {
 echo "<h1>Add new product</h1>
   		<form action='add.php' id='form1' method='post' enctype='multipart/form-data'>
  		 <div id='enterInfo'>
-				<p>Upccode: <input type='text' name='upccode' size='15' maxlength='20' value='Product upccode' /></p>
-				<p>Product Name: <input type='text'  name='product_name'  size='30' maxlength='20' value='Please enter' ></p>    
+				<p>Upccode: <input type='text' name='upccode' size='15' maxlength='20' placeholder='UPC code' /></p>
+				<p>Product Name: <input type='text'  name='product_name'  size='30' maxlength='20' placeholder='Product name' ></p>    
 				<p>Class:
 				<select name='class'>";
 				  while ($crow = mysqli_fetch_array($cqrow, MYSQLI_ASSOC)){
 					echo "<option value='".$crow['class_name']."'>".$crow['class_name']."</option>";
 					};
 echo		 "</select></p>
-				<p>Company_name: <input type='text' name='company_name' size='20' maxlength='80' value='Please enter'  /> </p>
-				<p>Parent_company: <input type='text' name='parent_company' size='20' maxlength='80' value='Please enter'  /> </p>
+				<p>Company_name: <input type='text' name='company_name' size='20' maxlength='80' placeholder='Company name'  /> </p>
+				<p>Parent_company: <input type='text' name='parent_company' size='20' maxlength='80' placeholder='Parent company name'  /> </p>
 				<!-- choose weight or volumn-->
 				<p style='display:inline'>
 							<select id='wORv'>

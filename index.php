@@ -2,7 +2,6 @@
 	session_start();
 	$title_name = 'Test site';  //Title name of this page
 	include("/includes/header.html"); // include the header file
-	include("/includes/functions.php");
 	echo"<script src='includes/index-jQuery.js' type='text/javascript'></script>" ;
 ?>
 <!-- This is the header, the following content is for the body -->
@@ -39,11 +38,7 @@
       </div>
   </div>
   
-  <div id="sign-in">
-  	<?php
-			is_logged_in();
-			 ?>
-	</div>
+
 
 <div class="tiles">
   <div class="tile">

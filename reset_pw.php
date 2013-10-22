@@ -2,7 +2,6 @@
 	session_start();
 	$title_name = "Reset Password";
 	include("includes/header.html");
-	include("/includes/functions.php");
 	
 	do_html_header('Reset your password');
 	echo '<form action="../reset_pw_send_email.php"  method="post">';

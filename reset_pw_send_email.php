@@ -2,7 +2,6 @@
 	session_start();
 	$title_name = "Send email";
 	include("includes/header.html");
-	include("/includes/functions.php");
 	
 	$email = $_POST['email'];
 	

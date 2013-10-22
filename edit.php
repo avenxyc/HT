@@ -2,7 +2,6 @@
 	$title_name = "Edit product";
 	
 	include("includes/header.html");
-	include("includes/functions.php");
 	
 	$upccode = $_GET['upccode'];
 	

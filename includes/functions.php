@@ -2,25 +2,14 @@
 	function is_logged_in(){
 		if(!isset($_SESSION['valid_user'])) {
 ?>  <!-- finish the form later -->
-    <form action="../auth_log_in.php" method="post" id="index_sign_in">
-      <div id="sign-in-text">
-        <div class="members-info">
-          <label>Username: </label>
-          <input type="text" name="username" />
-        </div>
-        <div class="members-info">
-          <label>Password: </label>
-          <input type="password" name="password" />
-         </div>
-        <button class="members-login" value="Sign in">Sign in</button>
-        <a href="../sign_up.php"> <button type="button" class="members-login"  value="Sign up">Sign up</button></a>
-        </div>
-      </form>
+    <li><a href="#login-box" class="login-window">Sign in</a></li>
+    <li><a href="../sign_up.php">Sign up</a></li>
+        
 
 <?php 
 		} else {
-			echo "<div id='signed-in-text'> Welcome, ". $_SESSION['valid_user'] .". <br />
-						<a href='log_out.php'><button type='button' value='Log out'>Log out</div>";
+			echo "<li><div id='signed-in-text'> Welcome, ". $_SESSION['valid_user'] .".</li>
+						<li><a href='log_out.php'><button type='button' value='Log out'>Log out</div></li>";
 		}
 	}
 	      

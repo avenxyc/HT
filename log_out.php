@@ -1,7 +1,6 @@
 <?php
 		$title_name = 'Log out';
 		include("includes/header.html");
-		include("includes/functions.php");
 		session_start();
 		$old_user = $_SESSION['valid_user'];
 		

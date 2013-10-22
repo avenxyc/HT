@@ -2,7 +2,6 @@
 	$title_name = "Processing";
 	
 	include("includes/header.html");
-	include("includes/functions.php");
 	
 	$username = $_POST['username'];
 	$email = $_POST['email'];

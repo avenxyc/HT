@@ -21,7 +21,7 @@ body {
 		color-stop(0.78, rgb(180,214,44))
 	);
 	color:#FFFFFF;
-	font-family: Arial, 'Lucida Sans Unicode';
+	font-family: Arial, Helvetica, sans-serif;
 	font-size: 87.5%;
 	width: 1200px;
 	margin: 0 auto;
@@ -54,6 +54,94 @@ a {
 #search{
 	float: right;
 }
+
+
+/* Mask for background, by default is not display */
+#mask {
+    display: none;
+    background: rgba(153,153,153,0.5);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    z-index: 999;
+}
+
+
+.login-popup {
+    display: none;
+    background: #b4d62c;
+    padding: 10px;
+    float: left;
+    font-size: 1.2em;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 99999;
+    box-shadow: 0px 0px 20px #999;
+    /* CSS3 */
+    -moz-box-shadow: 0px 0px 20px #999;
+    /* Firefox */
+    -webkit-box-shadow: 0px 0px 20px #999;
+  
+}
+
+img.btn_close {
+		float: right;
+    margin: -25px -25px 0 0;
+}
+
+fieldset {
+    border: none;
+}
+
+form.signin .textbox label {
+    display: block;
+    padding-bottom: 7px;
+}
+
+form.signin .textbox span {
+    display: block;
+		font-size: 16px;
+}
+
+form.signin p, form.signin span {
+    color: rgba(255,255,255,1);
+    font-size: 11px;
+    line-height: 18px;
+}
+
+form.signin .textbox input {
+    background: #FFFFFF;
+    border: 1px solid rgba(255,255,255,1);
+    color: rgba(0,0,0,1);
+    font: 13px Arial, Helvetica, sans-serif;
+    padding: 6px 6px 4px;
+    width: 200px;
+}
+
+
+
+.button {
+    background: rgba(0,153,255,0.6);
+		border-color: #000;
+    border-width: 1px;
+    color: #FFF;
+    cursor: pointer;
+    display: inline-block;
+    padding: 6px 6px 4px;
+    margin-top: 10px;
+    font: 12px;
+    width: 214px;
+}
+
+.button:hover {
+    background: rgba(0,153,255,1);
+}
+
 
 /*Speicfy the input font to make password box and text box the same width*/
 input {
@@ -113,6 +201,11 @@ input {
 	background-color:rgba(204,102,204,1);
 }
 
+.sign_in_bar{
+	float: right;
+}
+
+
 
 /* For content in the container */
 .content_header {
@@ -128,7 +221,7 @@ input {
 /*CSS script for index.php*/
 
 #slider-wrapper {
-	width: 70%;
+	width: 100%;
 	height: auto;
 	position: relative;
 	overflow: hidden;
@@ -200,41 +293,12 @@ input {
 }
 
 
-#sign-in {
-	position: relative;
-	width: 30%;
-	color:#000000;
-	
-	float:left;
-	background-image:url(../images/signin_bg.jpg);
-	background-size: cover;
-	min-height: 345px;
-}
-
-.members-info {
-	text-align: right;
-}
-	
-.members-login {
-	width: 90px;
-	background-color: rgba(255,255,255,0.6);
-	border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-}
-
-#sign-in-text {
-	position: absolute;
-	bottom: 0px; 
-	right: 0px;
-}
 
 /*After user logged in */
 #signed-in-text {
-	position: absolute;
+	font-size: 10px;
 	text-align: right;
 	bottom: 0px; 
-	right: 15px;
 }
 
 .tiles {
@@ -466,10 +530,6 @@ h1 {
 	}	
 	.members-login {
 		width: 90px;
-		background-color: rgba(255,255,255,0.6);
-		border-radius: 5px;
-		-moz-border-radius: 5px;
-		-webkit-border-radius: 5px;
 		
 	}
 
@@ -491,10 +551,6 @@ h1 {
 	.members-info {
 		width: 32%;
 		display: inline;
-	}
-	
-	.members-login {
-		width: 18%;
 	}
 	
 	#slides li {
