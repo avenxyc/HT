@@ -8,8 +8,8 @@
 
 <?php 
 		} else {
-			echo "<li><div id='signed-in-text'> Welcome, ". $_SESSION['valid_user'] .".</li>
-						<li><a href='log_out.php'><button type='button' value='Log out'>Log out</div></li>";
+			echo "<li><div id='signed-in-text'> Welcome, ". $_SESSION['valid_user'] .".</div></li>
+						<li><a href='log_out.php'>Log out</a></li>";
 		}
 	}
 	      
@@ -98,6 +98,18 @@
 	function redirect_home() {
 		do_html_content('Redirecting you back to home page...');
 		header('Refresh: 3;url=index.php');
+	}
+	
+	
+	//Check the upc code if it's valid
+	function check_upc($upc) {
+		if (empty($upc)) {
+			$errors[] = 'You forgot to enter upccode.';
+		} else if(!is_numeric($upc)) {
+			$errors[] = 'UPC code must be numbers';
+		} else {
+			$uc = mysqli_real_escape_string($dbc, trim($upc));
+		}
 	}
 
 ?>

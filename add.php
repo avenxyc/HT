@@ -2,6 +2,8 @@
 	$title_name = 'Products';
 	include("includes/header.html");
 	echo "<script src=\"includes/add-jQuery.js\"></script>";
+	session_start();
+	
 	
 	require_once ('mysqli_connect.php');//connect to the database
 	
@@ -18,13 +20,7 @@ if (isset($_POST['submitted'])) {
 	$errors = array(); // Initialize an error array.
 	
 	// Check for a upccode:
-	if (empty($_POST['upccode'])) {
-		$errors[] = 'You forgot to enter upccode.';
-	} else if(!is_numeric($_POST['upccode'])) {
-		$errors[] = 'UPC code must be numbers';
-	} else {
-		$uc = mysqli_real_escape_string($dbc, trim($_POST['upccode']));
-	}
+	check_upc($_POST['upccode']);
 	
 	/* Check for a class:
 	if (empty($_POST['class'])) {
@@ -109,7 +105,6 @@ if (isset($_POST['submitted'])) {
 	
 	// Check if the imege is valid
   if (isset($_FILES['image']) && $_FILES['image']['size'] > 0) { 
-	
 		/*//This is the directory where images will be saved
 			$target = "pics/";
 			$target = $target . basename( $_FILES['image']['name']);
@@ -147,9 +142,10 @@ if (isset($_POST['submitted'])) {
 					$fileName = addslashes($fileName);
 			}*/
 			
-			$allowedExts = array("gif", "jpeg", "jpg", "png");
+			$allowedExts = array("gif", "jpeg", "jpg", "png", "JPG");
 			$temp = explode(".", $_FILES["image"]["name"]);
 			$extension = end($temp);
+			echo "hello";
 			$path = "pics/" . $_FILES["image"]["name"];
 			if ((($_FILES["image"]["type"] == "image/gif")
 			|| ($_FILES["image"]["type"] == "image/jpeg")
@@ -216,16 +212,7 @@ if (isset($_POST['submitted'])) {
 			$r2[$i] = @mysqli_query ($dbc, $q2[$i]);  // Run the second query.
 			$r3[$i] = @mysqli_query ($dbc, $q3[$i]);  // Run the third query.
 			$r4[$i] = @mysqli_query ($dbc, $q4[$i]);  // Run the forth query.
-			 foreach ($_POST as $key => $value) {
-        echo "<tr>";
-        echo "<td>";
-        echo $key;
-        echo "</td>";
-        echo "<td>";
-        echo $value;
-        echo "</td>";
-        echo "</tr>";
-    }
+			 
 		}
 
 		if ($r1 && (sizeof($r2)==$cform_number) && (sizeof($r3)==$cform_number) && (sizeof($r4)==$cform_number)) { // If it ran OK.

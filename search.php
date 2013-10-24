@@ -70,9 +70,14 @@ require_once ('mysqli_connect.php');//connect to the database
 
 	
 	// query
-	$q = "SELECT  DISTINCT  products.upccode, weight, product_name, last_updated from constituents, products, prod_const, regions_recyclability 
-					where products.upccode = prod_const.upccode and prod_const.cname=constituents.cname 
-								and constituents.cname = regions_recyclability.cname order by products.upccode";	
+	$default_region = 'Cape Breton';
+	$q = "SELECT  DISTINCT  products.upccode, weight, product_name, last_updated
+			  FROM constituents, products, prod_const, regions_recyclability 
+				WHERE	 products.upccode = prod_const.upccode
+					 and prod_const.cname = constituents.cname 
+					 and constituents.cname = regions_recyclability.cname
+					 and regions_recyclability.region_name = 'Cape Breton'
+				ORDER BY products.upccode";	
 	
 	$r = mysqli_query($dbc, $q); // Run the query.
 	$num = mysqli_num_rows($r);// get the nunber of row
@@ -86,10 +91,9 @@ require_once ('mysqli_connect.php');//connect to the database
 								<th>Modified date</th>
 								<th>Action</th>
 							</tr>';
-	
 			while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)){
 			echo '<tr>
-							<td><a id="details" href="view-specific.php?upccode=' . $row['upccode'].'">' . $row['upccode'] . '</a></td>
+							<td><a id="details" href="view-specific.php?upccode=' . $row['upccode'].'&region='.$default_region.'">' . $row['upccode'] . '</a></td>
 							<td>' . $row['product_name']. '</td>
 							<td>' . $row['weight']. '</td>
 							<td>' . $row['last_updated']. '</td>';

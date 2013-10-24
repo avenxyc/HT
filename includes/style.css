@@ -296,9 +296,8 @@ input {
 
 /*After user logged in */
 #signed-in-text {
-	font-size: 10px;
-	text-align: right;
-	bottom: 0px; 
+	font-size: 20px;
+	padding: 8px 0px;
 }
 
 .tiles {
@@ -417,7 +416,6 @@ h1 {
 }
 
 #view-specific-info {
-	position:static;
 	float:right;
 	width: 60%;
 	height: 350px;
@@ -427,9 +425,8 @@ h1 {
 
 #view-specific-info >p[class='title']{
 	margin: 0;
-	padding: 1px;
-	height: 25px;
-	color: #CCCCCC;
+	padding: 2px;
+	color: #FFFFFF;
 	background-color: rgba(0,102,255,0.6);
 }
 

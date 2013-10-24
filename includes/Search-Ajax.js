@@ -1,7 +1,7 @@
 // Search-Ajax.js
 $(document).ready(function(){
 	
-	$('#submit').click(function(){
+	$('#filter').change(function(){
 		var class_val = $('#class').val();
 		var region_val = $('#region').val();
 		var keyword = $('#keyword').val();
