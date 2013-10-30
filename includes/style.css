@@ -28,6 +28,12 @@ body {
 	text-align: left;
 }
 
+body p {
+	margin: 0;
+	pardding: 0;
+
+}
+
 a {
 	text-decoration:none;
 }
@@ -208,13 +214,24 @@ input {
 
 
 /* For content in the container */
+.error {
+	margin-left: auto;
+	margin-right: auto;
+	width:800px;
+	text-align: left;
+	background:rgba(204,204,204,0.5); 
+}
+
 .content_header {
-	margin: 20px;
+	margin: 0px 20px;
 	font-size: 16px;
 }
 
 .content_text {
-	margin: 20px;
+	margin: 0px 20px;
+}
+
+.content_error {
 }
 
 
@@ -346,13 +363,31 @@ h1 {
 
 /*CSS script for add.php*/
 #form1 {
-	position:relative;
-	left: 5%;
+	width: 450px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
-#form1 p{
-	font-weight:bold;
+#form1 table {
+	background-color: rgba(204,204,204,0.5);
 }
+
+#form1 td {
+	padding: 5px;
+}
+
+#form1 p {
+	text-align: right;
+}
+
+#form1 .button {
+	width:50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+	
+
+
 
 
 /*CSS script for footer.php*/

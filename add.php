@@ -20,7 +20,13 @@ if (isset($_POST['submitted'])) {
 	$errors = array(); // Initialize an error array.
 	
 	// Check for a upccode:
-	check_upc($_POST['upccode']);
+	if(empty($upc)) {
+		$errors[] = 'UPC code should not be empty.';
+	} else if(!is_numeric($upc)) {
+		$errors[] = 'UPC code should be numbers.';
+	} else {
+		$uc = mysqli_real_escape_string($dbc, trim($upc));
+	}
 	
 	/* Check for a class:
 	if (empty($_POST['class'])) {
@@ -242,14 +248,14 @@ if (isset($_POST['submitted'])) {
 		exit();
 		
 	} else { // Report the errors.
-	
+		echo '<div class="error">';	
 		do_html_header('Error');
-		do_html_content('The following error(s) occurred: ');
+		do_html_error('The following error(s) occurred: ');
 		foreach ($errors as $msg) { // Print each error.
-			do_html_content(" - $msg \n");
+			do_html_content(" - $msg");
 		}
-		do_html_content('Please try again.');
-		echo '<br />';
+		do_html_error('Please try again.');
+		echo '</div>';
 		
 	} // End of if (empty($errors)) IF.
 	

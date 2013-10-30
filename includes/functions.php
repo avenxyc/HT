@@ -80,6 +80,12 @@
 			echo '<p class="content_text">'.$content.'</p>';
 		}
 	}	
+	
+	function do_html_error($error) { 
+		if(!empty($error)) {
+			echo '<p class="content_error">'.$error.'</p>';
+		}
+	}
 		
 		//Check existance in Database	
 	function check_existence($dbc, $field, $name) {
@@ -109,6 +115,7 @@
 			$errors[] = 'UPC code must be numbers';
 		} else {
 			$uc = mysqli_real_escape_string($dbc, trim($upc));
+			return $uc;
 		}
 	}
 
