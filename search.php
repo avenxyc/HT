@@ -105,6 +105,8 @@ require_once ('mysqli_connect.php');//connect to the database
 			echo	'</tr>';
 			}
 			echo '</table>';
+	} else {
+		do_html_content('No data in the database', 'no_data');
 	}
 
 	echo '</div>';

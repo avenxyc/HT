@@ -68,22 +68,22 @@
 	
 	
 	// Output content header in a proper way
-	function do_html_header($header) {
+	function do_html_header($header, $class="content_error") {
 		if(!empty($header)){
-			echo '<h3 class="content_header">'.$header.'</h3>';
+			echo "<h3 class='class'>$header</h3>";
 		}
 	}
 	
 	// Ouput content text in a proper way	
-	function do_html_content($content) {
+	function do_html_content($content, $class="content_text") {
 		if(!empty($content)){
-			echo '<p class="content_text">'.$content.'</p>';
+			echo "<p class='$class'>$content</p>";
 		}
 	}	
 	
-	function do_html_error($error) { 
+	function do_html_error($error, $class="content_error") { 
 		if(!empty($error)) {
-			echo '<p class="content_error">'.$error.'</p>';
+			echo "<p class='$class'>$error</p>";
 		}
 	}
 		
@@ -106,17 +106,5 @@
 		header('Refresh: 3;url=index.php');
 	}
 	
-	
-	//Check the upc code if it's valid
-	function check_upc($upc) {
-		if (empty($upc)) {
-			$errors[] = 'You forgot to enter upccode.';
-		} else if(!is_numeric($upc)) {
-			$errors[] = 'UPC code must be numbers';
-		} else {
-			$uc = mysqli_real_escape_string($dbc, trim($upc));
-			return $uc;
-		}
-	}
 
 ?>
