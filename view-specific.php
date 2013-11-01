@@ -5,7 +5,7 @@ $title_name= 'View';
 include ('includes/header.html');
 echo "<script type=\"text/javascript\" src=\"includes/view-specific-jQuery.js\"></script>";
 echo "<script type=\"text/javascript\" src=\"https://www.google.com/jsapi\"></script>";
-session_start();
+ 
 
 				
 // Get the upccode and region_val
@@ -50,7 +50,12 @@ if(!empty($img_path)){
 	echo '<div id="view-specific-image">
 				<img src="' . $img_path . '"/>
 				</div>';
+} else {
+	echo '<div id="view-specific-image">
+				<img src="images/no_image.jpg"/>
+				</div>';
 }
+
 echo '<div id="view-specific-info">
 				<p class="title">Product Name: </p>
 				<p class="info">'.$product['product_name'].'</p>
@@ -63,11 +68,11 @@ echo '<div id="view-specific-info">
 				<p class="title">Weight/Volumn: </p>
 				<p class="info">'.$product['weight'].'(g/L)</p>
 				<p class="title">Recyclability</p>
-				<p class="info">'. 100 * number_format($recyc_weight / ($unrecyc_weight+$recyc_weight),2).'%</p>
-			
-				
-			
+				<p class="info">'. 100 * number_format($recyc_weight / ($unrecyc_weight+$recyc_weight),2).'%</p>';
+				if(isset($_SESSION['valid_user']))
+				echo '<a href="edit.php?upccode='.$upccode.'"><button type="button" class="button">Edit</button></a>
 			</div>';
+
 echo '</div>';
 
 

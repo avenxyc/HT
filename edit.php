@@ -1,7 +1,9 @@
 <?php //Edit a product
 	$title_name = "Edit product";
-	
 	include("includes/header.html");
+	
+	if(isset($_SESSION['valid_user'])) {//Only logged in users can view this page
+	
 	
 	$upccode = $_GET['upccode'];
 	
@@ -14,7 +16,6 @@
 	$cqrow = mysqli_query ($dbc, $cq); // Run the query.
 	
 	$date = date('Y-m-d',time());
-	echo $date;
 
 
 	// Check if the form has been submitted:
@@ -36,7 +37,7 @@
 		
 		// Check for a product_name:
 		if (empty($_POST['product_name'])) {
-			$pn = 'Not applicable';
+			$errors[] = 'The product name can not be empty.';
 		} else {
 			$pn = mysqli_real_escape_string($dbc, trim($_POST['product_name']));
 		}
@@ -45,6 +46,8 @@
 		// Check for weight:
 		if (empty($_POST['weight'])) {
 			$errors[] = 'You forgot to enter the product weight.';
+		} else if(!is_numeric($_POST['weight'])) {
+			$errors[] = 'The weight must be numbers.';
 		} else {
 			$w = mysqli_real_escape_string($dbc, trim($_POST['weight']));
 		}
@@ -52,6 +55,10 @@
 		// Check for total weight
 		if (empty($_POST['t_weight'])) {
 			$errors[] = 'You forgot to enter the product weight.';
+		} else if(!is_numeric($_POST['t_weight'])) {
+			$errors[] = 'The total weight must be numbers.';
+		} else if($_POST['weight'] >= $_POST['t_weight']) {
+			$errors[] = 'The total weight should be greater than the weight';
 		} else {
 			$t_w = mysqli_real_escape_string($dbc, trim($_POST['t_weight']));
 		}
@@ -144,29 +151,29 @@
 				|| ($_FILES["image"]["type"] == "image/pjpeg")
 				|| ($_FILES["image"]["type"] == "image/x-png")
 				|| ($_FILES["image"]["type"] == "image/png"))
-				&& ($_FILES["image"]["size"] < 20000000)
+				&& ($_FILES["image"]["size"] < 100000000)
 				&& in_array($extension, $allowedExts)) {
 					if ($_FILES["image"]["error"] > 0){
-						echo "Return Code: " . $_FILES["image"]["error"] . "<br>";
+						$errors[]= "Return Code: " . $_FILES["image"]["error"] . "<br>";
 						}
 					else
 						{
-							echo "Upload: " . $_FILES["image"]["name"] . "<br>";
+							/*echo "Upload: " . $_FILES["image"]["name"] . "<br>";
 							echo "Type: " . $_FILES["image"]["type"] . "<br>";
 							echo "Size: " . ($_FILES["image"]["size"] / 1024) . " kB<br>";
-							echo "Temp file: " . $_FILES["image"]["tmp_name"] . "<br>";
+							echo "Temp file: " . $_FILES["image"]["tmp_name"] . "<br>";*/
 				
 							if (file_exists("pics/" . $_FILES["image"]["name"])) {
-								echo $_FILES["image"]["name"] . " already exists. ";
+								$errors[] = $_FILES["image"]["name"] . " already exists. ";
 							}
 							else {
 								move_uploaded_file($_FILES["image"]["tmp_name"], $path);
-								echo "Stored in: " . "pics/" . $_FILES["image"]["name"];
+								//echo "Stored in: " . "pics/" . $_FILES["image"]["name"];
 							}
 						}
 					}
 				else {
-						echo "Invalid file";
+						$errors[]= "Invalid file";
 					}
 	
 		} else {
@@ -182,7 +189,7 @@
 			
 				
 			// Make the query:
-			$q1 = "UPDATE products SET  product_name='$pc', weight='$w', img_path='$path', total_weight='$t_w', last_updated = ".$date."  WHERE upccode = ".$upccode.";";		
+			$q1 = "UPDATE products SET  product_name='$pn', weight='$w', img_path='$path', total_weight='$t_w', last_updated = '$date'  WHERE upccode = '$upccode';";		
 			//$q2 = "INSERT IGNORE INTO constituents (cname, type) VALUES ('$cname', '$type')";
 			//$q3 = "INSERT IGNORE INTO regions_recyclability (region_name ,cname , classification)VALUES ('$region_name',  '$cname',  '$classification')";
 			//$q4 = "INSERT IGNORE INTO prod_const (upccode, cname, part_weight) VALUES ('$uc', '$cname', '$pweight')";	
@@ -203,20 +210,23 @@
 			if ($r1 /*&& (sizeof($r2)==$cform_number) && (sizeof($r3)==$cform_number) && (sizeof($r4)==$cform_number)*/) { // If it ran OK.
 			
 				// Print a message:
-				echo '<h1>Done!</h1>
-			<p>You have now successfully added a new item into the database</p><p><br /></p>';	
+				do_html_header('Done!','center_header');
+			  do_html_content('You have now successfully added a new item into the database','center_header');	
 			
 			} else { // If it did not run OK.
 				
 				// Public message:
-				echo '<h1>System Error</h1>
-				<p class="error">You could not be registered due to a system error. We apologize for any inconvenience.</p>'; 
+				echo '<div class="error">';
+				do_html_header('System Error');
+				do_html_error('You could not be registered due to a system error. We apologize for any inconvenience');
+				 
 				
 				// Debugging message:
 				echo '<p>' . mysqli_error($dbc) . '<br /><br />Query: ' . $q1 . '</p>';
 				//echo '<p>' . mysqli_error($dbc) . '<br /><br />Query: ' . $q2 . '</p>';
 				//echo '<p>' . mysqli_error($dbc) . '<br /><br />Query: ' . $q3 . '</p>';
 				//echo '<p>' . mysqli_error($dbc) . '<br /><br />Query: ' . $q4 . '</p>';
+				echo '</div>';
 							
 			} // End of if ($r) IF.
 			
@@ -228,12 +238,14 @@
 			
 		} else { // Report the errors.
 		
-			echo '<h1>Error!</h1>
-			<p class="error">The following error(s) occurred:<br />';
+			echo '<div class="error">';	
+			do_html_header('Error');
+			do_html_error('The following error(s) occurred: ');
 			foreach ($errors as $msg) { // Print each error.
-				echo " - $msg<br />\n";
+				do_html_content(" - $msg");
 			}
-			echo '</p><p>Please try again.</p><p><br /></p>';
+			do_html_error('Please try again.');
+			echo '</div>';
 			
 		} // End of if (empty($errors)) IF.
 		
@@ -243,9 +255,9 @@
 
 
 	//-- Input info --
-	do_html_header('Edit this product');
+	do_html_header('Edit this product','center_header');
 	echo "
-				<form action='edit.php?upccode=".$upccode."' id='form1' method='post' enctype='multipart/form-data'>
+				<form action='edit.php?upccode=".$upccode."' class='form' method='post' enctype='multipart/form-data'>
 			 <div id='enterInfo'>
 					<p>Upccode: $upccode</p>
 					<p>Product Name: <input type='text'  name='product_name'  size='30' maxlength='20' value='Please enter' ></p> 
@@ -256,13 +268,13 @@
 								<option>Volumn</option>
 								</select>
 								: <input type='text' name='weight' size='20' maxlength='10' value='Please enter'  /><p id='gORl' style='display:inline'>g</p>
-					</p>
-					<p style='display:inline'>Total Weight: <input type='text' name='t_weight' size='20' maxlength='10' value='Please enter'  />g</p>
+							</p>
+					<p style='display:inline'>Total Weight: <input type='text' name='t_weight' size='20' maxlength='10' value='Please enter'  />g</p><br />
 					 
 					
-					<p>Upload an image: <input type='file' name='image' ></p>
+					<p>Change the image: <input type='file' name='image' ></p>
 					</div>
-					<p><input type='submit' id='send' name='submit' value='Submit' /></p>
+					<p><input type='submit' class='button' name='submit' value='Submit' /></p>
 				
 				 
 					<input type='hidden' name='submitted' value='TRUE' />
@@ -270,6 +282,6 @@
 	
 	
 	
-
+	}
 	include ('includes/footer.html');
 ?>

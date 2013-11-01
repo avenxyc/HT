@@ -11,7 +11,7 @@
 	$lname = $_POST['last_name'];
 
 	
-	session_start();
+	 
 	
 	try {
 		// Check forms filled in

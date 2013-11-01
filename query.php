@@ -20,13 +20,23 @@ $(document).ready(function(){
 	background-color: rgba(153,204,0,0.6);
 }
 
+.no_data {
+	text-align:center;
+	background-color: rgba(0,204,51,0.1);
+	padding: 10px 0px;;
+	width: 100%;
+	font: "Times New Roman", Times, serif;
+	font-size:24px;
+	border-radius: 10px;
+}
+
 
 </style>
 
 <?php
 
 require_once ('mysqli_connect.php');//connect to the database
-session_start();
+ 
 
 
 
@@ -34,9 +44,6 @@ $cv = $_GET['cv']; //class_val
 $rv = $_GET['rv']; //region_val
 $kw = $_GET['kw']; //keyword
 
-
-echo $cv;
-echo $rv;
 
 // query
 $q = "SELECT  DISTINCT  products.upccode, weight, product_name, last_updated from constituents, products, prod_const, regions_recyclability 
@@ -71,6 +78,8 @@ if($num > 0){
 			echo	'</tr>';
 			}
 		echo '</table>';
+} else {
+	echo '<p class="no_data">No data in the database</p>';
 }
 
 

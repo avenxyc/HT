@@ -68,22 +68,22 @@
 	
 	
 	// Output content header in a proper way
-	function do_html_header($header, $class="content_error") {
+	function do_html_header($header, $class="center_header") {
 		if(!empty($header)){
-			echo "<h3 class='class'>$header</h3>";
+			echo "<h3 class=$class>$header</h3>";
 		}
 	}
 	
 	// Ouput content text in a proper way	
 	function do_html_content($content, $class="content_text") {
 		if(!empty($content)){
-			echo "<p class='$class'>$content</p>";
+			echo "<p class=$class>$content</p>";
 		}
 	}	
 	
 	function do_html_error($error, $class="content_error") { 
 		if(!empty($error)) {
-			echo "<p class='$class'>$error</p>";
+			echo "<p class=$class>$error</p>";
 		}
 	}
 		
@@ -102,7 +102,7 @@
 	
 	// Redirect to home page
 	function redirect_home() {
-		do_html_content('Redirecting you back to home page...');
+		do_html_content('Redirecting you back to home page...', 'center_text');
 		header('Refresh: 3;url=index.php');
 	}
 	

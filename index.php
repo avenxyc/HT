@@ -1,5 +1,4 @@
 <?php //This is the home page
-	session_start();
 	$title_name = 'Test site';  //Title name of this page
 	include("/includes/header.html"); // include the header file
 	echo"<script src='includes/index-jQuery.js' type='text/javascript'></script>" ;

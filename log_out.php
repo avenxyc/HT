@@ -1,7 +1,7 @@
 <?php
 		$title_name = 'Log out';
 		include("includes/header.html");
-		session_start();
+		 
 		$old_user = $_SESSION['valid_user'];
 		
 		//Store to test if they 'were' logged in
@@ -9,7 +9,7 @@
 		$result_dest = session_destroy();
 		
 		//Display log out info
-		do_html_header ('<h3>Logging out...</h3>');
+		do_html_header ('<h3>Logging out...</h3>','center');
 		
 		
 		if(!empty($old_user)) {

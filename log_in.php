@@ -1,15 +1,15 @@
 <?php
 	$title_name = 'Log in';
 	include("includes/header.html");
-	session_start();
+	 
 	
 	if(isset($_SESSION['valid_user'])){
-		echo 'You are logged in as: '. $_SESSION['valid_user'] . '<br />';
-		echo '<a href="log_out.php">Log out</a><br />';
+		do_html_content('You are logged in as: '. $_SESSION['valid_user'] .'','center_text');
+		do_htnml_header('<a href="log_out.php">Log out</a>');
 	}else{
 		//Output error message
 		include("includes/log_in_form.html");
-		echo 'You are not logged in or your username/password may be wrong, please try again';
+		do_html_error('You are not logged in or your username/password may be wrong, please try again');
 		
 	}
 		

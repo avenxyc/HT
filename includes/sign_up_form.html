@@ -1,6 +1,6 @@
 <div id='user_sign_up'>
-  <h3>User sign up</h3>
-    <form action="../auth_sign_up.php"  method='post'>
+ <?php do_html_header('User sign up'); ?>
+ 	 <form action="../auth_sign_up.php" class='form' method='post'>
     <table>
       <tr>
         <td>Username:</td>
@@ -27,7 +27,7 @@
         <td><input type="text" name="last_name"></td>
       </tr>     
       <tr>
-        <td colspan="2"	align="center"><input type="submit" name="sign_up" value="Submit" /></td>
+        <td colspan="2"	align="center"><input type="submit" class='button' name="sign_up" value="Submit" /></td>
       </tr>
       </table>
      </form>

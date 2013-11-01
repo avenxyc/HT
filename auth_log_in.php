@@ -1,5 +1,4 @@
 <?php
-	session_start();
 	$title_name = "Logging in...";
 	include("includes/header.html");
 
@@ -22,11 +21,11 @@
 		if(mysqli_num_rows($result) > 0){
 			$_SESSION['valid_user'] = $username;
 			header('Refresh: 3;url=index.php');
-			echo '<h3>Welcome, '.$username.'. We are redirecting to the home page.';
+			do_html_content('Welcome, '.$username.'. We are redirecting to the home page.', 'center_text');
 		}else {
-			echo '<div id="password_error">';
-			echo '<p > Wrong username or password</p>';
-			echo '<br /><a href="reset_pw.php">Forget password?</a>';
+			echo '<div id="error">';
+			do_html_error('Wrong username or password', 'center_header');
+			do_html_error('<a href="reset_pw.php">Forget password?</a>', 'center_text');
 			echo '</div>';
 		}
 		

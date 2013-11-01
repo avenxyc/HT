@@ -8,7 +8,7 @@
 	$passwd2 = $_POST['passwd2'];
 	//Start session which may be needed later
 	//Start it now because it must go before headers
-	session_start();
+	 
 	try {
 		//check forms filled in
 		if(!filled_out($_POST)) {

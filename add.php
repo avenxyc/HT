@@ -2,7 +2,6 @@
 	$title_name = 'Products';
 	include("includes/header.html");
 	echo "<script src=\"includes/add-jQuery.js\"></script>";
-	session_start();
 	
 	if(isset($_SESSION['valid_user'])) {//Only logged in users can view this page
 		
@@ -54,7 +53,7 @@
 		
 		// Check for a product_name:
 		if (empty($_POST['product_name'])) {
-			$pn = 'Not applicable';
+			$errors[] = 'The product name can not be empty.';
 		} else {
 			$pn = mysqli_real_escape_string($dbc, trim($_POST['product_name']));
 		}
@@ -188,7 +187,8 @@
 								$errors[] =  $_FILES["image"]["name"] . " already exists. ";
 							}
 							else {
-								
+								//Move pictures
+								move_uploaded_file($_FILES["image"]["tmp_name"], $path);
 								//echo "Stored in: " . "pics/" . $_FILES["image"]["name"];
 							}
 						}
@@ -212,8 +212,7 @@
 					
 		if (empty($errors)) { // If everything's OK.
 		
-			//Move pictures
-			move_uploaded_file($_FILES["image"]["tmp_name"], $path);
+			
 		
 			// Put the info in the database...
 			
@@ -280,8 +279,8 @@
 	
 	
 	//-- Input info --
-	echo "<h1>Add new product</h1>
-				<form action='add.php' id='form_add' method='post' enctype='multipart/form-data'>
+		do_html_header('Add new product','center_header');
+		echo "<form action='add.php' class='form' method='post' enctype='multipart/form-data'>
 			 <div id='enterInfo'>
 					<p>Upccode: <input type='text' name='upccode' size='15' maxlength='20' placeholder='UPC code' /></p>
 					<p>Product Name: <input type='text'  name='product_name'  size='30' maxlength='20' placeholder='Product name' ></p>    
@@ -301,10 +300,10 @@
 								</select>
 								: <input type='text' name='weight' size='20' maxlength='10' value='Please enter'  /><p id='gORl' style='display:inline'>g</p>
 							</p>
-					<p style='display:inline'>Total Weight: <input type='text' name='t_weight' size='20' maxlength='10' value='Please enter'  />g</p>
+					<p style='display:inline'>Total Weight: <input type='text' name='t_weight' size='20' maxlength='10' value='Please enter'  />g</p><br />
 					 
 					<p>Number of constituents:
-					<select name='cnumber' id='cnumber' >
+						<select name='cnumber' id='cnumber' >
 						<option value='0'>0</option>
 						<option value='1'>1</option>
 						<option value='2'>2</option>
@@ -314,7 +313,8 @@
 						<option value='6'>6</option>
 						<option value='7'>7</option>
 					</select></p>
-					 <p>Region: 
+					 
+					 	<p>Region: 
 							<select name='Regions' >
 								<option value='Cape Breton'>Cape Breton</option>
 								<option value='Eastern'>Eastern</option>
@@ -327,8 +327,9 @@
 						</p>
 					<p>Upload an image: <input type='file' name='image' ></p>
 					<p>Author: <input type='text' name='author' size='20' maxlength='80' value='Please enter'  /> </p>
+					
 					</div>
-					<p><input type='submit' id='send' name='submit' value='Submit' /></p>
+					<p><input type='submit' class='button' name='submit' value='Submit' /></p>
 					<input type='hidden' name='submitted' value='TRUE' />
 				</form>";
 	

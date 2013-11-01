@@ -1,7 +1,7 @@
 <?php
 	$title_name = 'Sign Up';
 	include("includes/header.html");
-	session_start();
+	 
 	
 	if(isset($_SESSION['valid_user'])){
 		echo 'You are logged in as: '. $_SESSION['valid_user'] . '<br />';

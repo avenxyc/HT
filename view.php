@@ -4,7 +4,7 @@
 $title_name= 'View';
 include ('includes/header.html');
 echo "<script src=\"includes/view-jQuery.js\"></script>";
-session_start();
+ 
 
 // Page header:
 echo '<h1 style="text-align:center">Data</h1>';

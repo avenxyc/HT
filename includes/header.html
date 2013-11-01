@@ -28,7 +28,8 @@
       <li><a href="#">Knowledge Base</a></li>
       <li><a href="#">About us</a></li>
       <div class="sign_in_bar">
-        <?php is_logged_in();  ?>
+        <?php session_start();
+        is_logged_in();  ?>
 			</div>
     </ul></nav>
     <div id="login-box" class="login-popup">
