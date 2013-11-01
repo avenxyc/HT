@@ -10,6 +10,7 @@ $(document).ready(function(){
 	width: 100%;
 	text-align:center;
 	border-collapse:collapse;
+	border: rgba(255,255,255,1) ;
 	color: #0066FF;
 }
 
@@ -28,7 +29,6 @@ $(document).ready(function(){
 
 $title_name= 'Search';
 include ('includes/header.html');
-session_start();
 
 echo "<script src=\"includes/Search-Ajax.js\"></script>";
 
@@ -56,10 +56,10 @@ require_once ('mysqli_connect.php');//connect to the database
 					echo '</select>';
 					
 					echo '<div id="keyword_wrap">  Keyword:<input id="keyword"></input></div>';
-					echo '<button id="submit" value="submit">Search</button>';
+					echo '<button class="s-button" value="submit">Search</button>';
 			if(isset($_SESSION['valid_user'])){
 				echo '<a href="add.php">
-   						 <button id="add_p">Add new product</button>
+   						 <button class="s-button" id="add_p">Add new product</button>
 							</a>';
 			}
 					
@@ -98,7 +98,7 @@ require_once ('mysqli_connect.php');//connect to the database
 							<td>' . $row['weight']. '</td>
 							<td>' . $row['last_updated']. '</td>';
 						if(isset($_SESSION['valid_user'])){	
-							echo '<td><a href="edit.php?upccode='.$row["upccode"].'"><button type="button">Edit</button></a></td>';
+							echo '<td><a href="edit.php?upccode='.$row["upccode"].'"><button style="width: 40px" class="s-button" type="button">Edit</button></a></td>';
 						} else { 
 							echo '<td>---</td>';
 						}
