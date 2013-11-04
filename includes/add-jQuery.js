@@ -4,17 +4,17 @@ $(document).ready(function(){
 		function displaycinfo(){
 			var constituent = $('#cnumber');
 			var cnum = constituent.val();
-			var clist_rest = "<p>Constituents Name: <input type='text' name='cform[cname][]' size='15' maxlength='20'/></p> \
-											<p>Constituent weight: <input type='text' name='cform[pweight][]' size='15' maxlength='20'/>g</p> \
-											<p>Type: <input type='text' name='cform[Type][]' size='15' maxlength='20' /></p>\
-											<p>classification: \
+			var clist_rest = "<label>Constituents Name: </label><input type='text' name='cform[cname][]' size='15' maxlength='20'/> <br /> \
+											<label>Constituent weight:</label> <input type='text' name='cform[pweight][]' size='15' maxlength='20'/>g <br />\
+											<label>Type:</label> <input type='text' name='cform[Type][]' size='15' maxlength='20' /></p>\
+											<label>classification:</label> \
 													<select name='cform[classification][]'> \
 														<option value='Green Cart'>Green Cart</option> \
 														<option value='Blue Bag #1: Paper'>Blue Bag #1: Paper</option> \
 														<option value='Blue Bag #2: Recyclables'>Blue Bag #2: Recyclables</option> \
 														<option value='Clear Garbage Bag'>Clear Garbage Bag</option> \
-													</select> \
-											 </p></div>";
+													</select><br /> \
+											 </div>";
 
 			//Remove previously generated forms
 			$("div[id^='clist']").remove();	

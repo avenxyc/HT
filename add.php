@@ -159,6 +159,7 @@
 						$fileName = addslashes($fileName);
 				}*/
 				
+				echo "testing";
 				$allowedExts = array("gif", "jpeg", "jpg", "png", "JPG");
 				$temp = explode(".", $_FILES["image"]["name"]);
 				$extension = end($temp);
@@ -189,13 +190,13 @@
 							else {
 								//Move pictures
 								move_uploaded_file($_FILES["image"]["tmp_name"], $path);
-								//echo "Stored in: " . "pics/" . $_FILES["image"]["name"];
+								echo "Stored in: " . "pics/" . $_FILES["image"]["name"];
 							}
 						}
 					}
 				else {
 						$path = '';
-						echo "Invalid file";
+						$error[] = "Invalid file";
 					}
 	
 		}
@@ -282,27 +283,28 @@
 		do_html_header('Add new product','center_header');
 		echo "<form action='add.php' class='form' method='post' enctype='multipart/form-data'>
 			 <div id='enterInfo'>
-					<p>Upccode: <input type='text' name='upccode' size='15' maxlength='20' placeholder='UPC code' /></p>
-					<p>Product Name: <input type='text'  name='product_name'  size='30' maxlength='20' placeholder='Product name' ></p>    
-					<p>Class:
+					<label>Upccode:</label> <input type='text' name='upccode' size='15' maxlength='20' placeholder='UPC code' /><br />
+					<label>Product Name:</label> <input type='text'  name='product_name'  size='30' maxlength='20' placeholder='Product name' ><br />
+					<label>Class:</label>
 					<select name='class'>";
 						while ($crow = mysqli_fetch_array($cqrow, MYSQLI_ASSOC)){
 						echo "<option value='".$crow['class_name']."'>".$crow['class_name']."</option>";
 						};
-	echo		 "</select></p>
-					<p>Company_name: <input type='text' name='company_name' size='20' maxlength='80' placeholder='Company name'  /> </p>
-					<p>Parent_company: <input type='text' name='parent_company' size='20' maxlength='80' placeholder='Parent company name'  /> </p>
+	echo		 "</select><br />
+					<label>Company_name: </label><input type='text' name='company_name' size='20' maxlength='80' placeholder='Company name'  /> <br />
+					<label>Parent_company: </label><input type='text' name='parent_company' size='20' maxlength='80' placeholder='Parent company name'  /><br />
 					<!-- choose weight or volumn-->
-					<p style='display:inline'>
+					<label style='display:inline'>
 								<select id='wORv'>
 								<option>Weight</option>
 								<option>Volumn</option>
-								</select>
-								: <input type='text' name='weight' size='20' maxlength='10' value='Please enter'  /><p id='gORl' style='display:inline'>g</p>
-							</p>
-					<p style='display:inline'>Total Weight: <input type='text' name='t_weight' size='20' maxlength='10' value='Please enter'  />g</p><br />
+								</select> 
+								:  
+					</label><input type='text' name='weight' size='20' maxlength='10' value='Please enter'  /><p id='gORl' style='display:inline'>g</p><br />
+							
+					<label style='display:inline'>Total Weight: </label> <input type='text' name='t_weight' size='20' maxlength='10' value='Please enter'  />g<br />
 					 
-					<p>Number of constituents:
+					<label>Number of constituents:</label>
 						<select name='cnumber' id='cnumber' >
 						<option value='0'>0</option>
 						<option value='1'>1</option>
@@ -312,9 +314,9 @@
 						<option value='5'>5</option>
 						<option value='6'>6</option>
 						<option value='7'>7</option>
-					</select></p>
+					  </select><br />
 					 
-					 	<p>Region: 
+					 	<label>Region: </label>
 							<select name='Regions' >
 								<option value='Cape Breton'>Cape Breton</option>
 								<option value='Eastern'>Eastern</option>
@@ -323,14 +325,14 @@
 								<option value='South Shore'>South Shore</option>
 								<option value='Valley'>Valley</option>
 								<option value='Western'>Western</option>
-							</select>
-						</p>
-					<p>Upload an image: <input type='file' name='image' ></p>
-					<p>Author: <input type='text' name='author' size='20' maxlength='80' value='Please enter'  /> </p>
+							</select><br />
+						
+					<label>Upload an image:</label> <input type='file' name='image' ><br />
+					<label>Author:</label> <input type='text' name='author' size='20' maxlength='80' value='Please enter'  /> <br />
 					
 					</div>
-					<p><input type='submit' class='button' name='submit' value='Submit' /></p>
-					<input type='hidden' name='submitted' value='TRUE' />
+					<input type='submit' class='button' name='submit' value='Submit' /> <br />
+					<input type='hidden' name='submitted' value='TRUE' /> <br />
 				</form>";
 	
 

@@ -5,7 +5,7 @@
 	
 	if(isset($_SESSION['valid_user'])){
 		do_html_content('You are logged in as: '. $_SESSION['valid_user'] .'','center_text');
-		do_htnml_header('<a href="log_out.php">Log out</a>');
+		do_html_header('<a href="log_out.php">Log out</a>');
 	}else{
 		//Output error message
 		include("includes/log_in_form.html");

@@ -56,12 +56,12 @@ $(document).ready(function(){
 			function(){
 				var tile = $(this);			
 				//tile.find('> p').stop().fadeOut(function(){
-						tile.find('.inner-content').fadeIn('fast');
+						tile.find('.inner-content').stop(true).fadeTo(200, 1);
 				//})
 			},
 			function(){
 				var tile = $(this);
-				tile.find('.inner-content').stop().fadeOut();//(function(){
+				tile.find('.inner-content').stop(true).fadeTo(200, 0);//(function(){
 				//		tile.find('> p').fadeIn('fast');
 				///})
 			});

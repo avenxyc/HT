@@ -9,7 +9,7 @@
 		$result_dest = session_destroy();
 		
 		//Display log out info
-		do_html_header ('<h3>Logging out...</h3>','center');
+		do_html_header('Logging out...');
 		
 		
 		if(!empty($old_user)) {
