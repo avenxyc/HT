@@ -8,7 +8,6 @@ $(document).ready(function(){
 <style>
 #output {
 	width: 100%;
-	margin-top: 3px;
 	text-align:center;
 	border-collapse:collapse;
 	border: rgba(255,255,255,1) ;

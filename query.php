@@ -20,6 +20,17 @@ $(document).ready(function(){
 	background-color: rgba(153,204,0,0.6);
 }
 
+.s-button {
+    background: rgba(0,153,255,0.6);
+    border-width: 0;
+    color: #FFF;
+    cursor: pointer;
+    display: inline-block;
+    font: 12px;
+    width: 150px;
+		height: 20px;
+}
+
 .no_data {
 	text-align:center;
 	background-color: rgba(0,204,51,0.1);
@@ -36,7 +47,7 @@ $(document).ready(function(){
 <?php
 
 require_once ('mysqli_connect.php');//connect to the database
- 
+session_start();
 
 
 
@@ -45,9 +56,11 @@ $rv = $_GET['rv']; //region_val
 $kw = $_GET['kw']; //keyword
 
 
+
 // query
 $q = "SELECT  DISTINCT  products.upccode, weight, product_name, last_updated from constituents, products, prod_const, regions_recyclability 
-				where products.upccode = prod_const.upccode and products.class ='".$cv."' and regions_recyclability.region_name ='".$rv."'
+				where products.upccode = prod_const.upccode and products.class ='$cv' and regions_recyclability.region_name ='$rv'
+							and (products.product_name like '%$kw%' or products.upccode like '%$kw%') 
 							and prod_const.cname=constituents.cname 
 							and constituents.cname = regions_recyclability.cname order by products.upccode";	
 
@@ -71,7 +84,9 @@ if($num > 0){
 							<td>' . $row['weight']. '</td>
 							<td>' . $row['last_updated']. '</td>';
 						if(isset($_SESSION['valid_user'])){	
-							echo '<td><a href="edit.php?upccode='.$row["upccode"].'"><button type="button">Edit</button></a></td>';
+							echo '<td><a href="edit.php?upccode='.$row["upccode"].'">
+											<button type="button" class="s-button" style="width: 40px" >Edit</button></a>
+										</td>';
 						} else { 
 							echo '<td>---</td>';
 						}

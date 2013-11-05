@@ -56,4 +56,7 @@ $(window).resize(function(){
 		$("#mainHeader li:lt(3)").css({"border-right": "none"})
 	};
 })
+
+
+$('#delete').click(function(){
 	

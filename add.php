@@ -1,7 +1,7 @@
 <?php // This is the products page
-	$title_name = 'Products';
+	$title_name = 'Add Products';
 	include("includes/header.html");
-	echo "<script src=\"includes/add-jQuery.js\"></script>";
+	echo "<script src='includes/add-jQuery.js'></script>";
 	
 	if(isset($_SESSION['valid_user'])) {//Only logged in users can view this page
 		
@@ -122,44 +122,7 @@
 		
 		// Check if the imege is valid
 		if (isset($_FILES['image']) && $_FILES['image']['size'] > 0) { 
-			/*//This is the directory where images will be saved
-				$target = "pics/";
-				$target = $target . basename( $_FILES['image']['name']);
 				
-				//This gets all the other information from the form
-				$content = basename( $_FILES['image']['name']);
-				
-				
-				//Writes the Filename to the server
-				if(move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
-						//Tells you if its all ok
-						echo "The file ". basename( $_FILES['image']['name']). " has been uploaded, and your information has been added to the directory";
-	
-	
-				} else {
-						//Gives and error if its not
-						echo "Sorry, there was a problem uploading your file.";
-				}
-	
-				
-	
-		 
-			 $fileName = $_FILES['image']['name'];
-			 $tmpName  = $_FILES['image']['tmp_name'];
-			 $fileSize = $_FILES['image']['size'];
-			 $fileType = $_FILES['image']['type'];
-		
-			 $fp      = fopen($tmpName, 'r');
-			 $content = fread($fp, filesize($tmpName));
-			 $content = addslashes($content);
-			 fclose($fp);
-		
-				if(!get_magic_quotes_gpc())
-				{
-						$fileName = addslashes($fileName);
-				}*/
-				
-				echo "testing";
 				$allowedExts = array("gif", "jpeg", "jpg", "png", "JPG");
 				$temp = explode(".", $_FILES["image"]["name"]);
 				$extension = end($temp);
@@ -190,7 +153,7 @@
 							else {
 								//Move pictures
 								move_uploaded_file($_FILES["image"]["tmp_name"], $path);
-								echo "Stored in: " . "pics/" . $_FILES["image"]["name"];
+								//echo "Stored in: " . "pics/" . $_FILES["image"]["name"];
 							}
 						}
 					}
@@ -281,59 +244,7 @@
 	
 	//-- Input info --
 		do_html_header('Add new product','center_header');
-		echo "<form action='add.php' class='form' method='post' enctype='multipart/form-data'>
-			 <div id='enterInfo'>
-					<label>Upccode:</label> <input type='text' name='upccode' size='15' maxlength='20' placeholder='UPC code' /><br />
-					<label>Product Name:</label> <input type='text'  name='product_name'  size='30' maxlength='20' placeholder='Product name' ><br />
-					<label>Class:</label>
-					<select name='class'>";
-						while ($crow = mysqli_fetch_array($cqrow, MYSQLI_ASSOC)){
-						echo "<option value='".$crow['class_name']."'>".$crow['class_name']."</option>";
-						};
-	echo		 "</select><br />
-					<label>Company_name: </label><input type='text' name='company_name' size='20' maxlength='80' placeholder='Company name'  /> <br />
-					<label>Parent_company: </label><input type='text' name='parent_company' size='20' maxlength='80' placeholder='Parent company name'  /><br />
-					<!-- choose weight or volumn-->
-					<label style='display:inline'>
-								<select id='wORv'>
-								<option>Weight</option>
-								<option>Volumn</option>
-								</select> 
-								:  
-					</label><input type='text' name='weight' size='20' maxlength='10' value='Please enter'  /><p id='gORl' style='display:inline'>g</p><br />
-							
-					<label style='display:inline'>Total Weight: </label> <input type='text' name='t_weight' size='20' maxlength='10' value='Please enter'  />g<br />
-					 
-					<label>Number of constituents:</label>
-						<select name='cnumber' id='cnumber' >
-						<option value='0'>0</option>
-						<option value='1'>1</option>
-						<option value='2'>2</option>
-						<option value='3'>3</option>
-						<option value='4'>4</option>
-						<option value='5'>5</option>
-						<option value='6'>6</option>
-						<option value='7'>7</option>
-					  </select><br />
-					 
-					 	<label>Region: </label>
-							<select name='Regions' >
-								<option value='Cape Breton'>Cape Breton</option>
-								<option value='Eastern'>Eastern</option>
-								<option value='HRM'>HRM</option>
-								<option value='Northern'>Northern</option>
-								<option value='South Shore'>South Shore</option>
-								<option value='Valley'>Valley</option>
-								<option value='Western'>Western</option>
-							</select><br />
-						
-					<label>Upload an image:</label> <input type='file' name='image' ><br />
-					<label>Author:</label> <input type='text' name='author' size='20' maxlength='80' value='Please enter'  /> <br />
-					
-					</div>
-					<input type='submit' class='button' name='submit' value='Submit' /> <br />
-					<input type='hidden' name='submitted' value='TRUE' /> <br />
-				</form>";
+		include('includes/add-form.html');
 	
 
 	}

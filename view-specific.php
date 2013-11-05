@@ -69,9 +69,10 @@ echo '<div id="view-specific-info">
 				<p class="info">'.$product['weight'].'(g/L)</p>
 				<p class="title">Recyclability</p>
 				<p class="info">'. 100 * number_format($recyc_weight / ($unrecyc_weight+$recyc_weight),2).'%</p>';
-				if(isset($_SESSION['valid_user']))
+				if(isset($_SESSION['valid_user'])){
 				echo '<a href="edit.php?upccode='.$upccode.'"><button type="button" class="button">Edit</button></a>
-			</div>';
+				      <input type="submit" class="button" id="delete" value="Delete"/>
+			</div>';}
 
 echo '</div>';
 

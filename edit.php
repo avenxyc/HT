@@ -19,7 +19,7 @@
 
 
 	// Check if the form has been submitted:
-	if (isset($_POST['submitted'])) {
+	if (isset($_POST['edited'])) {
 					
 		require_once ('mysqli_connect.php'); // Connect to the db.
 			
@@ -259,25 +259,34 @@
 	echo "
 				<form action='edit.php?upccode=".$upccode."' class='form' method='post' enctype='multipart/form-data'>
 			 <div id='enterInfo'>
-					<p>Upccode: $upccode</p>
-					<p>Product Name: <input type='text'  name='product_name'  size='30' maxlength='20' value='Please enter' ></p> 
+					<label>Upccode:</label><p>$upccode</p><br />
+					<label>Product Name:</label>
+					<input type='text'  name='product_name'  size='30' maxlength='20' placeholder='Product name' >
+					<br />
 					<!-- choose weight or volumn-->
-					<p style='display:inline'>
-								<select id='wORv'>
-								<option>Weight</option>
-								<option>Volumn</option>
-								</select>
-								: <input type='text' name='weight' size='20' maxlength='10' value='Please enter'  /><p id='gORl' style='display:inline'>g</p>
-							</p>
-					<p style='display:inline'>Total Weight: <input type='text' name='t_weight' size='20' maxlength='10' value='Please enter'  />g</p><br />
-					 
+					<label style='display:inline'>
+						<select id='wORv'>
+							<option>Weight</option>
+							<option>Volumn</option>
+						</select>
+						: </label>
+					<input type='text' name='weight' size='20' maxlength='10' placeholder='Please enter'  />
+					<p id='gORl' style='display:inline'>g</p>
+					<br />
+					<label style='display:inline'>Total Weight: </label>
+					<input type='text' name='t_weight' size='20' maxlength='10' placeholder='Please enter'  />g
+					<br />
 					
-					<p>Change the image: <input type='file' name='image' ></p>
-					</div>
-					<p><input type='submit' class='button' name='submit' value='Submit' /></p>
 				
+				 <label>Change the image: </label>
+				 <input type='file' name='image' >
 				 
-					<input type='hidden' name='submitted' value='TRUE' />
+				<br />
+				</div>
+				<input type='submit' class='button' name='submit' value='Submit' />
+				<br />
+				<input type='hidden' name='edited' value='TRUE' />
+				<br />
 				</form>";
 	
 	

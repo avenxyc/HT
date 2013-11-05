@@ -20,6 +20,7 @@ body {
 		color-stop(0.56, rgb(220,235,144)),
 		color-stop(0.78, rgb(180,214,44))
 	);
+	background-attachment: fixed;
 	color:#FFFFFF;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 87.5%;
@@ -36,6 +37,10 @@ body p {
 
 a {
 	text-decoration:none;
+}
+
+select {
+	height: 20px;
 }
 
 #logo {
@@ -148,18 +153,19 @@ form.signin .textbox input {
     padding: 6px 6px 4px;
     margin-top: 10px;
     font: 12px;
+		height:30px;
     width: 214px;
 }
 
 .s-button {
     background: rgba(0,153,255,0.6);
-		border-color: #FFF;
-    border-width: 1px;
+    border-width: 0;
     color: #FFF;
     cursor: pointer;
     display: inline-block;
     font: 12px;
     width: 150px;
+		height: 20px;
 }
 
 .button:hover, .s-button:hover {
@@ -169,7 +175,8 @@ form.signin .textbox input {
 
 /*Speicfy the input font to make password box and text box the same width*/
 input {
-  font-family: sans-serif;                
+  font-family: sans-serif;     
+	height: 20px;           
 }
 
 #content {
@@ -496,10 +503,15 @@ br {
 	left: 0px;
 	position: relative;
 	top: 60%;
+	margin: 1px 0;
 }
 
 #search_wrapper > div { 
 	display: inline;
+}
+
+#keyword_wrap {
+	margin: 0px 2px;
 }
 
 .no_data {
@@ -825,7 +837,9 @@ br {
 	}
 
 	/*Search.php */
+
 	#search_wrapper > div {
+		
 		display:block;
 	}
 	

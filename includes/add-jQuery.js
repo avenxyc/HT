@@ -22,7 +22,7 @@ $(document).ready(function(){
 			{
 				
 				$('#cnumber').after(			//HTML code for constituents info
-			 "<div id='clist" + i + "'>" + clist_rest);
+			 "<br /><div id='clist" + i + "'>" + clist_rest);
 			};
 		};						
 		$('#cnumber').change(displaycinfo); //Change the number of forms.
