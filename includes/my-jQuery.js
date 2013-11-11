@@ -58,5 +58,3 @@ $(window).resize(function(){
 })
 
 
-$('#delete').click(function(){
-	

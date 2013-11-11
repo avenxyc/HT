@@ -5,6 +5,8 @@ $title_name= 'View';
 include ('includes/header.html');
 echo "<script type=\"text/javascript\" src=\"includes/view-specific-jQuery.js\"></script>";
 echo "<script type=\"text/javascript\" src=\"https://www.google.com/jsapi\"></script>";
+echo '  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>';
  
 
 				
@@ -71,7 +73,7 @@ echo '<div id="view-specific-info">
 				<p class="info">'. 100 * number_format($recyc_weight / ($unrecyc_weight+$recyc_weight),2).'%</p>';
 				if(isset($_SESSION['valid_user'])){
 				echo '<a href="edit.php?upccode='.$upccode.'"><button type="button" class="button">Edit</button></a>
-				      <input type="submit" class="button" id="delete" value="Delete"/>
+				      <a href="search.php?upccode='.$upccode.'&delete="delete"><button type="button" class="button">Delete</button></a>
 			</div>';}
 
 echo '</div>';

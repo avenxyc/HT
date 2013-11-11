@@ -1,10 +1,3 @@
-<script>
-$(document).ready(function(){
-	$('#output').show('normal');
-});
-
-</script>
-
 <style>
 #output {
 	width: 100%;
@@ -30,9 +23,26 @@ $(document).ready(function(){
 $title_name= 'Search';
 include ('includes/header.html');
 
+echo "<script>
+			$(document).ready(function(){
+				$('#output').show('normal');
+			});
+			
+			</script>";
+
 echo "<script src=\"includes/Search-Ajax.js\"></script>";
 
+
 require_once ('mysqli_connect.php');//connect to the database
+
+if(isset($_GET['delete'])){
+		$upccode = $_GET['upccode'];
+		$delete_q1 = "DELETE FROM prod_const WHERE prod_const.upccode = $upccode";
+		$delete_q2 = "DELETE FROM products WHERE products.upccode = $upccode";
+		$run_delete1 = mysqli_query($dbc, $delete_q1);
+		$run_delete2 = mysqli_query($dbc, $delete_q2);
+	
+}
 
 //The class option
 // Make the query:
@@ -110,6 +120,8 @@ require_once ('mysqli_connect.php');//connect to the database
 	}
 
 	echo '</div>';
+	
+	mysqli_close($dbc);
 	
 //Above are the content of the site
 include("/includes/footer.html"); 
