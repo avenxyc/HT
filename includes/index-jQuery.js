@@ -1,6 +1,6 @@
 // jQuery code for index.php
 $( document ).ready(function() {
-	//Set width for slides. But must be at least 3 images.		
+	//Set width for slides. But must be at least 3 images.	
 	$('.tile:odd').css({'background-color':'#CCCC00', 'text-align':'center',
 											 });
 	$('.tile:even').css({'background-color':'#78BA00', 'text-align':'center',

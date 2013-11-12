@@ -28,7 +28,7 @@ $(document).ready(function(){
 		$('#cnumber').change(displaycinfo); //Change the number of forms.
 		
 		//When we click at the input area, those words will disapeear
-		$("div[id='enterInfo'] :input").focus(function(){	
+		/*$("div[id='enterInfo'] :input").focus(function(){	
 			var txt_value = $(this).val();
 			if(txt_value){
 				$(this).val("");
@@ -41,7 +41,7 @@ $(document).ready(function(){
 			}else{
 				$(this).css("color","rgba(0,0,0,1)");
 			}
-		});	
+		});	*/
 		
 		//Change the measurement of the item
 		function measurement(){

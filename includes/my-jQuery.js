@@ -39,12 +39,24 @@ $(document).ready(function(){
 	});
 	
 	// When clicking on the button close or the mask layer the popup closed
-	$('a.close, #mask').live('click', function() { 
+	$('a.close, #mask').on('click', function() { 
 		$('#mask , .login-popup').fadeOut(300 , function() {
 			$('#mask').remove();  
 	}); 
 	return false;
 	});
+	
+	$("#kb-dropdown").hide();
+	$("#kbclick").mouseover(function () {
+		$("#kb-dropdown").slideDown('slow');
+	});
+	
+	$("#drop-wrapper").mouseleave( function() {
+		$("#kb-dropdown").slideUp('slow');
+	});
+	
+	
+	
 });
 	
 	

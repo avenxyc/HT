@@ -197,14 +197,14 @@ input {
 	margin-bottom: 1px;
 }
 
-#mainHeader ul {
+#mainHeader > ul {
   list-style: none;
 	padding-left: 0;
 	margin: 0px;
 	clear: both;
 }
 
-#mainHeader nav ul li {
+#mainHeader nav > ul  li {
 	text-align: center;
 	color: #f0f0f0;
   display: inline;
@@ -216,7 +216,7 @@ input {
 	color: #FFFFFF;
 }
 
-#mainHeader nav a:link, a:visited {
+#mainHeader nav  a:link, a:visited {
 	font-size: 20px;
 	padding: 8px 25px;
 	display: inline-block;
