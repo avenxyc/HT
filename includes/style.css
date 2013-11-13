@@ -197,14 +197,14 @@ input {
 	margin-bottom: 1px;
 }
 
-#mainHeader > ul {
+#mainHeader  ul {
   list-style: none;
 	padding-left: 0;
 	margin: 0px;
 	clear: both;
 }
 
-#mainHeader nav > ul  li {
+#mainHeader nav  ul  li {
 	text-align: center;
 	color: #f0f0f0;
   display: inline;
@@ -212,7 +212,8 @@ input {
 
 }
 
-#mainHeader a {
+#mainHeader nav ul a {
+	display: block;
 	color: #FFFFFF;
 }
 
@@ -223,14 +224,25 @@ input {
 }
 
 #mainHeader nav a:hover, nav a:active {
-	color: rgba(153,204,255,1);
+	background-color:rgba(204,102,204,1);
 	font-weight: 200;
-	
 }
 
-#mainHeader nav a:hover, nav a:active {
-	background-color:rgba(204,102,204,1);
+#mainHeader nav ul li ul {
+	z-index: 1000;
+	position:absolute;
 }
+
+#mainHeader nav ul li ul {
+	display:none;
+}
+
+
+#mainHeader nav ul li:hover ul.dropdown-nav {
+	background-color: #cc00cc;
+	display:block;
+}
+
 
 .sign_in_bar{
 	float: right;

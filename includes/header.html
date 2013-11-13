@@ -22,30 +22,34 @@
 	<div id="mainHeader">
   	<nav><ul>
       <li class="active"><a href="index.php">Home</a></li>
-      <li><a href="search.php">Products</a></li>
+      <li><a href="search.php">Products</a>
+         <ul class="dropdown-nav">
+              <li><a href="#">FAQ</a>
+              </li>
+              <li><a href="#">ITC</a>
+              </li>
+              <li><a href="#">CLUB</a>
+              </li>
+              <li><a href="#">CULTUUR</a>
+              </li>
+              <li><a href="#">ROBITICA</a>
+              </li>
+         </ul>
+      </li>
       <li>
-      	<div id="drop-wrapper">
-        	<a href="#" id="kbclick">Knowledge Base</a>
-        <div id="kb-dropdown" >
-            <div class="dropbottom">
-                <div class="dropmid">
-                    <ul>
-                        <li><a href="#">FAQ</a>
-                        </li>
-                        <li><a href="#">ITC</a>
-                        </li>
-                        <li><a href="#">CLUB</a>
-                        </li>
-                        <li><a href="#">CULTUUR</a>
-                        </li>
-                        <li><a href="#">ROBITICA</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        </div>
-        	<li>
+        	<a href="#">Knowledge Base</a>
+            <ul class="dropdown-nav">
+                <li><a href="#">FAQ</a>
+                </li>
+                <li><a href="#">ITC</a>
+                </li>
+                <li><a href="#">CLUB</a>
+                </li>
+                <li><a href="#">CULTUUR</a>
+                </li>
+                <li><a href="#">ROBITICA</a>
+                </li>
+            </ul>
       </li>
       <li><a href="#">About us</a></li>
       <div class="sign_in_bar">
@@ -53,6 +57,7 @@
         is_logged_in();  ?>
 			</div>
     </ul></nav>
+  </div>
     <div id="login-box" class="login-popup">
       <a href="#" class="close"><img src="../images/exit-icon.fw.png" class="btn_close" title="Close Window" alt="Close" /></a>
       <form method="post" class="signin" action="../auth_log_in.php">
@@ -71,5 +76,4 @@
             </p>        
             </fieldset>
       </form>
-    </div>
-  </div>
+   </div>

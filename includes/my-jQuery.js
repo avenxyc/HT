@@ -46,15 +46,15 @@ $(document).ready(function(){
 	return false;
 	});
 	
-	$("#kb-dropdown").hide();
-	$("#kbclick").mouseover(function () {
-		$("#kb-dropdown").slideDown('slow');
-	});
-	
-	$("#drop-wrapper").mouseleave( function() {
-		$("#kb-dropdown").slideUp('slow');
-	});
-	
+	// Dropdown menu to enable
+	$('nav li').hover(
+			function () {
+					$('ul', this).stop().slideDown(100);
+			},
+			function () {
+					$('ul', this).stop().slideUp(100);
+			}
+	);
 	
 	
 });
