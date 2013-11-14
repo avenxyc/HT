@@ -2,6 +2,8 @@
 	$title_name = 'Test site';  //Title name of this page
 	include("/includes/header.html"); // include the header file
 	echo "<script src='includes/index-jQuery.js' type='text/javascript'></script>" ;
+	echo "<script src='includes/jquery.heroCarousel-1.3/jquery.heroCarousel-1.3.min.js' type='text/javascript'></script>" ;
+	echo '<link rel="stylesheet" href="includes/jquery.heroCarousel-1.3/jquery.heroCarousel.css" type="text/css" media="all" />';
 ?>
 <!-- This is the header, the following content is for the body -->
 
@@ -24,8 +26,19 @@
       <div class="arrows" id="right-arrow">
         <img src="images/right.png" />	
       </div>
-      <div id="slides"> 
-      <img src="images/recycle_its_easy.jpg" alt="Recycling"  />
+      <div class="hero"> 
+      	<div class="hero-carousel">
+          <article>
+          	<img src="images/recycle_its_easy.jpg" alt="Recycling"  />
+          </article>
+          <article>
+          	<img src="images/recycle_its_easy.jpg" alt="Recycling"  />
+          </article>
+          <article>
+          	<img src="images/recycle_its_easy.jpg" alt="Recycling"  />
+          </article>
+         </div>
+                
        <!-- <ul>
          <li><img src="images/recycle_its_easy.jpg" alt="Recycling"  /></li>
          <li><img src="images/recycle_its_easy.jpg" alt="Recycling"  /></li>

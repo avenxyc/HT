@@ -10,8 +10,16 @@ $(document).ready(function(){
 	});
 	*/	
 	if($(window).width() > 799 ){
-		 $("#mainHeader li:lt(3)").css({"border-right": "1px solid #999"});
+		 $p_width = $("#products.parent-nav").width();
+		 $k_width = $("#kb.parent-nav").width();
+		 $("#products ul").width($p_width);
+		 $("#products ul li").width($p_width);
+		 $("#kb ul").width($k_width);
+		 $("#kb ul li").width($k_width);
+		 
+		 
 	}
+	
 
 
 	$('a.login-window').click(function() {

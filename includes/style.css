@@ -225,23 +225,35 @@ input {
 
 #mainHeader nav a:hover, nav a:active {
 	background-color:rgba(204,102,204,1);
-	font-weight: 200;
+	font-weight: 200px;
 }
 
-#mainHeader nav ul li ul {
+#mainHeader nav ul li ul{
 	z-index: 1000;
 	position:absolute;
+}
+
+#main-nav > ul > li {
+	border-right: 1px solid #999;
+}
+
+.dropdown-ul li {
+	border-bottom: 1px solid #999;
+}
+
+#mainHeader nav ul li ul li {
+	width: 100%;
+	background-color: #cc00cc;
+}
+
+#mainHeader nav ul li ul li:hover {
+	background-color:rgba(204,102,204,1);
 }
 
 #mainHeader nav ul li ul {
 	display:none;
 }
 
-
-#mainHeader nav ul li:hover ul.dropdown-nav {
-	background-color: #cc00cc;
-	display:block;
-}
 
 
 .sign_in_bar{
@@ -317,7 +329,7 @@ input {
 	float: left;
 }
 	
-#slides {
+#slides1 {
 	margin: 0px;
 	padding: 0px;
 	/* Fallback for web browsers that doesn't support RGBa */
