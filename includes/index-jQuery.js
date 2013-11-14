@@ -24,7 +24,7 @@ $( document ).ready(function() {
 	var i = 0;
 
 /*The slider provide a alider effect;
-	$('#left-arrow').click(function(){
+	$('#prev').click(function(){
 		var lg = $("#slides li").length;
 			if(i < lg - 2){
 				$('#slides li').animate({left:'-=700px'});
@@ -37,7 +37,7 @@ $( document ).ready(function() {
 		});
 
 	
-	$('#right-arrow').click(function(){
+	$('#next').click(function(){
 			if(i >= 0){
 				$('#slides li').animate({left:'+=700px'});
 				i--;

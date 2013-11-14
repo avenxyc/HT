@@ -321,7 +321,7 @@ input {
 
 #slider-wrapper {
 	width: 100%;
-	height: auto;
+	height: 422px;;
 	position: relative;
 	overflow: hidden;
 	margin-bottom: 1px;
@@ -379,12 +379,12 @@ input {
 	
 }
 
-#left-arrow {
+#prev {
 	margin-top: 15%;
   left:0px;
 }
 
-#right-arrow {
+#next {
 	margin-top: 15%;
   right:0px;
 	
@@ -664,11 +664,11 @@ br {
 		margin: 0;
 	}
 	
-	#left-arrow {
+	#prev {
 		left:0px;
 	}
 	
-	#right-arrow {
+	#next {
 		right:0px;
 		
 	}

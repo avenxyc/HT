@@ -28,9 +28,9 @@ jQuery.fn.heroCarousel = function(options){
 		onComplete: function(){}
 	}, options);
 
-	if(jQuery.browser.msie && parseFloat(jQuery.browser.version) < 7){
+	/*if(jQuery.browser.msie && parseFloat(jQuery.browser.version) < 7){
 		options.animationSpeed = 0;
-	}
+	}*/
 
 	return this.each(function() {
 		var carousel = jQuery(this),
@@ -165,9 +165,9 @@ jQuery.fn.heroCarousel = function(options){
 				options.onComplete(carousel, carousel.prev('.hero-carousel-nav'), elements.eq(currentItem), options);
 			}
 
-			if(jQuery.browser.msie){
+			/*if(jQuery.browser.msie){
 				carouselNav.find('a').attr("hideFocus", "true");
-			}
+			}*/
 
 			options.onLoad(carousel, carouselNav, carousel.children().eq(currentItem), options);
 
