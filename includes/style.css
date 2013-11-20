@@ -238,7 +238,7 @@ input {
 }
 
 .dropdown-ul li {
-	border-bottom: 1px solid #999;
+	border: 1px solid #999;
 }
 
 #mainHeader nav ul li ul li {
@@ -253,8 +253,6 @@ input {
 #mainHeader nav ul li ul {
 	display:none;
 }
-
-
 
 .sign_in_bar{
 	float: right;
@@ -613,7 +611,7 @@ br {
 
 
 
-@media screen and (min-width: 751px) and (max-width: 1049px)
+@media screen and (min-width: 800px) and (max-width: 1049px)
 {
 	body {
 		width: 95%;

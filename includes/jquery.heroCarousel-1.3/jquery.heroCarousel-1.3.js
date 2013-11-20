@@ -19,8 +19,6 @@ jQuery.fn.heroCarousel = function(options){
 		timeout: 5000,
 		pause: true,
 		pauseOnNavHover: true,
-		prevText: 'Previous',
-		nextText: 'Next',
 		css3pieFix: false,
 		currentClass: 'current',
 		onLoad: function(){},
@@ -62,7 +60,7 @@ jQuery.fn.heroCarousel = function(options){
 				'width': carouselWidth
 			});
 			
-			carousel.before('<ul class="hero-carousel-nav"><li class="prev"><a href="#">'+options.prevText+'</a></li><li class="next"><a href="#">'+options.nextText+'</a></li></ul>');
+			carousel.before('<ul class="hero-carousel-nav"><li class="prev"><a href="#"><img src="../../images/left.png" alt="Previous page" /></a></li><li class="next"><a href="#"><img src="../../images/right.png" alt="Next page" page/></a></li></ul>');
 			
 			var carouselNav = carousel.prev('.hero-carousel-nav'),
 			timeoutInterval;

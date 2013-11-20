@@ -9,7 +9,7 @@ $(document).ready(function(){
 		$(this).css({"color":"#CCCCCC"});
 	});
 	*/	
-	if($(window).width() > 799 ){
+	if($(window).width() > 700 ){
 		 $p_width = $("#products.parent-nav").width();
 		 $k_width = $("#kb.parent-nav").width();
 		 $("#products ul").width($p_width);
@@ -70,7 +70,7 @@ $(document).ready(function(){
 	
 $(window).resize(function(){
 	// add divider to the nav-bar;
-	if($(window).width() > 799 ){
+	if($(window).width() > 700 ){
 		 $("#mainHeader li:lt(3)").css({"border-right": "1px solid #999"});
 	}else {
 		$("#mainHeader li:lt(3)").css({"border-right": "none"})

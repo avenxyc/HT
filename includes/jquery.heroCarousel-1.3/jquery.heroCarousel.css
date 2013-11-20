@@ -56,24 +56,28 @@
 			
 			.hero-carousel-nav li {
 				position: absolute;
-				bottom: 48px;
-				right: 48px;
+				bottom: 205px;;
 				list-style: none;
+				opacity:0.4;
+				filter:alpha(opacity=40); /* For IE8 and earlier */
 				}
 				
 			.hero-carousel-nav li.prev {
-				left: 48px;
-				right: auto;
+				margin-top: 15%;
+ 				left: -110px;
+				}
+				
+				.hero-carousel-nav li.next {
+				margin-top: 15%;
+				right: -70px;
+					
 				}
 				
 			.hero-carousel-nav li a {
-				background: #D21034;
-				color: #fff;
 				border: none;
 				outline: none;
 				display: block;
 				float: left;
-				padding: 5px 20px;
 				
 				-moz-border-radius: 20px;
 				-webkit-border-radius: 20px;
@@ -82,7 +86,8 @@
 				}
 			
 			.hero-carousel-nav li a:hover { 
-				background: #89051C;
+				box-shadow: 0px 0px 10px #FFFFFF;
+				opacity: 1;
 				}
 				
 			.hero-carousel-nav li a:active,

@@ -20,13 +20,6 @@
 -->
 <div id="mainContent">
   <div id="slider-wrapper">
-     <!-- Arrows -->
-      <div class="arrows" id="prev">
-        <img src="images/left.png" />
-      </div>
-      <div class="arrows" id="next">
-        <img src="images/right.png" />	
-      </div>
       <div class="hero"> 
       	<div class="hero-carousel">
           <article>
