@@ -23,7 +23,7 @@ $Pinfo = mysqli_query($dbc,$q1);
 $product = mysqli_fetch_assoc($Pinfo);
 
 
-$q2 = "SELECT part_weight, weight, classification, product_name, img_path from prod_const , products, regions_recyclability
+$q2 = "SELECT part_weight, weight, total_weight, classification, product_name, img_path from prod_const , products, regions_recyclability
 				where products.upccode = prod_const.upccode and prod_const.upccode= ".$upccode." 
 					and regions_recyclability.cname = prod_const.cname and regions_recyclability.region_name = '".$rv."';";	
 
@@ -114,7 +114,7 @@ if ($num > 0) { // If it ran OK, display the records.
 		echo '<tr>
 						<td>' . $row['cname']. '</td>
 						<td>' . $row['part_weight']. '</td>
-						<td>' . number_format($row['part_weight']/$row['weight'], 2). '</td>
+						<td>' . number_format($row['part_weight']/$row['total_weight'], 2). '</td>
 						<td>' . $row['type']. '</td>
 						<td>' . $row['region_name']. '</td>
 			 	 </tr>';

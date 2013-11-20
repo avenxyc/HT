@@ -106,5 +106,12 @@
 		header('Refresh: 3;url=index.php');
 	}
 	
+	// Load old form values if they exist
+	function load_formdata($name) {
+		if(!empty($name)) {
+			echo "'$name'";
+		} else echo "";
+	}
+	
 
 ?>

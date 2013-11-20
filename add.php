@@ -126,7 +126,7 @@
 				$allowedExts = array("gif", "jpeg", "jpg", "png", "JPG");
 				$temp = explode(".", $_FILES["image"]["name"]);
 				$extension = end($temp);
-				$path = "pics/" . $_FILES["image"]["name"];
+				$path = "pics/" . $_POST['upccode'];
 				if ((($_FILES["image"]["type"] == "image/gif")
 				|| ($_FILES["image"]["type"] == "image/jpeg")
 				|| ($_FILES["image"]["type"] == "image/jpg")
@@ -147,7 +147,7 @@
 							echo "Temp file: " . $_FILES["image"]["tmp_name"] . "<br>";*/
 							
 				
-							if (file_exists("pics/" . $_FILES["image"]["name"])) {
+							if (file_exists("pics/" . $_POST['upccode'])) {
 								$errors[] =  $_FILES["image"]["name"] . " already exists. ";
 							}
 							else {
@@ -190,9 +190,9 @@
 	
 			
 			for($i = 0; $i < $cform_number; $i++){
-				$q2[$i] = "INSERT IGNORE INTO constituents (cname, type) VALUES ('$cname[$i]', '$type[$i]')";
-				$q3[$i] = "INSERT IGNORE INTO regions_recyclability (region_name ,cname , classification)VALUES ('$region_name',  '$cname[$i]',  '$classification[$i]')";
-				$q4[$i] = "INSERT IGNORE INTO prod_const (upccode, cname, part_weight) VALUES ('$uc', '$cname[$i]', '$pweight[$i]')";	
+				$q2[$i] = "REPLACE INTO constituents (cname, type) VALUES ('$cname[$i]', '$type[$i]')";
+				$q3[$i] = "REPLACE INTO regions_recyclability (region_name ,cname , classification)VALUES ('$region_name',  '$cname[$i]',  '$classification[$i]')";
+				$q4[$i] = "REPLACE INTO prod_const (upccode, cname, part_weight) VALUES ('$uc', '$cname[$i]', '$pweight[$i]')";	
 				$r2[$i] = @mysqli_query ($dbc, $q2[$i]);  // Run the second query.
 				$r3[$i] = @mysqli_query ($dbc, $q3[$i]);  // Run the third query.
 				$r4[$i] = @mysqli_query ($dbc, $q4[$i]);  // Run the forth query.

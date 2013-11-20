@@ -144,7 +144,7 @@
 				$allowedExts = array("gif", "jpeg", "jpg", "png");
 				$temp = explode(".", $_FILES["image"]["name"]);
 				$extension = end($temp);
-				$path = "pics/" . $_FILES["image"]["name"];
+				$path = "pics/" . $upccode;
 				if ((($_FILES["image"]["type"] == "image/gif")
 				|| ($_FILES["image"]["type"] == "image/jpeg")
 				|| ($_FILES["image"]["type"] == "image/jpg")
@@ -163,8 +163,9 @@
 							echo "Size: " . ($_FILES["image"]["size"] / 1024) . " kB<br>";
 							echo "Temp file: " . $_FILES["image"]["tmp_name"] . "<br>";*/
 				
-							if (file_exists("pics/" . $_FILES["image"]["name"])) {
-								$errors[] = $_FILES["image"]["name"] . " already exists. ";
+							if (file_exists($path)) {
+								unlink($path);
+								move_uploaded_file($_FILES["image"]["tmp_name"], $path);
 							}
 							else {
 								move_uploaded_file($_FILES["image"]["tmp_name"], $path);
