@@ -6,6 +6,7 @@
 <script src="includes/my-jQuery.js"></script>
 <?php include("/includes/functions.php"); ?>
 <link rel="stylesheet" href="includes/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="includes/search-box.css".css" type="text/css" media="all" />
 
 </head>
 
@@ -14,7 +15,13 @@
 <div id="logo">
   <ul>
     <li id="name">Yichun Xu</li>
-    <li id="search">Search</li>
+    <li id="sb-search" class="sb-search">
+        <form>
+            <input class="sb-search-input" placeholder="Enter your search term..." type="search" value="" name="search" id="search">
+            <input class="sb-search-submit" type="submit" value="">
+            <span class="sb-icon-search"></span>
+      </form>
+		</li>
   </ul>
 </div>
 <div id="content">

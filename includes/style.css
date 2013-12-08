@@ -62,10 +62,6 @@ select {
 	float: left;
 }
 
-#search{
-	float: right;
-}
-
 
 /* Mask for background, by default is not display */
 #mask {
