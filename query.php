@@ -65,7 +65,7 @@ $q = "SELECT  DISTINCT  products.upccode, weight, product_name, last_updated fro
 							and constituents.cname = regions_recyclability.cname order by products.upccode";	
 
 $r = mysqli_query($dbc, $q); // Run the query.
-$num = mysqli_num_rows($r);// get the nunber of row
+$num = mysqli_num_rows($r);// get the number of row
 
 if($num > 0){
 		echo '<table id="output" border="1">

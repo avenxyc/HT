@@ -1,11 +1,22 @@
 @charset "utf-8";
 /* CSS Document */
+@font-face {
+    font-family: 'icomoon';
+    src:url('http://icomoon.io/app/fonts/icomoon/icomoon.eot');
+    src:url('http://icomoon.io/app/fonts/icomoon/icomoon.eot?#iefix') format('embedded-opentype'),
+        url('http://icomoon.io/app/fonts/icomoon/icomoon.woff') format('woff'),
+        url('http://icomoon.io/app/fonts/icomoon/icomoon.ttf') format('truetype'),
+        url('http://icomoon.io/app/fonts/icomoon/icomoon.svg#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 
 .sb-search {
     position: relative;
+    margin-top: 10px;
     width: 0%;
     min-width: 60px;
-    height: 30px;
+    height: 60px;
     float: right;
     overflow: hidden;
  
@@ -24,7 +35,7 @@
     outline: none;
     background: #fff;
     width: 100%;
-    height: 30px;
+    height: 60px;
     margin: 0;
     z-index: 10;
     padding: 20px 65px 20px 20px;

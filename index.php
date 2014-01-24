@@ -8,16 +8,7 @@
 ?>
 <!-- This is the header, the following content is for the body -->
 
-<!--Script for the slider 
-<script>
-    $(function(){
-      $("#slides").slidesjs({
-        width: 800,
-				height: 329,
-      });
-    });
-</script>
--->
+
 <div id="mainContent">
   <div id="slider-wrapper">
       <div class="hero"> 
