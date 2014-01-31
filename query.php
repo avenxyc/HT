@@ -1,3 +1,5 @@
+<!-- For searching items -->
+
 <script>
 $(document).ready(function(){
 	$('#output').show('normal');

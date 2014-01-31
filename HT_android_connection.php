@@ -17,8 +17,12 @@ echo $upccode;
 
 
 mysql_query("SET CHARACTER SET utf8");
-$query = "	SELECT  DISTINCT  products.upccode, weight, product_name, last_updated from constituents, products, prod_const, regions_recyclability 
-				   where products.upccode = prod_const.upccode and products.upccode = $upccode"; 
+$query = "SELECT part_weight, weight, total_weight, classification, product_name, img_path from prod_const , products, regions_recyclability
+				   where products.upccode = prod_const.upccode and prod_const.upccode= $upccode"; 
+		
+
+//SELECT  DISTINCT  products.upccode, weight, product_name, last_updated from constituents, products, prod_const, regions_recyclability 
+//				   where products.upccode = prod_const.upccode and products.upccode = $upccode"
 
 $sth = mysqli_query($dbc,$query);// Run the query.
 $num = mysqli_num_rows($r);// get the number of row

@@ -126,7 +126,7 @@
 				$allowedExts = array("gif", "jpeg", "jpg", "png", "JPG");
 				$temp = explode(".", $_FILES["image"]["name"]);
 				$extension = end($temp);
-				$path = "pics/" . $_POST['upccode'];
+				$path = "pics/" . $_POST['upccode'] . ".jpg";
 				if ((($_FILES["image"]["type"] == "image/gif")
 				|| ($_FILES["image"]["type"] == "image/jpeg")
 				|| ($_FILES["image"]["type"] == "image/jpg")
@@ -134,7 +134,7 @@
 				|| ($_FILES["image"]["type"] == "image/pjpeg")
 				|| ($_FILES["image"]["type"] == "image/x-png")
 				|| ($_FILES["image"]["type"] == "image/png"))
-				&& ($_FILES["image"]["size"] < 20000000)
+				&& ($_FILES["image"]["size"] < 40000000)
 				&& in_array($extension, $allowedExts)) {
 					if ($_FILES["image"]["error"] > 0){
 						$errors[] = "Return Code: " . $_FILES["image"]["error"] . "<br>";
@@ -147,7 +147,7 @@
 							echo "Temp file: " . $_FILES["image"]["tmp_name"] . "<br>";*/
 							
 				
-							if (file_exists("pics/" . $_POST['upccode'])) {
+							if (file_exists("pics/" . $_POST['upccode'] . '.jpg')) {
 								$errors[] =  $_FILES["image"]["name"] . " already exists. ";
 							}
 							else {
