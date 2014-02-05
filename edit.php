@@ -100,51 +100,14 @@
 		//$region_name = mysqli_real_escape_string($dbc, trim($_POST['Regions']));
 	
 	
-		
+				
 		// Check if the imege is valid
 		if (isset($_FILES['image']) && $_FILES['image']['size'] > 0) { 
 		
-			/*//This is the directory where images will be saved
-				$target = "pics/";
-				$target = $target . basename( $_FILES['image']['name']);
-				
-				//This gets all the other information from the form
-				$content = basename( $_FILES['image']['name']);
-				
-				
-				//Writes the Filename to the server
-				if(move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
-						//Tells you if its all ok
-						echo "The file ". basename( $_FILES['image']['name']). " has been uploaded, and your information has been added to the directory";
-	
-	
-				} else {
-						//Gives and error if its not
-						echo "Sorry, there was a problem uploading your file.";
-				}
-	
-				
-	
-		 
-			 $fileName = $_FILES['image']['name'];
-			 $tmpName  = $_FILES['image']['tmp_name'];
-			 $fileSize = $_FILES['image']['size'];
-			 $fileType = $_FILES['image']['type'];
-		
-			 $fp      = fopen($tmpName, 'r');
-			 $content = fread($fp, filesize($tmpName));
-			 $content = addslashes($content);
-			 fclose($fp);
-		
-				if(!get_magic_quotes_gpc())
-				{
-						$fileName = addslashes($fileName);
-				}*/
-				
 				$allowedExts = array("gif", "jpeg", "jpg", "png");
 				$temp = explode(".", $_FILES["image"]["name"]);
 				$extension = end($temp);
-				$path = "pics/" . $upccode;
+				$path = "pics/".$upccode.".jpg";
 				if ((($_FILES["image"]["type"] == "image/gif")
 				|| ($_FILES["image"]["type"] == "image/jpeg")
 				|| ($_FILES["image"]["type"] == "image/jpg")
@@ -158,11 +121,6 @@
 						}
 					else
 						{
-							/*echo "Upload: " . $_FILES["image"]["name"] . "<br>";
-							echo "Type: " . $_FILES["image"]["type"] . "<br>";
-							echo "Size: " . ($_FILES["image"]["size"] / 1024) . " kB<br>";
-							echo "Temp file: " . $_FILES["image"]["tmp_name"] . "<br>";*/
-				
 							if (file_exists($path)) {
 								unlink($path);
 								move_uploaded_file($_FILES["image"]["tmp_name"], $path);
@@ -176,9 +134,8 @@
 				else {
 						$errors[]= "Invalid file";
 					}
-	
 		} else {
-			$path = '';
+		 $path = "";
 		}
 		
 		

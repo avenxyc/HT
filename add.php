@@ -141,12 +141,6 @@
 						}
 					else
 						{
-							/*echo "Upload: " . $_FILES["image"]["name"] . "<br>";
-							echo "Type: " . $_FILES["image"]["type"] . "<br>";
-							echo "Size: " . ($_FILES["image"]["size"] / 1024) . " kB<br>";
-							echo "Temp file: " . $_FILES["image"]["tmp_name"] . "<br>";*/
-							
-				
 							if (file_exists("pics/" . $_POST['upccode'] . '.jpg')) {
 								$errors[] =  $_FILES["image"]["name"] . " already exists. ";
 							}
