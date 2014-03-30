@@ -101,20 +101,20 @@ if(isset($_GET['delete'])){
 							<tr>
 								<th>UPC code</th>
 								<th>Product Name</th>
-								<th>Weight/Volumn(g/L)</th>
-								<th>Modified date</th>
-								<th>Action</th>
+								<th class="extra">Weight/Volumn(g/L)</th>
+								<th class="extra">Modified date</th>
+								<th class="extra">Action</th>
 							</tr>';
 			while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)){
 			echo '<tr>
 							<td><a id="details" href="view-specific.php?upccode=' . $row['upccode'].'&region='.$default_region.'">' . $row['upccode'] . '</a></td>
 							<td>' . $row['product_name']. '</td>
-							<td>' . $row['weight']. '</td>
-							<td>' . $row['last_updated']. '</td>';
+							<td class="extra">' . $row['weight']. '</td>
+							<td class="extra">' . $row['last_updated']. '</td>';
 						if(isset($_SESSION['valid_user'])){	
-							echo '<td><a href="edit.php?upccode='.$row["upccode"].'"><button style="width: 40px" class="s-button" type="button">Edit</button></a></td>';
+							echo '<td class="extra"><a href="edit.php?upccode='.$row["upccode"].'"><button style="width: 40px" class="s-button" type="button">Edit</button></a></td>';
 						} else { 
-							echo '<td>---</td>';
+							echo '<td class="extra">---</td>';
 						}
 			echo	'</tr>';
 			}

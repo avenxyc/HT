@@ -1,7 +1,7 @@
 <?php  //Functions for this project
 	function is_logged_in(){
 		if(!isset($_SESSION['valid_user'])) {
-?>  <!-- finish the form later -->
+?>  
     <li><a href="#login-box" class="login-window">Sign in</a></li>
     <li><a href="../sign_up.php">Sign up</a></li>
         

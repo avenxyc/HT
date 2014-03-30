@@ -164,7 +164,7 @@ form.signin .textbox input {
     color: #FFF;
     cursor: pointer;
     display: inline-block;
-    font: 12px;
+    font-size: 14px;
     width: 150px;
 		height: 20px;
 }
@@ -231,7 +231,7 @@ input {
 	display: inline-block;
 }
 
-#mainHeader nav a:hover, nav a:active {
+#mainHeader nav a:hover {
 	background-color:rgba(204,102,204,1);
 	font-weight: 200px;
 }
@@ -607,7 +607,7 @@ br {
 
 
 
-@media screen and (min-width: 850px) and (max-width: 1049px)
+@media screen and (min-width: 860px) and (max-width: 1049px)
 {
 	body {
 		width: 95%;
@@ -721,19 +721,19 @@ br {
 	
 
 
-@media screen and (min-width: 150px) and (max-width: 799px)
+@media screen and (min-width: 150px) and (max-width: 859px)
 {
 	body{
+		margin: 0;
 		width: 100%;
 	}
 	
 	#mainHeader nav {
-		height: 80px;
+		height: 108px;
 	}
 
-	
 	#mainHeader nav ul li {
-		width: 50%;
+		width: 49.7%;
 		display: inline-block;
 	}
 	
@@ -743,18 +743,22 @@ br {
 	}
 	
 	#mainHeader nav a:link, a:visited {
+		font-size: 14px;
 		display: inline-block;
+		padding: 8px 0;
 	}
 	
-	#mainHeader nav li:hover, nav li:active {
+	#mainHeader nav li:hover {
 		color: rgba(153,204,255,1);
 		font-weight: 200;
 		
 	}
 	
-	.active {
-		background-color: rgba(204,102,204,1);
+	.sign_in_bar {
+		float: none;
 	}
+	
+
 	
 	#mainHeader nav li:hover, nav li:active,
 	#mainHeader .active li:link, li:visited{
@@ -781,14 +785,6 @@ br {
 		padding: 0;
 	}
 	
-	#slider-wrapper {
-		width: 100%;
-	}
-	
-	#slider-wrapper img {
-		width: 100%;
-		height: auto;
-	}
 	
 	.tiles {
 		position: relative;
@@ -825,10 +821,36 @@ br {
 	}
 
 	/*Search.php */
+		/*Hide the extra output table in Search.php */
+	 .extra {
+		 display: none;
+	 }
+	 
+	/* Change how element in Search.php looks */
+	#class {
+		width: 50%;
+	}
+	
+	#region {
+		width: 50%
+	}
 
 	#search_wrapper > div {
-		
 		display:block;
+	}
+	
+	#keyword_wrapper {
+		width: 100%;
+	}
+	
+	#keyword {
+		width: 80%;
+		margin: 3px 2px;
+	}
+	
+	.s-button {
+		width: 100%;
+		margin: 3px 0;
 	}
 	
 	/*CSS script for view-specific.php*/
@@ -877,5 +899,23 @@ br {
 		
 	}
 
+	/* Change how the form look like */
+	.form {
+		width: 100%;
+		padding: 5px;
+		margin: 5px auto;
+	}
 	
+	.form label, .form input {
+		display: block;
+		width: 200px;
+		margin-bottom: 5px;
+	}
+	
+	.form label {
+		text-align: left;
+		padding-right: 20px;
+	}
+		
+
 }
