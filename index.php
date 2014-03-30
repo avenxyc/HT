@@ -14,13 +14,13 @@
       <div class="hero"> 
       	<div class="hero-carousel">
           <article>
-          	<img src="images/recycle_its_easy.jpg" alt="Recycling"  />
+          	<img src="images/recycle_its_easy.jpg" alt="Recycling"/>
           </article>
           <article>
-          	<img src="images/recycle_its_easy.jpg" alt="Recycling"  />
+          	<img src="images/recycle_its_easy.jpg" alt="Recycling"/>
           </article>
           <article>
-          	<img src="images/recycle_its_easy.jpg" alt="Recycling"  />
+          	<img src="images/recycle_its_easy.jpg" alt="Recycling"/>
           </article>
          </div>
                 

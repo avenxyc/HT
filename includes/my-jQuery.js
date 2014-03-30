@@ -52,9 +52,12 @@ $(document).ready(function(){
 	
 	// Dropdown menu to enable
 	$('nav li').hover(
-			function () {
-					$('ul', this).stop().slideDown(100);
-			},
+			// Find the nav menu and click
+			$(this).find('li').click(
+				function () {
+						$(this).find('ul').stop().slideDown(100);
+				}
+			),
 			function () {
 					$('ul', this).stop().slideUp(100);
 			}
