@@ -1,14 +1,10 @@
+/*
+ *Author: Yichuan Xu
+ *File name: my-jQuery.js
+ *Purpose: Manipulate the web layout
+*/
 $(document).ready(function(){
-	/*Add focus effect when mouse clicks the input area.
-	$(":input[type=text]").css({"color":"#CCCCCC"});
-	$(":input[type=text]").focus(function(){
-		$(this).addClass('focus');
-		$(this).css({"color":"#000000"});
-	}).blur(function(){
-		$(this).removeClass('focus');
-		$(this).css({"color":"#CCCCCC"});
-	});
-	*/	
+	
 	if($(window).width() > 700 ){
 		 $p_width = $("#products.parent-nav").width();
 		 $k_width = $("#kb.parent-nav").width();
@@ -24,7 +20,7 @@ $(document).ready(function(){
 
 	$('a.login-window').click(function() {
 			
-							//Getting the variable's value from a link 
+			//Getting the variable's value from a link 
 			var loginBox = $(this).attr('href');
 	
 			//Fade in the Popup

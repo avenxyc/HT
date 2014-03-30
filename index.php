@@ -32,9 +32,9 @@
 
 <div class="tiles">
   <div class="tile">
- 	  <p>Title</p>
+ 	  <p>This is a tile that is for test purpose</p>
   	<div class="inner-content">
-    	<p>Content</p>  
+    	<p>I apply different background-color values to the thead, tr, and tr.odd elements. The problem is that in most browsers, every cell has an unwanted border which is not the color of any of the table rows. Only in Firefox 3.5 does the table have no borders in any cell.</p>  
     </div>
   </div>
   <div class="tile">

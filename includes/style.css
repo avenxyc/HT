@@ -25,7 +25,7 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 87.5%;
 	width: 1200px;
-	margin: 0 auto;
+	margin: 25px auto 0px auto; /*keep Nav-bar at the same hight on every page. Otherwise it causes problem */
 	text-align: left;
 }
 
@@ -62,7 +62,12 @@ select {
 	float: left;
 }
 
+#search_box {
+	float: right;
+}
 
+
+/*-----------------------------------Below is the Pop up window------------------------------------>
 /* Mask for background, by default is not display */
 #mask {
     display: none;
@@ -175,6 +180,13 @@ input {
 	height: 20px;           
 }
 
+
+/*-----------------------------------Above is the Pop up window------------------------------------*/
+
+
+
+
+/*-----------------------------------Below is the header.html style------------------------------------*/
 #content {
 	min-height: 650px;
 	color: #000000;
@@ -254,9 +266,17 @@ input {
 	float: right;
 }
 
+/* After user sign in */
+#signed-in-text {
+	font-size: 20px;
+	padding: 8px 0px;
+}
 
 
-/* For content in the container */
+/*-----------------------------------Above is the header.html style------------------------------------*/
+
+
+/*-----------------------------------Below is for the Header and error display style------------------------------------*/
 .error {
 	margin: 20px auto;
 	width:800px;
@@ -311,7 +331,12 @@ input {
 	padding: 20px 0px;
 }
 
-/*CSS script for index.php*/
+/*-----------------------------------Above is for the Header and error display style------------------------------------*/
+
+
+/*-----------------------------------Below is the Index.php style------------------------------------*/
+
+
 
 #slider-wrapper {
 	width: 100%;
@@ -384,13 +409,6 @@ input {
 }
 
 
-
-/*After user logged in */
-#signed-in-text {
-	font-size: 20px;
-	padding: 8px 0px;
-}
-
 .tiles {
 	position: relative;
 	width: 100%;
@@ -411,18 +429,17 @@ input {
 .tile > p{
 	margin: 5px;
 	font-weight: bold;
-	font-size: 20px;
+	font-size: 30px;
   color :rgba(255,255,255,1);
 	text-align: left;
 }
 
 .inner-content {
 	display: none;
+	padding: 10px 20px;
+	text-align: left;
 }
 
-.inner-content :hover {
-
-}
 
 /* for text area */
 .focus{
@@ -437,8 +454,11 @@ h1 {
 	width:100%;
 }
 
+/*---------------------------------------Above is After user logged in-------------------------------- */
 
-/*CSS script for form*/
+
+
+/*--------------------------------------below is the CSS script for form------------------------------------*/
 .form {
 	width: 600px;
 	padding: 40px;
@@ -665,14 +685,6 @@ br {
 		
 	}
 	
-	
-	.members-info {
-		text-align: left;
-	}	
-	.members-login {
-		width: 90px;
-		
-	}
 
 	#sign-in {
 		width: 100%;
@@ -689,10 +701,6 @@ br {
 	
 	}
 	
-	.members-info {
-		width: 32%;
-		display: inline;
-	}
 	
 	#slides li {
 		max-width: 100%;
@@ -735,7 +743,7 @@ br {
 	
 
 
-@media screen and (min-width: 150px) and (max-width: 750px)
+@media screen and (min-width: 150px) and (max-width: 799px)
 {
 	body{
 		width: 100%;
@@ -775,7 +783,7 @@ br {
 		background-color:rgba(204,102,204,1);
 	}
 
-	#slider-wrapper {
+	#slider-wrapper .img {
 		width: 100%;
 		height: auto;
 	}
@@ -791,15 +799,6 @@ br {
 		position: static;
 	}
 	
-	.members-info {
-		width: 50%;
-		float: left;
-		text-align: left;
-	}
-	
-	.members-login{
-		float: right;
-	}
 	
 	#sign-in p, input {
 		display: inline-block;

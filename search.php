@@ -3,8 +3,12 @@
 	width: 100%;
 	text-align:center;
 	border-collapse:collapse;
-	border: rgba(255,255,255,1) ;
+	border: 1px solid white;
 	color: #0066FF;
+}
+
+#output td {
+	border: 1px solid white;
 }
 
 
@@ -79,8 +83,8 @@ if(isset($_GET['delete'])){
 	require_once ('mysqli_connect.php');//connect to the database
 
 	
-	// query
-	$default_region = 'Cape Breton';
+	// Run the query
+	$default_region = 'Valley';
 	$q = "SELECT  DISTINCT  products.upccode, weight, product_name, last_updated
 			  FROM constituents, products, prod_const, regions_recyclability 
 				WHERE	 products.upccode = prod_const.upccode
@@ -89,11 +93,11 @@ if(isset($_GET['delete'])){
 					 and regions_recyclability.region_name = 'Cape Breton'
 				ORDER BY products.upccode";	
 	
-	$r = mysqli_query($dbc, $q); // Run the query.
+	$r = mysqli_query($dbc, $q); // Return a mysqli_result object if successful, otherwise return false
 	$num = mysqli_num_rows($r);// get the nunber of row
 	
 	if($num > 0){
-			echo '<table id="output" border="1">
+			echo '<table id="output">
 							<tr>
 								<th>UPC code</th>
 								<th>Product Name</th>
@@ -116,7 +120,7 @@ if(isset($_GET['delete'])){
 			}
 			echo '</table>';
 	} else {
-		do_html_content('No data in the database', 'no_data');
+		do_html_content('No data in this region.', 'no_data');
 	}
 
 	echo '</div>';
@@ -124,7 +128,7 @@ if(isset($_GET['delete'])){
 	mysqli_close($dbc);
 	
 //Above are the content of the site
-include("/includes/footer.html"); 
+include('/includes/footer.html'); 
 		
 ?>
 

@@ -13,58 +13,28 @@ $( document ).ready(function() {
 		$('.tile:eq(1), .tile:eq(4)').css({ "margin":"0px 1px"});
 		$('.tile:gt(2)').css("margin-top","1px");
 	};
-	/*$('.tile').hover(function(){
-		var text_content = $(this).val();
-		$(this).text('Test test').css("z-index","99")
-					 .animate({width:"280",height:"170"},fast);
-					 },function(){
-						 $(this).text(text_content);
-					 });
-*/
-	var i = 0;
 
-/*The slider provide a alider effect;
-	$('#prev').click(function(){
-		var lg = $("#slides li").length;
-			if(i < lg - 2){
-				$('#slides li').animate({left:'-=700px'});
-				i++;
-			}else{
-				// An elastic efftect
-				$('#slides li').animate({left:'-=50px'})
-											 .animate({left:'+=50px'});
-			}
-		});
-
-	
-	$('#next').click(function(){
-			if(i >= 0){
-				$('#slides li').animate({left:'+=700px'});
-				i--;
-			}else{
-				// An elastic efftect
-				$('#slides li').animate({left:'+=50px'})
-											 .animate({left:'-=50px'});
-			}
-		});
-		
-*/	
+	// Get the width of slider and content
 	var wrapper_width = $('#slider-wrapper').width();
+	
+	// Get the width of the content.
 	var content_width = $('#content').width();
 	
+	// Show the content of tiles when mouse is hovering on the tile
 	if(content_width > 800){	
 		$('.tile').hover(
 			function(){
 				var tile = $(this);			
-				//tile.find('> p').stop().fadeOut(function(){
-						tile.find('.inner-content').stop(true).fadeTo(200, 1);
-				//})
+				tile.find('> p').hide(200);
+				tile.find('.inner-content').show(200);
+				
 			},
 			function(){
 				var tile = $(this);
-				tile.find('.inner-content').stop(true).fadeTo(200, 0);//(function(){
-				//		tile.find('> p').fadeIn('fast');
-				///})
+				tile.find('.inner-content').hide(200);
+				//fadeTo(function(){
+				tile.find('> p').show(200);
+				
 			});
 	} else {
 		$('.inner-content').show('normal');
