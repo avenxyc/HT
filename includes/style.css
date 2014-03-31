@@ -724,7 +724,7 @@ br {
 @media screen and (min-width: 150px) and (max-width: 859px)
 {
 	body{
-		margin: 0;
+		margin: 5px 0;
 		width: 100%;
 	}
 	
@@ -785,6 +785,9 @@ br {
 		padding: 0;
 	}
 	
+	#slider-wrapper {
+		display: none;
+	}
 	
 	.tiles {
 		position: relative;
@@ -859,9 +862,15 @@ br {
 		/*this top attr is to remove the gap between the nab-bar and the content due to the  floating problem*/
 		position: relative;
 	}
+	
 	#view-specific-image  {
 		height: 100%;
 		display: block;
+	}
+	
+	#view-specific-image img {
+		width: 50%;
+		height: 300px;
 	}
 	
 	#view-specific-info {
@@ -874,9 +883,10 @@ br {
 	}
 	
 	#view-specific-info >p[class='title']{
+		font-size: 16px
 		margin: 0;
 		padding: 1px;
-		height: 25px;
+		height: 20px;
 		color: #CCCCCC;
 		background-color: rgba(0,102,255,0.6);
 	}

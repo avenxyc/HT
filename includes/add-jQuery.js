@@ -17,7 +17,8 @@ $(document).ready(function(){
 											 </div>";
 
 			//Remove previously generated forms
-			$("div[id^='clist']").remove();	
+			$("div[id^='clist']").remove();
+			$("div[id^='clist']").nextAll("br").remove;
 			for(var i = 0; i < cnum; i++)
 			{
 				
