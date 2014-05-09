@@ -6,12 +6,22 @@
 	
 	
 	$upccode = $_GET['upccode'];
+	$region_name = $_GET['region'];
 	
 	echo "<script src=\"includes/add-jQuery.js\"></script>";
 	
 	require_once ('mysqli_connect.php');//connect to the database
 	
-  // Make the query:
+	// Get data from original product
+	$read_old_clist = "SELECT * FROM prod_const, regions_recyclabilityl 
+										 WHERE upccode = $upccode 
+										 and regions_recyclability.cname = prod_const.cname
+										 and regions_recyclability.region_name = $region_name;";
+	$retrieve_old_clist = mysqli_query ($dbc, $read_old_clist);
+	
+
+	
+  // Make the query for item class:
 	$cq = "SELECT *  from item_class order by class_name ASC";		
 	$cqrow = mysqli_query ($dbc, $cq); // Run the query.
 	
@@ -215,7 +225,7 @@
 	//-- Input info --
 	do_html_header('Edit this product','center_header');
 	echo "
-				<form action='edit.php?upccode=".$upccode."' class='form' method='post' enctype='multipart/form-data'>
+			<form action='edit.php?upccode=".$upccode."' class='form' method='post' enctype='multipart/form-data'>
 			 <div id='enterInfo'>
 					<label>Upccode:</label><p>$upccode</p><br />
 					<label>Product Name:</label>
@@ -238,14 +248,27 @@
 				
 				 <label>Change the image: </label>
 				 <input type='file' name='image' >
+				 <br>";
 				 
-				<br />
+				 // Count for constituent numbers
+				 $clist_count = 0;
+				 while($result_clist = mysqli_fetch_array($retrieve_old_clist, MYSQLI_ASSOC)){
+					 $clist_count += 1;
+					 // Enter new constituent name if needed
+					 echo '<label style="display:inline">Constituent name: </label>
+					 			 <input type="text" name="cname" size="20" maxlength="15" value="'. $result_clist["cname"]. '">';
+					 // Enter new constituent name
+					 echo '<label style="display:inline">Part weight: </label>
+					 			 <input type="text" name="part_weight" size="20" maxlength="15" value="'. $result_clist["part_weight"]. '">';
+					}
+				 
+	echo"	<br>
 				</div>
 				<input type='submit' class='button' name='submit' value='Submit' />
 				<br />
 				<input type='hidden' name='edited' value='TRUE' />
 				<br />
-				</form>";
+			</form>";
 	
 	
 	

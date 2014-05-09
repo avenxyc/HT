@@ -72,8 +72,8 @@ echo '<div id="view-specific-info">
 				<p class="title">Recyclability</p>
 				<p class="info">'. 100 * number_format($recyc_weight / ($unrecyc_weight+$recyc_weight),2).'%</p>';
 				if(isset($_SESSION['valid_user'])){
-				echo '<a href="edit.php?upccode='.$upccode.'"><button type="button" class="button">Edit</button></a>
-				      <a href="search.php?upccode='.$upccode.'&delete="delete"><button type="button" class="button">Delete</button></a>
+				echo '<a href="edit.php?'.$_SERVER['QUERY_STRING'].'"><button type="button" class="button">Edit</button></a>
+				      <a href="search.php?upccode='.$_SERVER['QUERY_STRING'].'&delete="delete"><button type="button" class="button">Delete</button></a>
 			</div>';}
 
 echo '</div>';
